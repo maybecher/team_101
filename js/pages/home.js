@@ -1,11 +1,11 @@
-import { api } from '../api.js?v=202610211416';
-import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211416';
+import { api } from '../api.js?v=202610211443';
+import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211443';
 import {
   escapeHtml, statusBadgeHtml, GALERIA_CATEGORIA_LABELS, GALERIA_CATEGORIAS_ORDEM, pareceNomeFeminino, formatDate,
   AREAS, areaDaModalidade,
-} from '../utils.js?v=202610211416';
-import { iconeSvg } from '../icons.js?v=202610211416';
-import { revelarAoRolar, prepararCardsDeAtleta, reduzMovimento } from '../animacoes.js?v=202610211416';
+} from '../utils.js?v=202610211443';
+import { iconeSvg } from '../icons.js?v=202610211443';
+import { revelarAoRolar, prepararCardsDeAtleta, reduzMovimento } from '../animacoes.js?v=202610211443';
 
 renderPublicHeader();
 renderPublicFooter();
@@ -489,13 +489,15 @@ function abrirNoticiaModal(id) {
   const root = document.getElementById('noticia-modal-root');
   root.innerHTML = `
     <div class="overlay">
-      <div class="modal">
-        ${n.imagemUrl ? `<img src="${escapeHtml(n.imagemUrl)}" alt="${escapeHtml(n.titulo)}" style="width:100%;border-radius:var(--raio);margin-bottom:20px" />` : ''}
-        <div class="text-sm" style="color:var(--texto-secundario)">${formatDate(n.createdAt)}</div>
-        <h2 class="mt-8" style="font-size:1.4rem">${escapeHtml(n.titulo)}</h2>
-        <p class="mt-16" style="white-space:pre-line">${escapeHtml(n.conteudo)}</p>
-        <div class="modal-actions">
-          <button type="button" class="btn btn-outline" id="noticia-modal-close">Fechar</button>
+      <div class="modal modal--noticia ${n.imagemUrl ? '' : 'modal--sem-foto'}">
+        ${n.imagemUrl ? `<img class="modal-noticia-foto" src="${escapeHtml(n.imagemUrl)}" alt="${escapeHtml(n.titulo)}" />` : ''}
+        <div class="modal-noticia-texto">
+          <div class="text-sm" style="color:var(--texto-secundario)">${formatDate(n.createdAt)}</div>
+          <h2 class="mt-8" style="font-size:1.4rem">${escapeHtml(n.titulo)}</h2>
+          <p class="mt-16" style="white-space:pre-line">${escapeHtml(n.conteudo)}</p>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-outline" id="noticia-modal-close">Fechar</button>
+          </div>
         </div>
       </div>
     </div>

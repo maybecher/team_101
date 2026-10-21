@@ -49,7 +49,7 @@ export function inscricaoStatusBadgeHtml(status) {
   return `<span class="badge ${cls}">${label}</span>`;
 }
 
-import { iconeSvg } from './icons.js?v=202610211416';
+import { iconeSvg } from './icons.js?v=202610211443';
 
 // Mesmo desenho (medal) pras três primeiras, diferenciadas por cor; Excelência usa um
 // ícone diferente (award) já que é uma honraria à parte, não uma "quarta medalha".

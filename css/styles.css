@@ -2570,3 +2570,43 @@ section[id] {
 @media (prefers-reduced-motion: reduce) {
   .btn-destaque { animation: none; }
 }
+
+/* ---------- Janela da notícia ---------- */
+
+.modal-noticia-foto {
+  width: 100%;
+  border-radius: var(--raio);
+  margin-bottom: 20px;
+}
+
+/* No computador a janela fica larga, com a foto à esquerda e o texto à direita:
+   empilhados numa janela estreita, foto + texto passavam da altura da tela e
+   apareciam com barra de rolagem. */
+@media (min-width: 900px) {
+  .modal.modal--noticia {
+    max-width: 1000px;
+    padding: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .modal--noticia.modal--sem-foto {
+    max-width: 640px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .modal--noticia .modal-noticia-foto {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    border-radius: 0;
+    object-fit: cover;
+  }
+
+  .modal--noticia .modal-noticia-texto {
+    padding: 32px;
+    overflow-y: auto;
+    max-height: 90vh;
+  }
+}

@@ -2133,16 +2133,9 @@ body {
   margin-top: 48px;
 }
 
-.sobre-paises-topo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
 .sobre-paises-rotulo {
+  display: block;
+  margin-bottom: 12px;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--texto-secundario);
@@ -2213,24 +2206,16 @@ body {
     animation-name: desenhar-vertical;
   }
 
-  .sobre-paises {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* O botão da linha do tempo desce para baixo das bandeiras. */
-  .sobre-paises-topo {
-    display: contents;
-  }
-
-  .sobre-paises-rotulo { order: 1; margin-bottom: 12px; }
-  .sobre-paises .marquee { order: 2; }
-
-  .sobre-paises-topo .btn {
-    order: 3;
+  .sobre-paises-acao .btn {
     width: 100%;
-    margin-top: 20px;
   }
+}
+
+/* O botão da linha do tempo vem depois das bandeiras, centralizado. */
+.sobre-paises-acao {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
 }
 
 @keyframes desenhar-vertical {
@@ -2584,4 +2569,21 @@ section[id] {
     content: '';
     flex: 0 0 calc(15% - 16px);
   }
+}
+
+/* Botão único da capa: maior e com um brilho dourado que pulsa de leve. */
+.btn-destaque {
+  padding: 16px 44px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 0 0 0 rgba(243, 201, 77, 0.5), 0 10px 30px rgba(212, 160, 23, 0.35);
+  animation: chamar 2.4s ease-in-out infinite;
+}
+
+@keyframes chamar {
+  50% { box-shadow: 0 0 0 10px rgba(243, 201, 77, 0), 0 14px 40px rgba(212, 160, 23, 0.5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-destaque { animation: none; }
 }

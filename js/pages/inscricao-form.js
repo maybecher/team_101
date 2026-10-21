@@ -1,6 +1,6 @@
-import { api, FORMS_URL } from '../api.js?v=202610211443';
-import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211443';
-import { getQueryParam } from '../utils.js?v=202610211443';
+import { api, FORMS_URL } from '../api.js?v=202610211445';
+import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211445';
+import { getQueryParam } from '../utils.js?v=202610211445';
 
 renderPublicHeader();
 renderPublicFooter();

@@ -1,11 +1,11 @@
-import { api } from '../api.js?v=202610211443';
-import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211443';
+import { api } from '../api.js?v=202610211445';
+import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211445';
 import {
   escapeHtml, statusBadgeHtml, GALERIA_CATEGORIA_LABELS, GALERIA_CATEGORIAS_ORDEM, pareceNomeFeminino, formatDate,
   AREAS, areaDaModalidade,
-} from '../utils.js?v=202610211443';
-import { iconeSvg } from '../icons.js?v=202610211443';
-import { revelarAoRolar, prepararCardsDeAtleta, reduzMovimento } from '../animacoes.js?v=202610211443';
+} from '../utils.js?v=202610211445';
+import { iconeSvg } from '../icons.js?v=202610211445';
+import { revelarAoRolar, prepararCardsDeAtleta, reduzMovimento } from '../animacoes.js?v=202610211445';
 
 renderPublicHeader();
 renderPublicFooter();
@@ -247,7 +247,7 @@ api.get('/modalidades').then((modalidades) => {
 });
 
 document.getElementById('modalidades-busca').addEventListener('input', renderModalidades);
-attachCarousel('modalidades-track', 'modalidades-prev', 'modalidades-next', '.modalidade-card', 4500);
+attachCarousel('modalidades-track', 'modalidades-prev', 'modalidades-next', '.modalidade-card', 3800);
 
 // ---------- Competidores (carrossel automático) ----------
 
@@ -319,7 +319,7 @@ api.get('/competidores').then((competidores) => {
 }).catch(() => {
   document.getElementById('competidores-track').innerHTML = '<div class="empty-state">Não foi possível carregar os competidores.</div>';
 });
-attachCarousel('competidores-track', 'competidores-prev', 'competidores-next', '.competidor-card', 4500);
+attachCarousel('competidores-track', 'competidores-prev', 'competidores-next', '.competidor-card', 3800);
 attachCarousel('competidores-destaque', 'destaque-prev', 'destaque-next', '.competidor-card', 5000);
 
 // ---------- Galeria ----------

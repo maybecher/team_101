@@ -10,7 +10,10 @@ const cache = new Map();
 
 function carregarJson(nome) {
   if (!cache.has(nome)) {
-    cache.set(nome, fetch(`data/${nome}.json`).then((res) => {
+    // no-cache: o GitHub Pages deixa o navegador guardar os arquivos por 10 min, e um
+    // JSON antigo pode apontar para imagens que já foram trocadas. Assim o navegador
+    // sempre confere com o servidor (se nada mudou, a resposta é um 304 rápido).
+    cache.set(nome, fetch(`data/${nome}.json`, { cache: 'no-cache' }).then((res) => {
       if (!res.ok) throw new Error('Não foi possível carregar os dados.');
       return res.json();
     }));

@@ -1833,11 +1833,12 @@ body {
 
 /* ---------- Países sede (faixa em movimento) ---------- */
 
-/* As bordas somem num degradê para a faixa "entrar" e "sair" suavemente. */
+/* "contain" isola a faixa: o celular não precisa redesenhá-la a cada rolagem da página.
+   Sem mask-image de propósito: a máscara (que esmaecia as pontas) sobre uma tira
+   animada de 5.000+ px fazia a faixa sumir em vários celulares conforme a página rolava. */
 .marquee {
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  contain: paint;
   padding: 4px 0;
 }
 
@@ -1846,6 +1847,8 @@ body {
 .marquee-track {
   display: flex;
   width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
   animation: marquee-deslizar 60s linear infinite;
 }
 
@@ -1875,8 +1878,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .marquee {
     overflow-x: auto;
-    -webkit-mask-image: none;
-    mask-image: none;
   }
 
   .marquee-track {
@@ -2204,6 +2205,10 @@ body {
 
   .js-anim .etapas.visivel .etapa::after {
     animation-name: desenhar-vertical;
+  }
+
+  .sobre-paises-acao {
+    margin-top: 28px;
   }
 
   .sobre-paises-acao .btn {

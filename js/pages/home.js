@@ -76,37 +76,38 @@ function attachCarousel(trackId, prevId, nextId, cardSelector, autoMs) {
   if (autoMs) setInterval(() => step(1), autoMs);
 }
 
-// ---------- Modalidades (carrossel automático) ----------
+// ---------- Modalidades disponíveis na escola (grade) ----------
 
 let todasModalidades = [];
 
 function renderModalidades() {
   const busca = document.getElementById('modalidades-busca').value.trim().toLowerCase();
-  const status = document.getElementById('modalidades-filtro-status').value;
-  const filtradas = todasModalidades.filter((m) => {
-    const buscaOk = !busca || m.nome.toLowerCase().includes(busca);
-    const statusOk = !status || m.status === status;
-    return buscaOk && statusOk;
-  });
+  const filtradas = todasModalidades.filter((m) => !busca
+    || m.nome.toLowerCase().includes(busca) || m.codigo.includes(busca.replace('#', '')));
 
-  const track = document.getElementById('modalidades-track');
+  const grid = document.getElementById('modalidades-track');
   if (filtradas.length === 0) {
-    track.innerHTML = `<div class="empty-state"><div class="icon icone-branco">${iconeSvg('search')}</div>Nenhuma modalidade encontrada.</div>`;
+    grid.innerHTML = `<div class="empty-state"><div class="icon icone-branco">${iconeSvg('search')}</div>Nenhuma modalidade encontrada.</div>`;
     return;
   }
 
-  track.innerHTML = filtradas.map((m) => `
-    <a class="card modalidade-card" href="modalidade.html?id=${m.id}" style="display:block">
-      ${m.imagemUrl
-        ? `<img class="thumb" src="${escapeHtml(m.imagemUrl)}" alt="${escapeHtml(m.nome)}" />`
-        : `<div class="thumb icone-branco">${iconeSvg('wrench')}</div>`}
+  grid.innerHTML = filtradas.map((m) => `
+    <div class="card modalidade-card">
+      <a href="modalidade.html?id=${m.id}" class="modalidade-card-thumb">
+        ${m.imagemUrl
+          ? `<img class="thumb" src="${escapeHtml(m.imagemUrl)}" alt="${escapeHtml(m.nome)}" loading="lazy" />`
+          : `<div class="thumb icone-branco">${iconeSvg('wrench')}</div>`}
+      </a>
       <div class="card-body">
         <div class="text-sm" style="font-weight:600;color:var(--texto-secundario)">#${escapeHtml(m.codigo)}</div>
-        <h3 class="mt-8" style="font-size:1.1rem">${escapeHtml(m.nome)}</h3>
+        <h3 class="mt-8" style="font-size:1.05rem"><a href="modalidade.html?id=${m.id}">${escapeHtml(m.nome)}</a></h3>
         <div class="mt-8">${statusBadgeHtml(m.status)}</div>
-        <div class="mt-16" style="color:var(--azul-vibrante);font-weight:600">Ver mais ${iconeSvg('chevronRight')}</div>
+        <div class="modalidade-card-acoes">
+          <a class="btn btn-outline btn-sm" href="modalidade.html?id=${m.id}">Saiba mais</a>
+          <a class="btn btn-primary btn-sm" href="inscricao.html?modalidadeId=${m.id}">Inscrever-se</a>
+        </div>
       </div>
-    </a>
+    </div>
   `).join('');
 }
 
@@ -118,8 +119,6 @@ api.get('/modalidades').then((modalidades) => {
 });
 
 document.getElementById('modalidades-busca').addEventListener('input', renderModalidades);
-document.getElementById('modalidades-filtro-status').addEventListener('change', renderModalidades);
-attachCarousel('modalidades-track', 'modalidades-prev', 'modalidades-next', '.modalidade-card', 4500);
 
 // ---------- Competidores (carrossel automático) ----------
 
@@ -175,6 +174,7 @@ api.get('/competidores').then((competidores) => {
   document.getElementById('competidores-track').innerHTML = '<div class="empty-state">Não foi possível carregar os competidores.</div>';
 });
 attachCarousel('competidores-track', 'competidores-prev', 'competidores-next', '.competidor-card', 4500);
+attachCarousel('competidores-destaque', 'destaque-prev', 'destaque-next', '.competidor-card', 5000);
 
 // ---------- Galeria ----------
 
@@ -294,27 +294,6 @@ document.querySelectorAll('#galeria-filtros .chip').forEach((chip) => {
     categoriaAtiva = chip.dataset.categoria;
     renderGaleria();
   });
-});
-
-// ---------- Inscrições abertas ----------
-
-api.get('/modalidades?abertaSomente=true').then((modalidades) => {
-  const list = document.getElementById('inscricoes-abertas-list');
-  if (modalidades.length === 0) {
-    list.innerHTML = `<div class="empty-state"><div class="icon icone-branco">${iconeSvg('inbox')}</div>No momento não há inscrições abertas.</div>`;
-    return;
-  }
-  list.innerHTML = modalidades.map((m) => `
-    <div class="card">
-      <div class="card-body">
-        <div class="text-sm" style="font-weight:600;color:var(--texto-secundario)">#${escapeHtml(m.codigo)}</div>
-        <h3 class="mt-8" style="font-size:1.1rem">${escapeHtml(m.nome)}</h3>
-        <a class="btn btn-primary btn-block mt-16" href="inscricao.html?modalidadeId=${m.id}">Inscrever-se</a>
-      </div>
-    </div>
-  `).join('');
-}).catch(() => {
-  document.getElementById('inscricoes-abertas-list').innerHTML = '<div class="empty-state">Não foi possível carregar as inscrições agora.</div>';
 });
 
 // ---------- Notícias (carrossel) ----------

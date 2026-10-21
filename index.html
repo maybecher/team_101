@@ -104,8 +104,12 @@
           <span class="eyebrow">INSPIRE-SE</span>
           <h2>Represente a nossa escola como eles</h2>
           <p class="mt-16">Kawan Costa e Giovanna Candido começaram do mesmo jeito que você pode começar agora: com vontade de aprender e a coragem de se inscrever. Hoje, como campeões nacionais, eles vão levar o nome do SENAI Brás e do Brasil para a WorldSkills Shanghai, em setembro de 2026 — a maior competição de habilidades profissionais do mundo. A próxima história pode ser a sua.</p>
+          <div class="flex gap-8 mt-16 carousel-nav">
+            <button type="button" class="icon-btn" id="destaque-prev" aria-label="Anterior"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icone-svg"><path d="m15 18-6-6 6-6" /></svg></button>
+            <button type="button" class="icon-btn" id="destaque-next" aria-label="Próximo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icone-svg"><path d="m9 18 6-6-6-6" /></svg></button>
+          </div>
         </div>
-        <div class="flex gap-24 flex-wrap" style="justify-content:center" id="competidores-destaque"></div>
+        <div class="competidores-track destaque-track" id="competidores-destaque"></div>
       </div>
     </section>
 
@@ -114,24 +118,12 @@
         <div class="section-heading flex-between flex-wrap gap-16">
           <div>
             <span class="eyebrow">MODALIDADES</span>
-            <h2>Escolha a sua modalidade</h2>
+            <h2>Modalidades disponíveis na escola</h2>
+            <p>Todas com inscrições abertas. Conheça cada uma e escolha a sua.</p>
           </div>
-          <div class="flex gap-12 flex-wrap">
-            <input type="search" id="modalidades-busca" placeholder="Buscar modalidade..." style="padding:10px 14px;border-radius:12px;border:1px solid var(--borda);min-width:220px;" />
-            <select id="modalidades-filtro-status" style="padding:10px 14px;border-radius:12px;border:1px solid var(--borda);">
-              <option value="">Todos os status</option>
-              <option value="inscricoes_abertas">Inscrições abertas</option>
-              <option value="inscricoes_encerradas">Inscrições encerradas</option>
-              <option value="treinamentos">Treinamentos</option>
-              <option value="competindo">Competindo</option>
-            </select>
-            <div class="flex gap-8">
-              <button type="button" class="icon-btn" id="modalidades-prev" aria-label="Modalidades anteriores"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icone-svg"><path d="m15 18-6-6 6-6" /></svg></button>
-              <button type="button" class="icon-btn" id="modalidades-next" aria-label="Próximas modalidades"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icone-svg"><path d="m9 18 6-6-6-6" /></svg></button>
-            </div>
-          </div>
+          <input type="search" id="modalidades-busca" class="modalidades-busca" placeholder="Buscar modalidade..." />
         </div>
-        <div class="modalidades-track" id="modalidades-track"><div class="spinner"></div></div>
+        <div class="modalidades-grid" id="modalidades-track"><div class="spinner"></div></div>
       </div>
     </section>
 
@@ -191,16 +183,6 @@
           <h2>Perguntas frequentes</h2>
         </div>
         <div id="faq-list"></div>
-      </div>
-    </section>
-
-    <section id="inscricoes" class="section section--white">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">INSCRIÇÕES</span>
-          <h2>Inscrições abertas</h2>
-        </div>
-        <div id="inscricoes-abertas-list" class="grid grid-3"><div class="spinner"></div></div>
       </div>
     </section>
   </main>

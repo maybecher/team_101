@@ -533,40 +533,96 @@ ul {
   transform: translateY(-4px);
 }
 
-/* ---------- Modalidades (carrossel) ---------- */
+/* Inspire-se: mesmo carrossel dos competidores; as margens automáticas centralizam
+   os cards quando todos cabem na tela, sem impedir a rolagem quando não cabem. */
+.destaque-track > :first-child { margin-left: auto; }
+.destaque-track > :last-child { margin-right: auto; }
 
-.modalidades-track {
-  display: flex;
+.carousel-nav {
+  justify-content: flex-end;
+}
+
+/* ---------- Modalidades disponíveis na escola (grade) ---------- */
+
+.modalidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  padding-top: 12px;
-  margin-top: -12px;
-  padding-bottom: 8px;
-  -webkit-overflow-scrolling: touch;
 }
 
-.modalidades-track::-webkit-scrollbar {
-  height: 6px;
-}
-
-.modalidades-track::-webkit-scrollbar-thumb {
-  background: var(--borda-forte);
-  border-radius: 999px;
+.modalidades-grid .empty-state {
+  grid-column: 1 / -1;
 }
 
 .modalidade-card {
-  flex: 0 0 calc((100% - 40px) / 3);
-  scroll-snap-align: start;
-  min-width: 260px;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (max-width: 900px) {
-  .modalidade-card { flex-basis: calc((100% - 20px) / 2); }
+.modalidade-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (max-width: 640px) {
-  .modalidade-card { flex-basis: 85%; }
+.modalidade-card-thumb {
+  display: block;
+}
+
+.modalidade-card-acoes {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.modalidade-card-acoes .btn {
+  flex: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.modalidades-busca {
+  min-width: 240px;
+}
+
+/* No celular, cada modalidade vira uma linha compacta (foto à esquerda, texto à
+   direita): 13 cards de altura cheia, um embaixo do outro, ficavam longos demais. */
+@media (max-width: 560px) {
+  .modalidades-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .modalidade-card {
+    flex-direction: row;
+  }
+
+  .modalidade-card-thumb {
+    width: 34%;
+    flex-shrink: 0;
+  }
+
+  .modalidade-card-thumb .thumb {
+    height: 100%;
+    aspect-ratio: auto;
+    min-height: 140px;
+  }
+
+  .modalidade-card .card-body {
+    padding: 14px;
+    min-width: 0;
+  }
+
+  .modalidade-card-acoes {
+    flex-direction: column;
+    padding-top: 12px;
+  }
+
+  .modalidades-busca {
+    min-width: 0;
+    width: 100%;
+  }
 }
 
 /* ---------- Forms ---------- */
@@ -730,7 +786,7 @@ ul {
 
 @media (max-width: 900px) {
   .site-nav.links { display: none; }
-  .btn.btn-primary.btn-sm { display: none; }
+  .site-header .btn.btn-primary.btn-sm { display: none; }
   .nav-toggle { display: flex; }
 }
 
@@ -1347,6 +1403,13 @@ tbody tr:hover {
   min-width: 0;
 }
 
+/* Conquistas longas ("Campeão Nacional · Ouro na AmericasSkills · ...") quebram a linha
+   dentro do badge em vez de empurrar a página para o lado. */
+.list-row > .badge {
+  max-width: 100%;
+  flex-shrink: 1 !important;
+}
+
 .list-row .info h4 {
   font-size: 1rem;
   font-weight: 700;
@@ -1658,6 +1721,53 @@ tbody tr:hover {
   border: 0;
 }
 
+
+/* ---------- Celulares ---------- */
+
+/* Rolagem horizontal da página nunca é desejada: os carrosséis rolam por conta própria.
+   "clip" (e não "hidden") para não quebrar o cabeçalho sticky. */
+body {
+  overflow-x: clip;
+}
+
 @media (max-width: 640px) {
+  .container { padding: 0 16px; }
+  .section { padding: 48px 0; }
+  .section-heading { margin-bottom: 24px; }
+  .section-heading > div { width: 100%; }
+
+  .hero { padding: 56px 16px 48px; }
+  .hero p { font-size: 1rem; }
+  .hero .actions .btn { flex: 1 1 100%; }
+  .hero-video { margin-top: 32px; border-radius: var(--raio); }
+
+  /* Botões com texto longo (ex: "Ver linha do tempo completa...") quebram a linha
+     em vez de vazar da tela. */
+  .btn { white-space: normal; text-align: center; padding: 12px 20px; }
+
+  .competidor-card,
+  .noticia-card { min-width: 0; }
+
+  .competidor-card--destaque {
+    flex: 0 0 min(320px, 85%);
+    width: auto;
+  }
+
+  .card-body { padding: 16px; }
+  .modal { padding: 20px; }
+
+  .mobile-menu { padding: 8px 16px 20px; }
+
+  .list-row { flex-wrap: wrap; }
+
+  .site-footer .container { flex-direction: column; text-align: center; }
+  .site-footer-brand { flex-direction: column; }
+
   .forms-iframe { height: 1700px; }
+}
+
+@media (max-width: 380px) {
+  .logo { font-size: 1rem; }
+  .hero h1 { font-size: 1.9rem; }
+  .section-heading h2 { font-size: 1.5rem; }
 }

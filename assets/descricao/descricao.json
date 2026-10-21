@@ -124,6 +124,22 @@
       "descricao": "O desenvolvedor mobile usa tecnologia e design para criar aplicativos atraentes e funcionais para celular. É uma das profissões que mais crescem no mundo, com oportunidades tanto para empregados de empresas quanto para freelancers que atendem negócios menores.",
       "idade_maxima_mundial": 22,
       "fonte_url": "https://worldskills.org/skills/id/562/"
+    },
+    {
+      "codigo": "25",
+      "nome_pt": "Marcenaria de Estruturas",
+      "nome_oficial": "Joinery",
+      "categoria": "Construction and Building Technology",
+      "descricao": "Você constrói peças de madeira para casas e prédios, como portas, janelas e escadas, com encaixes firmes e precisos feitos a partir de desenhos e cálculos. Trabalha mais na oficina e às vezes instala na obra, usando também programas de desenho e de projeto de construção (CAD e BIM).",
+      "fonte_url": "https://worldskills.org/skills/id/237/"
+    },
+    {
+      "codigo": "48",
+      "nome_pt": "Indústria 4.0",
+      "nome_oficial": "Industry 4.0",
+      "categoria": "Manufacturing and Engineering Technology",
+      "descricao": "Em equipe, você conecta máquinas, redes e dados para formar uma fábrica inteligente, que se monitora e mostra tudo o que está acontecendo. Monta e programa a automação, conecta máquinas em rede, protege o sistema contra ataques e usa os dados para fazer a produção render mais.",
+      "fonte_url": "https://worldskills.org/what/projects/wsos/2024/events/579/skills/1703"
     }
   ]
 }

@@ -586,41 +586,92 @@ ul {
   min-width: 240px;
 }
 
-/* No celular, cada modalidade vira uma linha compacta (foto à esquerda, texto à
-   direita): 13 cards de altura cheia, um embaixo do outro, ficavam longos demais. */
-@media (max-width: 560px) {
-  .modalidades-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+/* Modalidades e galeria em carrossel com rolagem lateral, igual às outras seções:
+   3 cards por vez no computador (4 na galeria), 2 no tablet e 1 e pouco no celular. */
+.modalidades-grid,
+.galeria-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 12px 0 8px;
+  margin-top: -12px;
+}
+
+.modalidades-grid::-webkit-scrollbar,
+.galeria-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.modalidades-grid::-webkit-scrollbar-thumb,
+.galeria-track::-webkit-scrollbar-thumb {
+  background: var(--borda-forte);
+  border-radius: 999px;
+}
+
+.modalidades-grid > .card {
+  flex: 0 0 calc((100% - 40px) / 3);
+  scroll-snap-align: start;
+}
+
+.galeria-track > .card {
+  flex: 0 0 calc((100% - 60px) / 4);
+  scroll-snap-align: start;
+}
+
+.modalidades-grid .empty-state {
+  flex: 1 1 100%;
+}
+
+.galeria-grupo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.galeria-grupo-header .grupo-titulo {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.galeria-grupo-header .flex {
+  margin-left: auto;
+}
+
+@media (max-width: 980px) {
+  .modalidades-grid > .card { flex-basis: calc((100% - 20px) / 2); }
+  .galeria-track > .card { flex-basis: calc((100% - 40px) / 3); }
+}
+
+@media (max-width: 640px) {
+  .modalidades-grid,
+  .galeria-track {
+    gap: 16px;
+    scrollbar-width: none;
   }
 
-  .modalidade-card {
-    flex-direction: row;
+  .modalidades-grid::-webkit-scrollbar,
+  .galeria-track::-webkit-scrollbar {
+    display: none;
   }
 
-  .modalidade-card-thumb {
-    width: 34%;
-    flex-shrink: 0;
-  }
-
-  .modalidade-card-thumb .thumb {
-    height: 100%;
-    aspect-ratio: auto;
-    min-height: 140px;
-  }
-
-  .modalidade-card .card-body {
-    padding: 14px;
-    min-width: 0;
-  }
-
-  .modalidade-card-acoes {
-    flex-direction: column;
-    padding-top: 12px;
+  .modalidades-grid > .card,
+  .galeria-track > .card {
+    flex-basis: 85%;
   }
 
   .modalidades-busca {
     min-width: 0;
+    flex: 1;
+  }
+
+  .modalidades-ferramentas {
     width: 100%;
   }
 }
@@ -787,7 +838,8 @@ ul {
 @media (max-width: 900px) {
   .site-nav.links { display: none; }
   .site-header .btn.btn-primary.btn-sm { display: none; }
-  .nav-toggle { display: flex; }
+  /* Sem os links do menu (que tinham o margin-left:auto), o botão ficava colado no logo. */
+  .nav-toggle { display: flex; margin-left: auto; }
 }
 
 @media (min-width: 901px) {

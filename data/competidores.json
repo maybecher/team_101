@@ -187,6 +187,23 @@
     }
   },
   {
+    "id": 15,
+    "nome": "João Pedro Guimarães",
+    "fotoUrl": "assets/competidores/2026/joao-pedro-guimares.png",
+    "curso": null,
+    "ano": 2026,
+    "modalidadeId": 12,
+    "conquistas": null,
+    "depoimento": null,
+    "destaque": false,
+    "createdAt": "2026-10-21T11:52:49.015Z",
+    "modalidade": {
+      "id": 12,
+      "nome": "Marcenaria de Estruturas",
+      "codigo": "25"
+    }
+  },
+  {
     "id": 6,
     "nome": "Júllia Santana",
     "fotoUrl": "assets/competidores/2026/jullia-santana-santos.png",

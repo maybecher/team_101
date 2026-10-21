@@ -76,7 +76,7 @@ function attachCarousel(trackId, prevId, nextId, cardSelector, autoMs) {
   if (autoMs) setInterval(() => step(1), autoMs);
 }
 
-// ---------- Modalidades disponíveis na escola (grade) ----------
+// ---------- Modalidades disponíveis na escola (carrossel automático) ----------
 
 let todasModalidades = [];
 
@@ -119,6 +119,7 @@ api.get('/modalidades').then((modalidades) => {
 });
 
 document.getElementById('modalidades-busca').addEventListener('input', renderModalidades);
+attachCarousel('modalidades-track', 'modalidades-prev', 'modalidades-next', '.modalidade-card', 4500);
 
 // ---------- Competidores (carrossel automático) ----------
 
@@ -217,19 +218,30 @@ function renderGaleria() {
   }
 
   // Com "Todos" selecionado, separamos em uma seção por categoria; com um filtro
-  // específico ativo, mostramos só a grade daquela categoria, sem repetir o título.
+  // específico ativo, mostramos só o carrossel daquela categoria, sem repetir o título.
   const grupos = categoriaAtiva
     ? [[categoriaAtiva, ordenarPorModalidade(itens)]]
     : GALERIA_CATEGORIAS_ORDEM
         .map((categoria) => [categoria, ordenarPorModalidade(itens.filter((i) => i.categoria === categoria))])
         .filter(([, lista]) => lista.length > 0);
 
+  // Cada grupo é um carrossel próprio, com as setas ao lado do título do grupo.
   grid.innerHTML = grupos.map(([categoria, lista]) => `
     <div class="grupo">
-      ${!categoriaAtiva ? `<h3 class="grupo-titulo">${escapeHtml(GALERIA_CATEGORIA_LABELS[categoria] || categoria)}</h3>` : ''}
-      <div class="grid grid-4">${lista.map(galeriaItemHtml).join('')}</div>
+      <div class="galeria-grupo-header">
+        ${!categoriaAtiva ? `<h3 class="grupo-titulo">${escapeHtml(GALERIA_CATEGORIA_LABELS[categoria] || categoria)}</h3>` : ''}
+        <div class="flex gap-8">
+          <button type="button" class="icon-btn" id="galeria-${categoria}-prev" aria-label="Anteriores">${iconeSvg('chevronLeft')}</button>
+          <button type="button" class="icon-btn" id="galeria-${categoria}-next" aria-label="Próximos">${iconeSvg('chevronRight')}</button>
+        </div>
+      </div>
+      <div class="galeria-track" id="galeria-${categoria}-track">${lista.map(galeriaItemHtml).join('')}</div>
     </div>
   `).join('');
+
+  grupos.forEach(([categoria]) => {
+    attachCarousel(`galeria-${categoria}-track`, `galeria-${categoria}-prev`, `galeria-${categoria}-next`, '.card');
+  });
 
   grid.querySelectorAll('.lightbox-trigger').forEach((el) => {
     el.addEventListener('click', () => abrirLightbox(el.dataset.url));

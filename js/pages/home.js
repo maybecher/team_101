@@ -1,11 +1,11 @@
-import { api } from '../api.js?v=202610211451';
-import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211451';
+import { api } from '../api.js?v=202610211453';
+import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211453';
 import {
   escapeHtml, statusBadgeHtml, GALERIA_CATEGORIA_LABELS, GALERIA_CATEGORIAS_ORDEM, pareceNomeFeminino, formatDate,
   AREAS, areaDaModalidade,
-} from '../utils.js?v=202610211451';
-import { iconeSvg } from '../icons.js?v=202610211451';
-import { revelarAoRolar, prepararCardsDeAtleta, reduzMovimento } from '../animacoes.js?v=202610211451';
+} from '../utils.js?v=202610211453';
+import { iconeSvg } from '../icons.js?v=202610211453';
+import { revelarAoRolar, prepararCardsDeAtleta, reduzMovimento } from '../animacoes.js?v=202610211453';
 
 renderPublicHeader();
 renderPublicFooter();

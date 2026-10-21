@@ -1,9 +1,9 @@
-import { api } from '../api.js?v=202610211451';
-import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211451';
+import { api } from '../api.js?v=202610211453';
+import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211453';
 import {
   escapeHtml, statusBadgeHtml, getQueryParam, medalhaBadgeHtml, splitCompetidores, AREAS, areaDaModalidade,
-} from '../utils.js?v=202610211451';
-import { iconeSvg } from '../icons.js?v=202610211451';
+} from '../utils.js?v=202610211453';
+import { iconeSvg } from '../icons.js?v=202610211453';
 
 renderPublicHeader();
 renderPublicFooter();

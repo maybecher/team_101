@@ -1932,7 +1932,10 @@ body {
   to { opacity: 1; translate: 0 0; }
 }
 
-/* Só esconde quando o JS está ativo (classe js-anim no <html>, posta no <head>). */
+/* Só esconde quando o JS está ativo (classe js-anim no <html>, posta no <head>).
+   As animações de entrada usam "backwards" e não "both": ao terminar, elas se desligam
+   em vez de segurar o estado final. Um elemento segurando translate para sempre fazia o
+   Safari do iPhone parar de redesenhar a faixa de países que rola dentro dele. */
 .js-anim .revelar:not(.visivel),
 .js-anim .revelar-grupo:not(.visivel) > * {
   opacity: 0;
@@ -1940,7 +1943,7 @@ body {
 
 .js-anim .revelar.visivel,
 .js-anim .revelar-grupo.visivel > * {
-  animation: surgir 0.8s var(--suave) both;
+  animation: surgir 0.8s var(--suave) backwards;
   animation-delay: var(--atraso, 0ms);
 }
 
@@ -2008,12 +2011,12 @@ body {
 }
 
 .js-anim .sobre-numeros.visivel dt {
-  animation: letreiro 0.9s var(--suave) both;
+  animation: letreiro 0.9s var(--suave) backwards;
   animation-delay: calc(var(--atraso, 0ms) + 0.15s);
 }
 
 .js-anim .sobre-numeros.visivel dt::after {
-  animation: traco 0.7s var(--suave) both;
+  animation: traco 0.7s var(--suave) backwards;
   animation-delay: calc(var(--atraso, 0ms) + 0.55s);
 }
 
@@ -2061,7 +2064,7 @@ body {
 }
 
 .js-anim .etapas.visivel .etapa::after {
-  animation: desenhar 0.9s var(--suave) both;
+  animation: desenhar 0.9s var(--suave) backwards;
 }
 
 .js-anim .etapas.visivel .etapa:nth-child(1)::after { animation-delay: 0.35s; }
@@ -2248,7 +2251,7 @@ body {
 }
 
 .atleta-card.brilhar::before {
-  animation: brilho 1.5s var(--suave) 0.25s both;
+  animation: brilho 1.5s var(--suave) 0.25s backwards;
 }
 
 @keyframes brilho {

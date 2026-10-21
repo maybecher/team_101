@@ -9,7 +9,9 @@ export const reduzMovimento = window.matchMedia('(prefers-reduced-motion: reduce
 // Seletores padrão: elementos que entram sozinhos (.revelar) e grupos cujos filhos
 // entram em sequência (.revelar-grupo). Grupos preenchidos depois (via fetch) também
 // animam, porque a animação roda quando o filho é inserido num grupo já visível.
-const REVELAR = '.section .section-heading, .sobre-paises';
+// A área das bandeiras (.sobre-paises) fica de fora de propósito: ver o comentário de
+// .revelar no CSS sobre o Safari do iPhone.
+const REVELAR = '.section .section-heading';
 const REVELAR_GRUPO = '.sobre-numeros, .etapas, #beneficios-grid, .modalidades-grid, .competidores-track, .noticias-track, #galeria-grid, #faq-list, .timeline, .stat-grid';
 
 export function revelarAoRolar(raiz = document) {

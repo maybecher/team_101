@@ -2055,7 +2055,7 @@ body {
   text-transform: uppercase;
   white-space: nowrap;
   color: var(--texto-secundario);
-  background: var(--fundo, var(--azul-escuro));
+  background: var(--tema-base, var(--azul-escuro));
   border: 1px solid var(--borda-forte);
   transition: color 0.6s ease, border-color 0.6s ease;
 }
@@ -2186,7 +2186,7 @@ body {
     top: 69px;
     z-index: 2;
     padding: 18px 0 22px;
-    background: linear-gradient(var(--fundo, var(--azul-escuro)) 82%, transparent);
+    background: linear-gradient(var(--tema-base, var(--azul-escuro)) 82%, transparent);
   }
 
   .alcance-orbita {
@@ -2375,27 +2375,189 @@ section[id] {
   scroll-margin-top: 69px;
 }
 
-/* ---------- Cor de fundo que muda com a rolagem (fundoAoRolar em js/animacoes.js) ---------- */
+/* ============================================================
+   Temas de seção (mesma família de cores do jogo SkillMatch)
+   Cada tema redefine as variáveis de cor só dentro da sua seção,
+   então títulos, textos, cards, botões e chips se adaptam sozinhos.
+   --tema-base: cor sólida do fundo; --tema-veu: degradê sobre a padronagem;
+   --ac: cor de destaque (sobrancelha dos títulos, links).
+   ============================================================ */
 
-/* Registrada como cor para o próprio valor da variável poder ser animado: assim tudo o
-   que usa var(--fundo) (o body, a faixa dos anéis no celular) muda junto e suave. */
-@property --fundo {
-  syntax: '<color>';
-  inherits: true;
-  initial-value: #070e24;
+.tema-profundo,
+.tema-claro,
+.tema-ouro,
+.tema-azul,
+.tema-rubi,
+.tema-area {
+  position: relative;
+  color: var(--texto-secundario);
+  background-color: var(--tema-base);
+  background-image: var(--tema-veu), url('../assets/design/bg-padronagem.png');
+  background-size: cover, 900px auto;
+  background-position: center, center;
 }
 
-body {
-  background: var(--fundo, var(--azul-escuro));
-  transition: --fundo 1.2s ease;
+.tema-profundo {
+  --tema-base: #0c1633;
+  --tema-veu: linear-gradient(180deg, rgba(16, 28, 64, 0.95), rgba(7, 14, 36, 0.98));
+  --ac: var(--dourado-claro);
 }
 
-/* As seções com cor própria ficam transparentes para o fundo da página aparecer. */
-section[data-fundo] {
-  background: transparent;
+.tema-azul {
+  --tema-base: #1e4bb8;
+  --tema-veu: linear-gradient(160deg, rgba(37, 99, 235, 0.93), rgba(23, 40, 81, 0.96));
+  --ac: var(--dourado-claro);
+  --texto-secundario: #dbe4ff;
+  --borda: rgba(255, 255, 255, 0.18);
+  --borda-forte: rgba(255, 255, 255, 0.32);
 }
 
-/* Inspire-se: um brilho dourado suave atrás dos campeões, por cima do fundo da página. */
-section#destaque-mundial {
-  background: radial-gradient(ellipse 60% 50% at 50% 75%, rgba(243, 201, 77, 0.1), transparent 70%);
+/* Claro: fundo branco-gelo, texto marinho, destaque azul. */
+.tema-claro {
+  --tema-base: #eef2fb;
+  --tema-veu: linear-gradient(160deg, rgba(245, 247, 252, 0.96), rgba(219, 230, 252, 0.95));
+  --ac: #1d4fc4;
+  --texto-primario: #070e24;
+  --texto-secundario: #3b4767;
+  --superficie: #ffffff;
+  --superficie-2: #ffffff;
+  --cinza-claro: #ffffff;
+  --borda: rgba(7, 14, 36, 0.1);
+  --borda-forte: rgba(7, 14, 36, 0.22);
+  --sombra: 0 10px 30px rgba(7, 14, 36, 0.12);
+}
+
+.tema-claro .card,
+.tema-claro .faq-item,
+.tema-claro #beneficios-grid > div {
+  box-shadow: 0 6px 20px rgba(7, 14, 36, 0.07);
+}
+
+.tema-claro .faq-question .arrow,
+.tema-claro .icone-dourado {
+  color: #b8860b;
+}
+
+/* Ouro: fundo dourado, texto marinho, destaque azul; cards continuam escuros. */
+.tema-ouro {
+  --tema-base: #e0b232;
+  --tema-veu: linear-gradient(135deg, rgba(212, 160, 23, 0.96), rgba(243, 201, 77, 0.95));
+  --ac: #1d4fc4;
+  --texto-primario: #070e24;
+  --texto-secundario: #3a2f0c;
+  --borda: rgba(7, 14, 36, 0.18);
+  --borda-forte: rgba(7, 14, 36, 0.32);
+}
+
+.tema-ouro .card {
+  --texto-primario: #f5f7fc;
+  --texto-secundario: #9fabce;
+  --borda: rgba(255, 255, 255, 0.12);
+}
+
+.tema-ouro .icon-btn {
+  background: var(--azul-escuro);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.tema-ouro .competidor-card--destaque {
+  border-color: var(--azul-escuro);
+  box-shadow: 0 0 0 4px rgba(7, 14, 36, 0.18), 0 24px 60px rgba(7, 14, 36, 0.35);
+}
+
+/* Rubi: marinho → vermelho, destaque dourado. Sem a padronagem azul, que não combina
+   com o vermelho (ela entra dourada na faixa animada do rodapé da seção). */
+.tema-rubi {
+  --tema-base: #3a1230;
+  --tema-veu: linear-gradient(135deg, rgba(7, 14, 36, 0.95), rgba(215, 17, 26, 0.82));
+  --ac: var(--dourado-claro);
+  --texto-secundario: #f1d9df;
+  background-image: var(--tema-veu);
+}
+
+/* Faixa colorida no topo das páginas internas da modalidade: cor da área. */
+.tema-area {
+  --tema-base: #0c1633;
+  --tema-veu: linear-gradient(135deg, rgba(7, 14, 36, 0.94), color-mix(in srgb, var(--area, var(--azul-vibrante)) 55%, rgba(7, 14, 36, 0.85)));
+  --ac: var(--area, var(--dourado-claro));
+  --texto-secundario: #dbe4ff;
+}
+
+:is(.tema-profundo, .tema-claro, .tema-ouro, .tema-azul, .tema-rubi, .tema-area) .section-heading .eyebrow,
+:is(.tema-profundo, .tema-claro, .tema-ouro, .tema-azul, .tema-rubi, .tema-area) .grupo-titulo {
+  color: var(--ac);
+}
+
+/* ---------- Faixa final de inscrição (Rubi) ---------- */
+
+.cta-final {
+  padding: 88px 0 120px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cta-final .section-heading {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.cta-final h2 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.cta-final p {
+  font-size: 1.1rem;
+  margin: 16px auto 28px;
+}
+
+.cta-final .btn {
+  font-size: 1.05rem;
+  padding: 16px 36px;
+}
+
+/* A padronagem do Team 1.01 em dourado, andando devagar no pé da faixa. */
+.cta-final::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  background: var(--dourado-claro);
+  -webkit-mask: url('../assets/design/padronagem.png') repeat-x 0 100% / auto 64px;
+  mask: url('../assets/design/padronagem.png') repeat-x 0 100% / auto 64px;
+  opacity: 0.45;
+  animation: padronagem-andar 40s linear infinite;
+}
+
+@keyframes padronagem-andar {
+  to { -webkit-mask-position: -1600px 100%; mask-position: -1600px 100%; }
+}
+
+/* ---------- Faixa de abertura das páginas internas ---------- */
+
+.pagina-topo {
+  padding: 40px 0 44px;
+}
+
+.pagina-topo .section-heading {
+  margin: 20px 0 0;
+}
+
+.pagina-topo .voltar {
+  font-weight: 600;
+  color: var(--texto-primario);
+}
+
+.pagina-topo .voltar:hover {
+  color: var(--ac);
+}
+
+.pagina-conteudo {
+  padding-top: 36px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-final::after { animation: none; }
 }

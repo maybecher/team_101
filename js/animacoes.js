@@ -96,43 +96,16 @@ export function animarAlcance(alcance) {
   const etapas = [...alcance.querySelectorAll('.alcance-etapa')];
   const aneis = new Map([...alcance.querySelectorAll('.alcance-anel')].map((a) => [a.dataset.nivel, a]));
 
-  // A seção ganha o fundo do anel mais externo aceso (ver fundoAoRolar).
-  const secao = alcance.closest('[data-fundo]');
-  const fundoBase = secao?.dataset.fundo;
-
   const atualizar = () => {
     const linha = window.innerHeight * 0.65;
-    let fundo = fundoBase;
     etapas.forEach((etapa) => {
       const ativa = reduzMovimento || etapa.getBoundingClientRect().top < linha;
       etapa.classList.toggle('ativa', ativa);
       aneis.get(etapa.dataset.nivel)?.classList.toggle('ativo', ativa);
-      if (ativa && etapa.dataset.fundo) fundo = etapa.dataset.fundo;
     });
-    if (secao && fundo) secao.dataset.fundo = fundo;
   };
 
   aoRolar(atualizar);
-}
-
-// ---------- Cor de fundo por seção ----------
-
-/**
- * A seção que está no meio da tela define a cor de fundo da página (--fundo no <body>),
- * e a troca acontece num esmaecimento suave (ver @property --fundo no CSS).
- * Cada seção diz a sua cor em data-fundo; a seção Sobre muda a dela com os anéis.
- */
-export function fundoAoRolar() {
-  const secoes = [...document.querySelectorAll('[data-fundo]')];
-  if (secoes.length === 0) return;
-  aoRolar(() => {
-    const meio = window.innerHeight / 2;
-    const atual = secoes.find((s) => {
-      const r = s.getBoundingClientRect();
-      return r.top <= meio && r.bottom > meio;
-    });
-    document.body.style.setProperty('--fundo', atual ? atual.dataset.fundo : '');
-  });
 }
 
 // ---------- Linhas da linha do tempo ----------

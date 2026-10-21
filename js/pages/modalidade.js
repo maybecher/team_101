@@ -1,7 +1,7 @@
 import { api } from '../api.js';
 import { renderPublicHeader, renderPublicFooter } from '../components.js';
 import {
-  escapeHtml, statusBadgeHtml, getQueryParam, medalhaBadgeHtml, splitCompetidores,
+  escapeHtml, statusBadgeHtml, getQueryParam, medalhaBadgeHtml, splitCompetidores, AREAS, areaDaModalidade,
 } from '../utils.js';
 import { iconeSvg } from '../icons.js';
 
@@ -9,6 +9,7 @@ renderPublicHeader();
 renderPublicFooter();
 
 const id = getQueryParam('id');
+const topo = document.getElementById('modalidade-topo');
 const container = document.getElementById('modalidade-content');
 
 async function carregarDescricaoExtra(codigo) {
@@ -22,13 +23,13 @@ async function carregarDescricaoExtra(codigo) {
 }
 
 if (!id) {
-  container.innerHTML = '<div class="empty-state">Modalidade não informada.</div>';
+  topo.innerHTML = '<div class="empty-state">Modalidade não informada.</div>';
 } else {
   api.get(`/modalidades/${id}`).then(async (m) => {
     const extra = await carregarDescricaoExtra(m.codigo);
     render(m, extra);
   }).catch(() => {
-    container.innerHTML = '<div class="empty-state">Não foi possível carregar esta modalidade.</div>';
+    topo.innerHTML = '<div class="empty-state">Não foi possível carregar esta modalidade.</div>';
   });
 }
 
@@ -39,7 +40,11 @@ function render(m, extra) {
 
   const descricao = extra?.descricao || m.descricao;
 
-  container.innerHTML = `
+  // Topo na faixa colorida, com a cor da área da modalidade (ver AREAS em utils.js).
+  const area = areaDaModalidade(m.codigo);
+  if (area) document.getElementById('modalidade-faixa').dataset.area = area;
+
+  topo.innerHTML = `
     <div class="flex gap-24 flex-wrap" style="align-items:flex-start">
       <div style="width:360px;max-width:100%;flex-shrink:0">
         ${m.imagemUrl
@@ -47,14 +52,16 @@ function render(m, extra) {
           : `<div class="thumb icone-branco" style="border-radius:20px">${iconeSvg('wrench')}</div>`}
       </div>
       <div style="flex:1;min-width:260px">
-        <div class="text-sm" style="font-weight:600;color:var(--texto-secundario)">#${escapeHtml(m.codigo)}</div>
+        <div class="text-sm" style="font-weight:700;color:var(--ac)">#${escapeHtml(m.codigo)}${area ? ` · ${escapeHtml(AREAS[area].nome)}` : ''}</div>
         <h1 class="mt-8" style="font-size:2rem">${escapeHtml(m.nome)}</h1>
         <div class="mt-16">${statusBadgeHtml(m.status)}</div>
         ${m.treinadorNome ? `<div class="mt-16 text-sm">${iconeSvg('user')} Treinador: ${escapeHtml(m.treinadorNome)}</div>` : ''}
         ${cta}
       </div>
     </div>
+  `;
 
+  container.innerHTML = `
     ${descricao ? `
       <div class="mt-32">
         <h2 style="font-size:1.4rem">Descrição</h2>

@@ -5,13 +5,12 @@ import {
   AREAS, areaDaModalidade,
 } from '../utils.js';
 import { iconeSvg } from '../icons.js';
-import { revelarAoRolar, animarAlcance, fundoAoRolar, prepararCardsDeAtleta } from '../animacoes.js';
+import { revelarAoRolar, animarAlcance, prepararCardsDeAtleta } from '../animacoes.js';
 
 renderPublicHeader();
 renderPublicFooter();
 revelarAoRolar();
 animarAlcance(document.getElementById('alcance'));
-fundoAoRolar();
 
 const BENEFICIOS = [
   ['graduationCap', 'Aprendizado além da sala de aula'],

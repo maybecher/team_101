@@ -735,10 +735,15 @@ ul {
 
 /* ---------- Public header/footer ---------- */
 
-.site-header {
+/* O sticky fica na <div id="site-header"> (filha do <body>), e não no <header> de
+   dentro: preso numa div do próprio tamanho, o cabeçalho nunca ficava fixo ao rolar. */
+#site-header {
   position: sticky;
   top: 0;
   z-index: 50;
+}
+
+.site-header {
   background: rgba(7, 14, 36, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--borda);
@@ -1849,8 +1854,16 @@ body {
   flex-shrink: 0;
 }
 
-.marquee:hover .marquee-track,
-.marquee:active .marquee-track {
+/* No celular o :hover fica "preso" depois de um toque e a faixa parava de vez. Por
+   isso a pausa por hover vale só para mouse; no toque, pausa enquanto o dedo está
+   encostado (classe posta em home.js). */
+@media (hover: hover) {
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+.marquee.tocando .marquee-track {
   animation-play-state: paused;
 }
 
@@ -1883,11 +1896,10 @@ body {
 :root {
   --suave: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Etapas da jornada */
+  /* Etapas da seção Sobre (anéis) */
   --cor-estadual: #60a5fa;
   --cor-nacional: #34d399;
   --cor-mundial: #a78bfa;
-  --cor-voce: var(--dourado-claro);
 }
 
 /* ---------- Cores por área das modalidades (AREAS em js/utils.js) ---------- */
@@ -1968,95 +1980,167 @@ body {
 .revelar-grupo > :nth-child(7) { --atraso: 420ms; }
 .revelar-grupo > :nth-child(n + 8) { --atraso: 490ms; }
 
-/* ---------- Jornada ---------- */
+/* ---------- Alcance: você no centro, anéis de São Paulo, Brasil e Mundo ---------- */
 
-.jornada {
-  position: relative;
-  display: flex;
-  gap: 20px;
+[data-nivel='sp'] { --cor: var(--cor-estadual); --inset: 25%; }
+[data-nivel='brasil'] { --cor: var(--cor-nacional); --inset: 12.5%; }
+[data-nivel='mundo'] { --cor: var(--cor-mundial); --inset: 0%; }
+
+.alcance {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
 }
 
-.jornada-etapa { --cor: var(--cor-estadual); }
-.jornada-etapa:nth-child(3) { --cor: var(--cor-nacional); }
-.jornada-etapa:nth-child(4) { --cor: var(--cor-mundial); }
-.jornada-etapa--final { --cor: var(--cor-voce); }
+/* O desenho fica parado enquanto os textos passam ao lado. */
+.alcance-visual {
+  position: sticky;
+  top: 110px;
+}
 
-.jornada-etapa {
-  flex: 1;
-  min-width: 0;
+.alcance-orbita {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.alcance-anel {
+  position: absolute;
+  inset: var(--inset);
+  border-radius: 50%;
+  border: 2px dashed var(--borda-forte);
+  opacity: 0.4;
+  scale: 0.88;
+  transition: scale 1s var(--suave), opacity 1s var(--suave), border-color 0.6s ease, box-shadow 1s var(--suave), background 1s var(--suave);
+}
+
+.alcance-anel.ativo {
+  opacity: 1;
+  scale: 1;
+  border-style: solid;
+  border-color: var(--cor);
+  background: radial-gradient(circle, transparent 58%, color-mix(in srgb, var(--cor) 12%, transparent) 100%);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--cor) 22%, transparent), inset 0 0 30px color-mix(in srgb, var(--cor) 12%, transparent);
+}
+
+/* Uma onda sai do anel quando ele acende. */
+.alcance-anel.ativo::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid var(--cor);
+  pointer-events: none;
+  animation: onda 1.3s var(--suave) forwards;
+}
+
+@keyframes onda {
+  from { opacity: 0.8; scale: 1; }
+  to { opacity: 0; scale: 1.14; }
+}
+
+.alcance-rotulo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% -50%;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--texto-secundario);
+  background: var(--fundo, var(--azul-escuro));
+  border: 1px solid var(--borda-forte);
+  transition: color 0.6s ease, border-color 0.6s ease;
+}
+
+.alcance-anel.ativo .alcance-rotulo {
+  color: var(--cor);
+  border-color: var(--cor);
+}
+
+.alcance-centro {
+  position: absolute;
+  inset: 37.5%;
+  border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-}
-
-.jornada-linha {
-  position: absolute;
-  top: 26.5px;
-  height: 3px;
-  border-radius: 999px;
-  background: var(--borda-forte);
-  overflow: hidden;
-}
-
-.jornada-linha-fill {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, var(--cor-estadual), var(--cor-nacional), var(--cor-mundial), var(--cor-voce));
-  clip-path: inset(0 var(--resto, 100%) 0 0);
-  transition: clip-path 0.15s linear;
-}
-
-.jornada-marco {
-  position: relative;
-  z-index: 1;
-  flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
-  color: var(--texto-secundario);
-  background: var(--superficie-2);
-  border: 2px solid var(--borda-forte);
-  transition: color 0.5s var(--suave), border-color 0.5s var(--suave), box-shadow 0.5s var(--suave), background 0.5s var(--suave);
+  gap: 2px;
+  text-align: center;
+  color: var(--azul-escuro);
+  background: var(--gradiente-dourado);
+  box-shadow: 0 0 0 6px rgba(243, 201, 77, 0.18), 0 0 50px rgba(243, 201, 77, 0.35);
+  animation: respirar 4s ease-in-out infinite;
 }
 
-.jornada-etapa.ativa .jornada-marco {
-  color: var(--cor);
-  border-color: var(--cor);
-  background: color-mix(in srgb, var(--cor) 16%, var(--superficie-2));
-  box-shadow: 0 0 0 6px color-mix(in srgb, var(--cor) 16%, transparent), 0 0 30px color-mix(in srgb, var(--cor) 45%, transparent);
-  animation: acender 0.7s var(--suave);
+.alcance-centro .icone-svg {
+  font-size: 1.3rem;
 }
 
-@keyframes acender {
-  0% { scale: 0.85; }
-  60% { scale: 1.08; }
-  100% { scale: 1; }
+.alcance-centro strong {
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
-.jornada-conteudo {
-  margin-top: 20px;
-  width: 100%;
-  padding: 20px;
+.alcance-centro span {
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+@keyframes respirar {
+  50% { box-shadow: 0 0 0 10px rgba(243, 201, 77, 0.12), 0 0 70px rgba(243, 201, 77, 0.45); }
+}
+
+.alcance-etapas {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  padding: 40px 0 24px;
+}
+
+.alcance-etapa {
+  display: flex;
+  gap: 16px;
+  padding: 22px;
   border-radius: var(--raio);
   background: var(--superficie-2);
   border: 1px solid var(--borda);
-  opacity: 0.5;
-  translate: 0 10px;
-  transition: opacity 0.6s var(--suave), translate 0.6s var(--suave), border-color 0.6s var(--suave);
+  border-left: 3px solid var(--borda-forte);
+  opacity: 0.45;
+  translate: 0 14px;
+  transition: opacity 0.7s var(--suave), translate 0.7s var(--suave), border-color 0.6s ease, box-shadow 0.7s var(--suave);
 }
 
-.jornada-etapa.ativa .jornada-conteudo {
+.alcance-etapa.ativa {
   opacity: 1;
   translate: 0 0;
-  border-color: color-mix(in srgb, var(--cor) 45%, transparent);
+  border-left-color: var(--cor);
+  box-shadow: 0 16px 40px color-mix(in srgb, var(--cor) 14%, transparent);
 }
 
-.jornada-numero {
+.alcance-etapa-icone {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--cor);
+  background: color-mix(in srgb, var(--cor) 14%, transparent);
+}
+
+.alcance-etapa-nivel {
   display: block;
   font-size: 0.72rem;
   font-weight: 800;
@@ -2065,53 +2149,71 @@ body {
   color: var(--cor);
 }
 
-.jornada-conteudo h3 {
-  font-size: 1.1rem;
-  margin-top: 6px;
+.alcance-etapa h3 {
+  font-size: 1.15rem;
+  margin-top: 4px;
 }
 
-.jornada-conteudo p {
-  margin: 8px 0 0;
+.alcance-etapa p {
+  margin: 6px 0 0;
 }
 
-.jornada-conteudo .btn {
+.alcance-cta {
+  padding: 24px;
+  border-radius: var(--raio);
+  background: linear-gradient(160deg, rgba(243, 201, 77, 0.14), var(--superficie-2));
+  border: 1px solid rgba(243, 201, 77, 0.4);
+}
+
+.alcance-cta p {
+  margin: 0 0 16px;
+  color: var(--texto-primario);
+}
+
+.alcance-cta .btn {
   white-space: normal;
 }
 
-.jornada-etapa--final .jornada-conteudo {
-  background: linear-gradient(160deg, color-mix(in srgb, var(--cor-voce) 14%, var(--superficie-2)), var(--superficie-2));
-}
-
-/* No celular e no tablet a jornada fica vertical, com a linha descendo pela esquerda. */
+/* Celular e tablet: o desenho fica numa faixa fixa no topo e os textos passam por baixo. */
 @media (max-width: 900px) {
-  .jornada {
-    flex-direction: column;
-    gap: 22px;
+  /* Bloco (e não grade): o sticky só fica preso dentro da própria célula da grade, e
+     aqui o desenho precisa ficar preso por toda a seção. */
+  .alcance {
+    display: block;
   }
 
-  .jornada-etapa {
-    flex-direction: row;
-    align-items: flex-start;
-    text-align: left;
-    gap: 16px;
+  .alcance-visual {
+    top: 69px;
+    z-index: 2;
+    padding: 18px 0 22px;
+    background: linear-gradient(var(--fundo, var(--azul-escuro)) 82%, transparent);
   }
 
-  .jornada-conteudo {
-    margin-top: 0;
-    flex: 1;
-    translate: 10px 0;
+  .alcance-orbita {
+    width: 210px;
   }
 
-  .jornada-linha {
-    top: auto;
-    left: 26.5px;
-    width: 3px;
-    height: auto;
+  .alcance-rotulo {
+    font-size: 0.6rem;
+    padding: 2px 8px;
   }
 
-  .jornada-linha-fill {
-    background: linear-gradient(180deg, var(--cor-estadual), var(--cor-nacional), var(--cor-mundial), var(--cor-voce));
-    clip-path: inset(0 0 var(--resto, 100%) 0);
+  .alcance-centro span,
+  .alcance-centro .icone-svg {
+    display: none;
+  }
+
+  .alcance-centro strong {
+    font-size: 0.9rem;
+  }
+
+  .alcance-etapas {
+    gap: 48px;
+    padding: 16px 0 0;
+  }
+
+  .alcance-etapa {
+    padding: 18px;
   }
 }
 
@@ -2250,7 +2352,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .js-anim .revelar,
   .js-anim .revelar-grupo > *,
-  .jornada-etapa.ativa .jornada-marco,
+  .alcance-anel.ativo::after,
+  .alcance-centro,
   .timeline-node .timeline-dot.ativo,
   .badge-ouro,
   .atleta-card.brilhar::before {
@@ -2264,4 +2367,35 @@ body {
 .atleta-modalidade {
   font-weight: 600;
   color: var(--area, var(--azul-vibrante));
+}
+
+/* Com o cabeçalho fixo, os links do menu (#sobre, #modalidades...) param o título logo
+   abaixo dele, e não escondido por baixo. */
+section[id] {
+  scroll-margin-top: 69px;
+}
+
+/* ---------- Cor de fundo que muda com a rolagem (fundoAoRolar em js/animacoes.js) ---------- */
+
+/* Registrada como cor para o próprio valor da variável poder ser animado: assim tudo o
+   que usa var(--fundo) (o body, a faixa dos anéis no celular) muda junto e suave. */
+@property --fundo {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #070e24;
+}
+
+body {
+  background: var(--fundo, var(--azul-escuro));
+  transition: --fundo 1.2s ease;
+}
+
+/* As seções com cor própria ficam transparentes para o fundo da página aparecer. */
+section[data-fundo] {
+  background: transparent;
+}
+
+/* Inspire-se: um brilho dourado suave atrás dos campeões, por cima do fundo da página. */
+section#destaque-mundial {
+  background: radial-gradient(ellipse 60% 50% at 50% 75%, rgba(243, 201, 77, 0.1), transparent 70%);
 }

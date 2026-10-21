@@ -1,5 +1,5 @@
 // Animações compartilhadas entre as páginas públicas: revelação ao rolar, números que
-// contam, linhas que se preenchem com a rolagem e os cards de atleta.
+// contam, linhas que se preenchem com a rolagem, os anéis da seção Sobre e os cards de atleta.
 // Tudo respeita "reduzir movimento" do sistema: nesse caso o conteúdo aparece pronto.
 
 export const reduzMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -9,7 +9,7 @@ export const reduzMovimento = window.matchMedia('(prefers-reduced-motion: reduce
 // Seletores padrão: elementos que entram sozinhos (.revelar) e grupos cujos filhos
 // entram em sequência (.revelar-grupo). Grupos preenchidos depois (via fetch) também
 // animam, porque a animação roda quando o filho é inserido num grupo já visível.
-const REVELAR = '.section .section-heading, .marquee, .jornada-etapa';
+const REVELAR = '.section .section-heading, .marquee, .alcance-cta';
 const REVELAR_GRUPO = '#beneficios-grid, .modalidades-grid, .competidores-track, .noticias-track, #galeria-grid, #faq-list, .timeline, .stat-grid';
 
 export function revelarAoRolar(raiz = document) {
@@ -85,52 +85,54 @@ export function aoRolar(atualizar) {
   agendar();
 }
 
-// ---------- Jornada (Estadual → Nacional → Mundial → você) ----------
+// ---------- Alcance (você no centro → São Paulo → Brasil → Mundo) ----------
 
-/** A linha dourada se desenha com a rolagem e cada etapa acende quando a linha chega nela. */
-export function animarJornada(jornada) {
-  if (!jornada) return;
-  const linha = jornada.querySelector('.jornada-linha');
-  const preenchimento = jornada.querySelector('.jornada-linha-fill');
-  const etapas = [...jornada.querySelectorAll('.jornada-etapa')];
-  const marcos = etapas.map((e) => e.querySelector('.jornada-marco'));
+/**
+ * Cada etapa acende quando o texto dela passa de 65% da altura da tela, e acende junto
+ * o anel correspondente. Os anéis vão se somando: quem chegou no Mundial passou pelos outros.
+ */
+export function animarAlcance(alcance) {
+  if (!alcance) return;
+  const etapas = [...alcance.querySelectorAll('.alcance-etapa')];
+  const aneis = new Map([...alcance.querySelectorAll('.alcance-anel')].map((a) => [a.dataset.nivel, a]));
+
+  // A seção ganha o fundo do anel mais externo aceso (ver fundoAoRolar).
+  const secao = alcance.closest('[data-fundo]');
+  const fundoBase = secao?.dataset.fundo;
 
   const atualizar = () => {
-    const vertical = getComputedStyle(jornada).flexDirection === 'column';
-    const caixa = jornada.getBoundingClientRect();
-    const centros = marcos.map((m) => {
-      const r = m.getBoundingClientRect();
-      return vertical ? r.top + r.height / 2 - caixa.top : r.left + r.width / 2 - caixa.left;
+    const linha = window.innerHeight * 0.65;
+    let fundo = fundoBase;
+    etapas.forEach((etapa) => {
+      const ativa = reduzMovimento || etapa.getBoundingClientRect().top < linha;
+      etapa.classList.toggle('ativa', ativa);
+      aneis.get(etapa.dataset.nivel)?.classList.toggle('ativo', ativa);
+      if (ativa && etapa.dataset.fundo) fundo = etapa.dataset.fundo;
     });
-    const inicio = centros[0];
-    const comprimento = centros[centros.length - 1] - inicio;
-
-    // A linha vai do primeiro ao último marco, nos dois layouts.
-    if (vertical) {
-      Object.assign(linha.style, { top: `${inicio}px`, height: `${comprimento}px`, left: '', width: '' });
-    } else {
-      Object.assign(linha.style, { left: `${inicio}px`, width: `${comprimento}px`, top: '', height: '' });
-    }
-
-    let progresso;
-    if (reduzMovimento) {
-      progresso = 1;
-    } else if (vertical) {
-      // No celular a ponta da linha acompanha uma "agulha" a 60% da altura da tela.
-      progresso = (window.innerHeight * 0.6 - (caixa.top + inicio)) / comprimento;
-    } else {
-      // No computador, a linha se desenha enquanto a jornada sobe de 85% a 35% da tela.
-      progresso = (window.innerHeight * 0.85 - caixa.top) / (window.innerHeight * 0.5);
-    }
-    progresso = Math.min(Math.max(progresso, 0), 1);
-
-    // Recorte (e não escala) para o degradê ficar fixo: cada trecho mostra a cor da sua etapa.
-    preenchimento.style.setProperty('--resto', `${(1 - progresso) * 100}%`);
-    const ponta = progresso * comprimento + 1;
-    etapas.forEach((etapa, i) => etapa.classList.toggle('ativa', centros[i] - inicio <= ponta));
+    if (secao && fundo) secao.dataset.fundo = fundo;
   };
 
   aoRolar(atualizar);
+}
+
+// ---------- Cor de fundo por seção ----------
+
+/**
+ * A seção que está no meio da tela define a cor de fundo da página (--fundo no <body>),
+ * e a troca acontece num esmaecimento suave (ver @property --fundo no CSS).
+ * Cada seção diz a sua cor em data-fundo; a seção Sobre muda a dela com os anéis.
+ */
+export function fundoAoRolar() {
+  const secoes = [...document.querySelectorAll('[data-fundo]')];
+  if (secoes.length === 0) return;
+  aoRolar(() => {
+    const meio = window.innerHeight / 2;
+    const atual = secoes.find((s) => {
+      const r = s.getBoundingClientRect();
+      return r.top <= meio && r.bottom > meio;
+    });
+    document.body.style.setProperty('--fundo', atual ? atual.dataset.fundo : '');
+  });
 }
 
 // ---------- Linhas da linha do tempo ----------

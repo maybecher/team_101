@@ -5,12 +5,13 @@ import {
   AREAS, areaDaModalidade,
 } from '../utils.js';
 import { iconeSvg } from '../icons.js';
-import { revelarAoRolar, animarJornada, prepararCardsDeAtleta } from '../animacoes.js';
+import { revelarAoRolar, animarAlcance, fundoAoRolar, prepararCardsDeAtleta } from '../animacoes.js';
 
 renderPublicHeader();
 renderPublicFooter();
 revelarAoRolar();
-animarJornada(document.getElementById('jornada'));
+animarAlcance(document.getElementById('alcance'));
+fundoAoRolar();
 
 const BENEFICIOS = [
   ['graduationCap', 'Aprendizado além da sala de aula'],
@@ -60,6 +61,15 @@ paisesSede.querySelectorAll('.chip').forEach((chip) => {
   const copia = chip.cloneNode(true);
   copia.setAttribute('aria-hidden', 'true');
   paisesSede.appendChild(copia);
+});
+
+// No toque, pausa só enquanto o dedo está na faixa (o :hover do celular não solta).
+const faixaPaises = paisesSede.parentElement;
+faixaPaises.addEventListener('pointerdown', (e) => {
+  if (e.pointerType !== 'mouse') faixaPaises.classList.add('tocando');
+});
+['pointerup', 'pointercancel', 'pointerleave'].forEach((evento) => {
+  faixaPaises.addEventListener(evento, () => faixaPaises.classList.remove('tocando'));
 });
 
 // ---------- Carrossel (compartilhado) ----------

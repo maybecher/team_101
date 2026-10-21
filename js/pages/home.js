@@ -1,11 +1,11 @@
-import { api } from '../api.js?v=202610211347';
-import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211347';
+import { api } from '../api.js?v=202610211416';
+import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211416';
 import {
   escapeHtml, statusBadgeHtml, GALERIA_CATEGORIA_LABELS, GALERIA_CATEGORIAS_ORDEM, pareceNomeFeminino, formatDate,
   AREAS, areaDaModalidade,
-} from '../utils.js?v=202610211347';
-import { iconeSvg } from '../icons.js?v=202610211347';
-import { revelarAoRolar, prepararCardsDeAtleta, reduzMovimento } from '../animacoes.js?v=202610211347';
+} from '../utils.js?v=202610211416';
+import { iconeSvg } from '../icons.js?v=202610211416';
+import { revelarAoRolar, prepararCardsDeAtleta, reduzMovimento } from '../animacoes.js?v=202610211416';
 
 renderPublicHeader();
 renderPublicFooter();
@@ -174,13 +174,16 @@ function attachCarousel(trackId, prevId, nextId, cardSelector, autoMs) {
     track.scrollTo({ left: target, behavior: 'smooth' });
   };
 
-  // A passagem automática recomeça a contagem sempre que a pessoa mexe no carrossel:
-  // sem isso ela podia disparar junto com um clique e as duas rolagens se atropelavam.
+  // A passagem automática só roda com o carrossel na tela: sem isso ela começava ao abrir
+  // a página e, quando a pessoa chegava, já estava no meio da lista. Ela também recomeça
+  // a contagem sempre que a pessoa mexe no carrossel (senão podia disparar junto com um
+  // clique e as duas rolagens se atropelavam).
   let timer = null;
+  let naTela = false;
+  const pararAuto = () => { clearInterval(timer); timer = null; };
   const reiniciarAuto = () => {
-    if (!autoMs) return;
-    clearInterval(timer);
-    timer = setInterval(() => step(1), autoMs);
+    pararAuto();
+    if (autoMs && naTela) timer = setInterval(() => step(1), autoMs);
   };
 
   document.getElementById(prevId).addEventListener('click', () => { step(-1); reiniciarAuto(); });
@@ -188,7 +191,12 @@ function attachCarousel(trackId, prevId, nextId, cardSelector, autoMs) {
   track.addEventListener('pointerdown', reiniciarAuto);
   track.addEventListener('wheel', reiniciarAuto, { passive: true });
 
-  reiniciarAuto();
+  if (!autoMs) return;
+  if (!('IntersectionObserver' in window)) { naTela = true; reiniciarAuto(); return; }
+  new IntersectionObserver(([entrada]) => {
+    naTela = entrada.isIntersecting;
+    reiniciarAuto();
+  }, { threshold: 0.5 }).observe(track);
 }
 
 // ---------- Modalidades disponíveis na escola (carrossel automático) ----------

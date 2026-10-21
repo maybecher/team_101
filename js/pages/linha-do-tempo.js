@@ -1,10 +1,10 @@
-import { api } from '../api.js?v=202610211347';
-import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211347';
+import { api } from '../api.js?v=202610211416';
+import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211416';
 import {
   escapeHtml, MEDALHA_ICON, MEDALHA_BADGE_CLASS, medalhaBadgeHtml, splitCompetidores, bandeiraHtml,
-} from '../utils.js?v=202610211347';
-import { iconeSvg } from '../icons.js?v=202610211347';
-import { revelarAoRolar, contarAoAparecer, animarLinhasDoTempo } from '../animacoes.js?v=202610211347';
+} from '../utils.js?v=202610211416';
+import { iconeSvg } from '../icons.js?v=202610211416';
+import { revelarAoRolar, contarAoAparecer, animarLinhasDoTempo } from '../animacoes.js?v=202610211416';
 
 renderPublicHeader();
 renderPublicFooter();

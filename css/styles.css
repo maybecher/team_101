@@ -2384,10 +2384,9 @@ section[id] {
    ============================================================ */
 
 .tema-profundo,
-.tema-claro,
+.tema-marinho,
 .tema-ouro,
 .tema-azul,
-.tema-rubi,
 .tema-area {
   position: relative;
   color: var(--texto-secundario);
@@ -2403,6 +2402,19 @@ section[id] {
   --ac: var(--dourado-claro);
 }
 
+/* Um tom acima do profundo: alternar os dois dá ritmo à página sem trocar de cor. */
+.tema-marinho {
+  --tema-base: #101c40;
+  --tema-veu: linear-gradient(180deg, rgba(16, 28, 64, 0.94), rgba(14, 26, 62, 0.96));
+  --ac: var(--dourado-claro);
+}
+
+/* Inspire-se: o dourado entra só como um brilho suave atrás dos campeões. */
+.tema-profundo.campeoes {
+  background-image: radial-gradient(ellipse 60% 55% at 50% 72%, rgba(243, 201, 77, 0.12), transparent 70%), var(--tema-veu), url('../assets/design/bg-padronagem.png');
+  background-size: auto, cover, 900px auto;
+}
+
 .tema-azul {
   --tema-base: #1e4bb8;
   --tema-veu: linear-gradient(160deg, rgba(37, 99, 235, 0.93), rgba(23, 40, 81, 0.96));
@@ -2410,32 +2422,6 @@ section[id] {
   --texto-secundario: #dbe4ff;
   --borda: rgba(255, 255, 255, 0.18);
   --borda-forte: rgba(255, 255, 255, 0.32);
-}
-
-/* Claro: fundo branco-gelo, texto marinho, destaque azul. */
-.tema-claro {
-  --tema-base: #eef2fb;
-  --tema-veu: linear-gradient(160deg, rgba(245, 247, 252, 0.96), rgba(219, 230, 252, 0.95));
-  --ac: #1d4fc4;
-  --texto-primario: #070e24;
-  --texto-secundario: #3b4767;
-  --superficie: #ffffff;
-  --superficie-2: #ffffff;
-  --cinza-claro: #ffffff;
-  --borda: rgba(7, 14, 36, 0.1);
-  --borda-forte: rgba(7, 14, 36, 0.22);
-  --sombra: 0 10px 30px rgba(7, 14, 36, 0.12);
-}
-
-.tema-claro .card,
-.tema-claro .faq-item,
-.tema-claro #beneficios-grid > div {
-  box-shadow: 0 6px 20px rgba(7, 14, 36, 0.07);
-}
-
-.tema-claro .faq-question .arrow,
-.tema-claro .icone-dourado {
-  color: #b8860b;
 }
 
 /* Ouro: fundo dourado, texto marinho, destaque azul; cards continuam escuros. */
@@ -2466,16 +2452,6 @@ section[id] {
   box-shadow: 0 0 0 4px rgba(7, 14, 36, 0.18), 0 24px 60px rgba(7, 14, 36, 0.35);
 }
 
-/* Rubi: marinho → vermelho, destaque dourado. Sem a padronagem azul, que não combina
-   com o vermelho (ela entra dourada na faixa animada do rodapé da seção). */
-.tema-rubi {
-  --tema-base: #3a1230;
-  --tema-veu: linear-gradient(135deg, rgba(7, 14, 36, 0.95), rgba(215, 17, 26, 0.82));
-  --ac: var(--dourado-claro);
-  --texto-secundario: #f1d9df;
-  background-image: var(--tema-veu);
-}
-
 /* Faixa colorida no topo das páginas internas da modalidade: cor da área. */
 .tema-area {
   --tema-base: #0c1633;
@@ -2484,12 +2460,12 @@ section[id] {
   --texto-secundario: #dbe4ff;
 }
 
-:is(.tema-profundo, .tema-claro, .tema-ouro, .tema-azul, .tema-rubi, .tema-area) .section-heading .eyebrow,
-:is(.tema-profundo, .tema-claro, .tema-ouro, .tema-azul, .tema-rubi, .tema-area) .grupo-titulo {
+:is(.tema-profundo, .tema-marinho, .tema-ouro, .tema-azul, .tema-area) .section-heading .eyebrow,
+:is(.tema-profundo, .tema-marinho, .tema-ouro, .tema-azul, .tema-area) .grupo-titulo {
   color: var(--ac);
 }
 
-/* ---------- Faixa final de inscrição (Rubi) ---------- */
+/* ---------- Faixa final de inscrição ---------- */
 
 .cta-final {
   padding: 88px 0 120px;

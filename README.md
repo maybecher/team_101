@@ -32,7 +32,7 @@ team_101/
 
 - **Link do formulário:** altere `FORMS_URL` em `js/api.js`.
 - **Modalidades, competidores, notícias, galeria, linha do tempo:** edite o arquivo correspondente em `data/`. Caminhos de imagem são relativos (ex.: `assets/modalidades/01.jpg`).
-- **Cor de fundo das seções:** cada seção usa uma classe de tema (`tema-profundo`, `tema-claro`, `tema-ouro`, `tema-azul`, `tema-rubi`), definida no fim de `css/styles.css`. Para trocar a cor de uma seção, troque a classe no HTML.
+- **Cor de fundo das seções:** cada seção usa uma classe de tema (`tema-profundo`, `tema-marinho`, `tema-azul`, entre outros), definida no fim de `css/styles.css`. Para trocar a cor de uma seção, troque a classe no HTML. Na página inicial as seções ficam na família do azul-marinho; as cores mais fortes (`tema-ouro`, `tema-azul`, `tema-area`) ficam nas faixas de abertura das outras páginas.
 - **Nova modalidade:** além dos JSON, coloque o código dela numa das áreas em `AREAS` (`js/utils.js`), que define a cor do card.
 - `data/modalidades-detalhe.json` traz cada modalidade com seus competidores e histórico, usado na página `modalidade.html`. Ao alterar uma modalidade em `modalidades.json`, atualize também esse arquivo.
 

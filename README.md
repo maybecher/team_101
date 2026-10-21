@@ -21,6 +21,7 @@ team_101/
  ├─ js/
  │   ├─ api.js            # Lê os JSON de data/ e guarda o link do formulário (FORMS_URL)
  │   ├─ components.js     # Cabeçalho e rodapé
+ │   ├─ animacoes.js      # Revelação ao rolar, jornada, linha do tempo e cards de atleta
  │   ├─ utils.js, icons.js
  │   └─ pages/            # Script de cada página
  ├─ data/                 # Conteúdo do site em JSON
@@ -30,7 +31,8 @@ team_101/
 ## Editando o conteúdo
 
 - **Link do formulário:** altere `FORMS_URL` em `js/api.js`.
-- **Modalidades, competidores, notícias, galeria, linha do tempo:** edite o arquivo correspondente em `data/`. Caminhos de imagem são relativos (ex.: `assets/modalidades/01.png`).
+- **Modalidades, competidores, notícias, galeria, linha do tempo:** edite o arquivo correspondente em `data/`. Caminhos de imagem são relativos (ex.: `assets/modalidades/01.jpg`).
+- **Nova modalidade:** além dos JSON, coloque o código dela numa das áreas em `AREAS` (`js/utils.js`), que define a cor do card.
 - `data/modalidades-detalhe.json` traz cada modalidade com seus competidores e histórico, usado na página `modalidade.html`. Ao alterar uma modalidade em `modalidades.json`, atualize também esse arquivo.
 
 ## Rodando localmente

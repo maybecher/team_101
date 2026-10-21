@@ -2,11 +2,15 @@ import { api } from '../api.js';
 import { renderPublicHeader, renderPublicFooter } from '../components.js';
 import {
   escapeHtml, statusBadgeHtml, GALERIA_CATEGORIA_LABELS, GALERIA_CATEGORIAS_ORDEM, pareceNomeFeminino, formatDate,
+  AREAS, areaDaModalidade,
 } from '../utils.js';
 import { iconeSvg } from '../icons.js';
+import { revelarAoRolar, animarJornada, prepararCardsDeAtleta } from '../animacoes.js';
 
 renderPublicHeader();
 renderPublicFooter();
+revelarAoRolar();
+animarJornada(document.getElementById('jornada'));
 
 const BENEFICIOS = [
   ['graduationCap', 'Aprendizado além da sala de aula'],
@@ -102,15 +106,18 @@ function renderModalidades() {
     return;
   }
 
-  grid.innerHTML = filtradas.map((m) => `
-    <div class="card modalidade-card">
+  grid.innerHTML = filtradas.map((m) => {
+    const area = areaDaModalidade(m.codigo);
+    return `
+    <div class="card modalidade-card" ${area ? `data-area="${area}"` : ''}>
       <a href="modalidade.html?id=${m.id}" class="modalidade-card-thumb">
         ${m.imagemUrl
           ? `<img class="thumb" src="${escapeHtml(m.imagemUrl)}" alt="${escapeHtml(m.nome)}" loading="lazy" />`
           : `<div class="thumb icone-branco">${iconeSvg('wrench')}</div>`}
+        ${area ? `<span class="area-chip">${escapeHtml(AREAS[area].nome)}</span>` : ''}
       </a>
       <div class="card-body">
-        <div class="text-sm" style="font-weight:600;color:var(--texto-secundario)">#${escapeHtml(m.codigo)}</div>
+        <div class="text-sm modalidade-codigo">#${escapeHtml(m.codigo)}</div>
         <h3 class="mt-8" style="font-size:1.05rem"><a href="modalidade.html?id=${m.id}">${escapeHtml(m.nome)}</a></h3>
         <div class="mt-8">${statusBadgeHtml(m.status)}</div>
         <div class="modalidade-card-acoes">
@@ -119,7 +126,8 @@ function renderModalidades() {
         </div>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 api.get('/modalidades').then((modalidades) => {
@@ -133,6 +141,20 @@ document.getElementById('modalidades-busca').addEventListener('input', renderMod
 attachCarousel('modalidades-track', 'modalidades-prev', 'modalidades-next', '.modalidade-card', 4500);
 
 // ---------- Competidores (carrossel automático) ----------
+
+const atletaArea = (c) => (c.modalidade && areaDaModalidade(c.modalidade.codigo)) || '';
+
+// Foto do card de atleta: código da modalidade no canto e, nos destaques, a medalha.
+function atletaFotoHtml(c, destaque = false) {
+  return `
+      <div class="atleta-foto">
+        ${c.fotoUrl
+          ? `<img class="thumb thumb--retrato" src="${escapeHtml(c.fotoUrl)}" alt="${escapeHtml(c.nome)}" loading="lazy" />`
+          : `<div class="thumb thumb--retrato icone-branco">${iconeSvg('user')}</div>`}
+        ${c.modalidade ? `<span class="atleta-codigo">#${escapeHtml(c.modalidade.codigo)}</span>` : ''}
+        ${destaque ? `<span class="atleta-medalha" aria-hidden="true">${iconeSvg('medal')}</span>` : ''}
+      </div>`;
+}
 
 api.get('/competidores').then((competidores) => {
   const destaqueSection = document.getElementById('destaque-mundial');
@@ -155,33 +177,35 @@ api.get('/competidores').then((competidores) => {
   destaqueEl.innerHTML = destacados.map((c) => {
     const titulo = c.conquistas ? c.conquistas.split('·')[0].trim() : (pareceNomeFeminino(c.nome) ? 'Campeã Nacional' : 'Campeão Nacional');
     return `
-    <div class="card competidor-card competidor-card--destaque">
-      ${c.fotoUrl ? `<img class="thumb thumb--retrato" src="${escapeHtml(c.fotoUrl)}" alt="${escapeHtml(c.nome)}" />` : `<div class="thumb icone-branco">${iconeSvg('user')}</div>`}
+    <div class="card competidor-card competidor-card--destaque atleta-card" data-area="${atletaArea(c)}">
+      ${atletaFotoHtml(c, true)}
       <div class="card-body">
         <span class="badge" style="background:var(--dourado-suave);color:var(--dourado-claro)">${iconeSvg('medal')}${escapeHtml(titulo)}</span>
         <h3 class="mt-8" style="font-size:1.1rem">${escapeHtml(c.nome)}</h3>
-        ${c.modalidade ? `<div class="text-sm" style="color:var(--azul-vibrante);font-weight:600">${escapeHtml(c.modalidade.nome)}</div>` : ''}
+        ${c.modalidade ? `<div class="text-sm atleta-modalidade">${escapeHtml(c.modalidade.nome)}</div>` : ''}
       </div>
     </div>
   `;
   }).join('');
+  prepararCardsDeAtleta(destaqueEl);
 
   if (resto.length === 0) {
     track.innerHTML = `<div class="empty-state"><div class="icon icone-dourado">${iconeSvg('trophy')}</div>Em breve, os primeiros nomes da equipe.</div>`;
     return;
   }
   track.innerHTML = resto.map((c) => `
-    <div class="card competidor-card">
-      ${c.fotoUrl ? `<img class="thumb thumb--retrato" src="${escapeHtml(c.fotoUrl)}" alt="${escapeHtml(c.nome)}" />` : `<div class="thumb icone-branco">${iconeSvg('user')}</div>`}
+    <div class="card competidor-card atleta-card" data-area="${atletaArea(c)}">
+      ${atletaFotoHtml(c)}
       <div class="card-body">
         <h3 style="font-size:1.05rem">${escapeHtml(c.nome)}</h3>
         <div class="text-sm mt-8">${[c.curso, c.ano].filter(Boolean).map(escapeHtml).join(' · ')}</div>
-        ${c.modalidade ? `<div class="text-sm" style="color:var(--azul-vibrante);font-weight:600">${escapeHtml(c.modalidade.nome)}</div>` : ''}
+        ${c.modalidade ? `<div class="text-sm atleta-modalidade">${escapeHtml(c.modalidade.nome)}</div>` : ''}
         ${c.conquistas ? `<div class="text-sm mt-8"><span class="icone-dourado">${iconeSvg('medal')}</span> ${escapeHtml(c.conquistas)}</div>` : ''}
         ${c.depoimento ? `<div class="text-sm mt-8" style="font-style:italic">"${escapeHtml(c.depoimento)}"</div>` : ''}
       </div>
     </div>
   `).join('');
+  prepararCardsDeAtleta(track);
 }).catch(() => {
   document.getElementById('competidores-track').innerHTML = '<div class="empty-state">Não foi possível carregar os competidores.</div>';
 });

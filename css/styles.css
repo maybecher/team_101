@@ -535,6 +535,8 @@ ul {
 
 /* Inspire-se: mesmo carrossel dos competidores; as margens automáticas centralizam
    os cards quando todos cabem na tela, sem impedir a rolagem quando não cabem. */
+/* Espaço extra embaixo para a sombra dos destaques não ser cortada pela rolagem. */
+.destaque-track { padding-bottom: 48px; margin-bottom: -40px; }
 .destaque-track > :first-child { margin-left: auto; }
 .destaque-track > :last-child { margin-right: auto; }
 
@@ -1871,4 +1873,395 @@ body {
   .marquee-track > [aria-hidden='true'] {
     display: none;
   }
+}
+
+/* ============================================================
+   Animações e cores (ver js/animacoes.js)
+   Estilo "transmissão esportiva": movimentos suaves, sem quique.
+   ============================================================ */
+
+:root {
+  --suave: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Etapas da jornada */
+  --cor-estadual: #60a5fa;
+  --cor-nacional: #34d399;
+  --cor-mundial: #a78bfa;
+  --cor-voce: var(--dourado-claro);
+}
+
+/* ---------- Cores por área das modalidades (AREAS em js/utils.js) ---------- */
+
+[data-area='tecnologia'] { --area: #22d3ee; }
+[data-area='design'] { --area: #a78bfa; }
+[data-area='automacao'] { --area: #fb923c; }
+[data-area='mecanica'] { --area: #f87171; }
+[data-area='madeira'] { --area: #4ade80; }
+[data-area='laboratorio'] { --area: #e879f9; }
+
+.modalidade-card[data-area] {
+  border-top: 3px solid var(--area);
+}
+
+.modalidade-card[data-area]:hover {
+  border-color: var(--area);
+  box-shadow: 0 18px 50px color-mix(in srgb, var(--area) 28%, transparent);
+}
+
+.modalidade-codigo {
+  font-weight: 700;
+  color: var(--area, var(--texto-secundario));
+}
+
+.modalidade-card-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.modalidade-card .thumb {
+  transition: transform 0.9s var(--suave);
+}
+
+.modalidade-card:hover .thumb {
+  transform: scale(1.06);
+}
+
+.area-chip {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--area);
+  background: rgba(7, 14, 36, 0.78);
+  border: 1px solid color-mix(in srgb, var(--area) 55%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+/* ---------- Revelação ao rolar ---------- */
+
+@keyframes surgir {
+  from { opacity: 0; translate: 0 28px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+/* Só esconde quando o JS está ativo (classe js-anim no <html>, posta no <head>). */
+.js-anim .revelar:not(.visivel),
+.js-anim .revelar-grupo:not(.visivel) > * {
+  opacity: 0;
+}
+
+.js-anim .revelar.visivel,
+.js-anim .revelar-grupo.visivel > * {
+  animation: surgir 0.8s var(--suave) both;
+  animation-delay: var(--atraso, 0ms);
+}
+
+.revelar-grupo > :nth-child(2) { --atraso: 70ms; }
+.revelar-grupo > :nth-child(3) { --atraso: 140ms; }
+.revelar-grupo > :nth-child(4) { --atraso: 210ms; }
+.revelar-grupo > :nth-child(5) { --atraso: 280ms; }
+.revelar-grupo > :nth-child(6) { --atraso: 350ms; }
+.revelar-grupo > :nth-child(7) { --atraso: 420ms; }
+.revelar-grupo > :nth-child(n + 8) { --atraso: 490ms; }
+
+/* ---------- Jornada ---------- */
+
+.jornada {
+  position: relative;
+  display: flex;
+  gap: 20px;
+}
+
+.jornada-etapa { --cor: var(--cor-estadual); }
+.jornada-etapa:nth-child(3) { --cor: var(--cor-nacional); }
+.jornada-etapa:nth-child(4) { --cor: var(--cor-mundial); }
+.jornada-etapa--final { --cor: var(--cor-voce); }
+
+.jornada-etapa {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.jornada-linha {
+  position: absolute;
+  top: 26.5px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--borda-forte);
+  overflow: hidden;
+}
+
+.jornada-linha-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--cor-estadual), var(--cor-nacional), var(--cor-mundial), var(--cor-voce));
+  clip-path: inset(0 var(--resto, 100%) 0 0);
+  transition: clip-path 0.15s linear;
+}
+
+.jornada-marco {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--texto-secundario);
+  background: var(--superficie-2);
+  border: 2px solid var(--borda-forte);
+  transition: color 0.5s var(--suave), border-color 0.5s var(--suave), box-shadow 0.5s var(--suave), background 0.5s var(--suave);
+}
+
+.jornada-etapa.ativa .jornada-marco {
+  color: var(--cor);
+  border-color: var(--cor);
+  background: color-mix(in srgb, var(--cor) 16%, var(--superficie-2));
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--cor) 16%, transparent), 0 0 30px color-mix(in srgb, var(--cor) 45%, transparent);
+  animation: acender 0.7s var(--suave);
+}
+
+@keyframes acender {
+  0% { scale: 0.85; }
+  60% { scale: 1.08; }
+  100% { scale: 1; }
+}
+
+.jornada-conteudo {
+  margin-top: 20px;
+  width: 100%;
+  padding: 20px;
+  border-radius: var(--raio);
+  background: var(--superficie-2);
+  border: 1px solid var(--borda);
+  opacity: 0.5;
+  translate: 0 10px;
+  transition: opacity 0.6s var(--suave), translate 0.6s var(--suave), border-color 0.6s var(--suave);
+}
+
+.jornada-etapa.ativa .jornada-conteudo {
+  opacity: 1;
+  translate: 0 0;
+  border-color: color-mix(in srgb, var(--cor) 45%, transparent);
+}
+
+.jornada-numero {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cor);
+}
+
+.jornada-conteudo h3 {
+  font-size: 1.1rem;
+  margin-top: 6px;
+}
+
+.jornada-conteudo p {
+  margin: 8px 0 0;
+}
+
+.jornada-conteudo .btn {
+  white-space: normal;
+}
+
+.jornada-etapa--final .jornada-conteudo {
+  background: linear-gradient(160deg, color-mix(in srgb, var(--cor-voce) 14%, var(--superficie-2)), var(--superficie-2));
+}
+
+/* No celular e no tablet a jornada fica vertical, com a linha descendo pela esquerda. */
+@media (max-width: 900px) {
+  .jornada {
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .jornada-etapa {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 16px;
+  }
+
+  .jornada-conteudo {
+    margin-top: 0;
+    flex: 1;
+    translate: 10px 0;
+  }
+
+  .jornada-linha {
+    top: auto;
+    left: 26.5px;
+    width: 3px;
+    height: auto;
+  }
+
+  .jornada-linha-fill {
+    background: linear-gradient(180deg, var(--cor-estadual), var(--cor-nacional), var(--cor-mundial), var(--cor-voce));
+    clip-path: inset(0 0 var(--resto, 100%) 0);
+  }
+}
+
+/* ---------- Cards de atleta (competidores) ---------- */
+
+.card.atleta-card,
+.card.atleta-card:hover {
+  position: relative;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.6s var(--suave), border-color 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card.atleta-card:hover {
+  box-shadow: var(--sombra-lg);
+}
+
+.card.atleta-card.inclinado {
+  transition: transform 0.1s linear, border-color 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Reflexo que segue o mouse. */
+.atleta-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, 0.16), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.atleta-card.inclinado::after {
+  opacity: 1;
+}
+
+/* Faixa de brilho dourado que atravessa o card quando ele aparece. */
+.atleta-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 38%, rgba(255, 236, 170, 0.38) 50%, transparent 62%);
+  translate: -130% 0;
+}
+
+.atleta-card.brilhar::before {
+  animation: brilho 1.5s var(--suave) 0.25s both;
+}
+
+@keyframes brilho {
+  to { translate: 130% 0; }
+}
+
+.atleta-foto {
+  position: relative;
+}
+
+.atleta-codigo {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--area, var(--dourado-claro));
+  background: rgba(7, 14, 36, 0.78);
+  border: 1px solid color-mix(in srgb, var(--area, var(--dourado-claro)) 55%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.atleta-medalha {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--azul-escuro);
+  background: var(--gradiente-dourado);
+  box-shadow: 0 0 0 4px rgba(243, 201, 77, 0.25), 0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- Linha do tempo viva ---------- */
+
+.timeline-node .timeline-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-node .timeline-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--dourado-claro), var(--dourado));
+  transform-origin: center top;
+  transform: scaleY(var(--progresso, 0));
+  transition: transform 0.15s linear;
+}
+
+.js-anim .timeline-node .timeline-dot:not(.ativo) {
+  background: var(--superficie-2);
+  box-shadow: inset 0 0 0 2px var(--borda-forte);
+}
+
+.timeline-node .timeline-dot {
+  transition: background 0.4s var(--suave), box-shadow 0.4s var(--suave);
+}
+
+.timeline-node .timeline-dot.ativo {
+  box-shadow: 0 0 0 4px var(--dourado-suave), 0 0 16px rgba(243, 201, 77, 0.6);
+  animation: acender 0.7s var(--suave);
+}
+
+/* Brilho discreto passando pelas medalhas de ouro. */
+.badge-ouro {
+  background-image: linear-gradient(110deg, transparent 30%, rgba(255, 236, 170, 0.35) 50%, transparent 70%);
+  background-size: 250% 100%;
+  background-repeat: no-repeat;
+  animation: reluzir 4s ease-in-out infinite;
+}
+
+@keyframes reluzir {
+  0% { background-position: 150% 0; }
+  55%, 100% { background-position: -50% 0; }
+}
+
+/* ---------- Sem animações para quem pediu ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .js-anim .revelar,
+  .js-anim .revelar-grupo > *,
+  .jornada-etapa.ativa .jornada-marco,
+  .timeline-node .timeline-dot.ativo,
+  .badge-ouro,
+  .atleta-card.brilhar::before {
+    animation: none !important;
+    opacity: 1;
+  }
+
+  .card.atleta-card { transform: none; }
+}
+
+.atleta-modalidade {
+  font-weight: 600;
+  color: var(--area, var(--azul-vibrante));
 }

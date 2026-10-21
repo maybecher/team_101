@@ -263,3 +263,19 @@ export function showToast(message, type = 'info') {
   container.appendChild(toast);
   setTimeout(() => toast.remove(), 4000);
 }
+
+// Áreas das modalidades (mesmos grupos do jogo SkillMatch). Cada área tem uma cor
+// própria no CSS (ver [data-area] em styles.css). Ao incluir uma modalidade, coloque
+// o código dela aqui.
+export const AREAS = {
+  tecnologia: { nome: 'Tecnologia', codigos: ['08', '17', '50'] },
+  design: { nome: 'Design e projeto', codigos: ['05', '59'] },
+  automacao: { nome: 'Automação e energia', codigos: ['04', '18', '19', '48'] },
+  mecanica: { nome: 'Mecânica', codigos: ['01'] },
+  madeira: { nome: 'Madeira', codigos: ['24', '25'] },
+  laboratorio: { nome: 'Laboratório', codigos: ['52'] },
+};
+
+export function areaDaModalidade(codigo) {
+  return Object.keys(AREAS).find((area) => AREAS[area].codigos.includes(codigo)) || null;
+}

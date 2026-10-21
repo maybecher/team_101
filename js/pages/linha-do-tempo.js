@@ -4,9 +4,11 @@ import {
   escapeHtml, MEDALHA_ICON, MEDALHA_BADGE_CLASS, medalhaBadgeHtml, splitCompetidores, bandeiraHtml,
 } from '../utils.js';
 import { iconeSvg } from '../icons.js';
+import { revelarAoRolar, contarAoAparecer, animarLinhasDoTempo } from '../animacoes.js';
 
 renderPublicHeader();
 renderPublicFooter();
+revelarAoRolar();
 
 // Estadual é sempre São Paulo — a FlagsAPI só tem bandeiras de país, então o estado
 // continua com o arquivo local. Nacional é sempre Brasil, já coberto pelo mapa de países
@@ -30,12 +32,16 @@ const filtroMedalhaEl = document.getElementById('lt-filtro-medalha');
 const limparEl = document.getElementById('lt-limpar-filtros');
 
 let ciclos = [];
+// Preenche as linhas conforme a rolagem; refeito a cada render (filtros mudam a lista).
+let atualizarLinhas = () => {};
 
 api.get('/linha-do-tempo').then((eventos) => {
   ciclos = agruparPorCiclo(eventos);
   montarFiltros(eventos);
   renderStats(eventos);
+  contarAoAparecer(statsEl.querySelectorAll('.stat-value'));
   render();
+  atualizarLinhas = animarLinhasDoTempo(listaEl);
 }).catch(() => {
   statsEl.innerHTML = '';
   listaEl.innerHTML = '<div class="empty-state">Não foi possível carregar a linha do tempo agora.</div>';
@@ -246,4 +252,5 @@ function render() {
       }).join('')}
     </div>
   `;
+  atualizarLinhas();
 }

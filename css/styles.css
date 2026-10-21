@@ -1823,3 +1823,52 @@ body {
   .hero h1 { font-size: 1.9rem; }
   .section-heading h2 { font-size: 1.5rem; }
 }
+
+/* ---------- Países sede (faixa em movimento) ---------- */
+
+/* As bordas somem num degradê para a faixa "entrar" e "sair" suavemente. */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  padding: 4px 0;
+}
+
+/* A lista vem duplicada (ver home.js): deslizar até -50% emenda uma cópia na outra.
+   Espaço entre os chips é margin e não gap, para as duas metades terem a mesma largura. */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-deslizar 60s linear infinite;
+}
+
+.marquee-track > .chip {
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.marquee:hover .marquee-track,
+.marquee:active .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-deslizar {
+  to { transform: translateX(-50%); }
+}
+
+/* Quem desativou animações no sistema vê a lista parada, rolável com o dedo. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  .marquee-track > [aria-hidden='true'] {
+    display: none;
+  }
+}

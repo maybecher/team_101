@@ -47,6 +47,17 @@ document.querySelectorAll('.faq-item').forEach((item) => {
   item.querySelector('.faq-question').addEventListener('click', () => item.classList.toggle('open'));
 });
 
+// ---------- Países sede (faixa em movimento) ----------
+
+// A animação desliza a faixa até a metade; com a lista duplicada, o fim de uma cópia
+// emenda no começo da outra e o loop fica contínuo. A cópia é escondida de leitores de tela.
+const paisesSede = document.getElementById('paises-sede');
+paisesSede.querySelectorAll('.chip').forEach((chip) => {
+  const copia = chip.cloneNode(true);
+  copia.setAttribute('aria-hidden', 'true');
+  paisesSede.appendChild(copia);
+});
+
 // ---------- Carrossel (compartilhado) ----------
 
 function attachCarousel(trackId, prevId, nextId, cardSelector, autoMs) {

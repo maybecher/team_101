@@ -2010,6 +2010,47 @@ body {
   font-size: 0.9rem;
 }
 
+/* Cada número sobe de dentro de uma máscara (como um letreiro) e um traço dourado
+   cresce embaixo dele. O atraso vem do --atraso de cada item em .revelar-grupo,
+   então os três entram um depois do outro. */
+.sobre-numeros dt {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 8px;
+}
+
+.sobre-numeros dt::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 36px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--gradiente-dourado);
+  transform-origin: left center;
+}
+
+.js-anim .sobre-numeros.visivel dt {
+  animation: letreiro 0.9s var(--suave) both;
+  animation-delay: calc(var(--atraso, 0ms) + 0.15s);
+}
+
+.js-anim .sobre-numeros.visivel dt::after {
+  animation: traco 0.7s var(--suave) both;
+  animation-delay: calc(var(--atraso, 0ms) + 0.55s);
+}
+
+@keyframes letreiro {
+  from { clip-path: inset(0 0 100% 0); translate: 0 0.5em; }
+  to { clip-path: inset(0 0 0 0); translate: 0 0; }
+}
+
+@keyframes traco {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
 /* Três etapas lado a lado, ligadas por um traço dourado que se desenha uma vez
    quando a fileira aparece (classe .visivel, posta por revelarAoRolar). */
 .etapas {
@@ -2172,8 +2213,23 @@ body {
     animation-name: desenhar-vertical;
   }
 
+  .sobre-paises {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* O botão da linha do tempo desce para baixo das bandeiras. */
+  .sobre-paises-topo {
+    display: contents;
+  }
+
+  .sobre-paises-rotulo { order: 1; margin-bottom: 12px; }
+  .sobre-paises .marquee { order: 2; }
+
   .sobre-paises-topo .btn {
+    order: 3;
     width: 100%;
+    margin-top: 20px;
   }
 }
 
@@ -2318,6 +2374,8 @@ body {
   .js-anim .revelar,
   .js-anim .revelar-grupo > *,
   .js-anim .etapas.visivel .etapa::after,
+  .js-anim .sobre-numeros.visivel dt,
+  .js-anim .sobre-numeros.visivel dt::after,
   .timeline-node .timeline-dot.ativo,
   .badge-ouro,
   .atleta-card.brilhar::before {

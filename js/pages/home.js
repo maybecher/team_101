@@ -5,12 +5,11 @@ import {
   AREAS, areaDaModalidade,
 } from '../utils.js';
 import { iconeSvg } from '../icons.js';
-import { revelarAoRolar, contarAoAparecer, prepararCardsDeAtleta } from '../animacoes.js';
+import { revelarAoRolar, prepararCardsDeAtleta } from '../animacoes.js';
 
 renderPublicHeader();
 renderPublicFooter();
 revelarAoRolar();
-contarAoAparecer(document.querySelectorAll('#sobre .conta'));
 
 const BENEFICIOS = [
   ['graduationCap', 'Aprendizado além da sala de aula'],
@@ -70,6 +69,52 @@ faixaPaises.addEventListener('pointerdown', (e) => {
 ['pointerup', 'pointercancel', 'pointerleave'].forEach((evento) => {
   faixaPaises.addEventListener(evento, () => faixaPaises.classList.remove('tocando'));
 });
+
+// ---------- Carrossel em loop ----------
+
+/**
+ * Faz o carrossel girar sem fim: os cards são repetidos antes e depois da lista
+ * original e, quando a rolagem para numa das cópias, o carrossel salta (sem animação)
+ * para o card igual na lista original. Para quem vê, depois do último vem o primeiro.
+ * Só entra em ação se os cards não couberem todos na tela.
+ */
+function loopInfinito(track, seletor) {
+  // Um único "vigia" de rolagem por carrossel; a cada novo render (ex.: busca nas
+  // modalidades) ele passa a medir a volta dos cards atuais, guardada em track.volta.
+  if (!track.dataset.loop) {
+    track.dataset.loop = 'sim';
+    let parado = null;
+    track.addEventListener('scroll', () => {
+      clearTimeout(parado);
+      parado = setTimeout(() => {
+        const v = track.volta ? track.volta() : 0;
+        if (!v) return;
+        if (track.scrollLeft >= 2 * v - 4) track.scrollTo({ left: track.scrollLeft - v, behavior: 'instant' });
+        else if (track.scrollLeft < v - 4) track.scrollTo({ left: track.scrollLeft + v, behavior: 'instant' });
+      }, 150);
+    }, { passive: true });
+  }
+
+  track.volta = null;
+  track.scrollTo({ left: 0, behavior: 'instant' });
+  const originais = [...track.querySelectorAll(seletor)];
+  if (originais.length < 2 || track.scrollWidth <= track.clientWidth + 4) return;
+
+  const copiar = (card) => {
+    const copia = card.cloneNode(true);
+    copia.dataset.copia = 'sim';
+    copia.setAttribute('aria-hidden', 'true');
+    copia.querySelectorAll('a, button').forEach((el) => el.setAttribute('tabindex', '-1'));
+    return copia;
+  };
+  const antes = originais.map(copiar);
+  track.prepend(...antes);
+  track.append(...originais.map(copiar));
+
+  // Largura de uma volta inteira, medida na hora (muda com o tamanho da tela).
+  track.volta = () => originais[0].offsetLeft - antes[0].offsetLeft;
+  track.scrollTo({ left: track.volta(), behavior: 'instant' });
+}
 
 // ---------- Carrossel (compartilhado) ----------
 
@@ -154,6 +199,7 @@ function renderModalidades() {
     </div>
   `;
   }).join('');
+  loopInfinito(grid, '.modalidade-card');
 }
 
 api.get('/modalidades').then((modalidades) => {
@@ -232,6 +278,7 @@ api.get('/competidores').then((competidores) => {
       </div>
     </div>
   `).join('');
+  loopInfinito(track, '.competidor-card');
 }).catch(() => {
   document.getElementById('competidores-track').innerHTML = '<div class="empty-state">Não foi possível carregar os competidores.</div>';
 });

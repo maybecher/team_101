@@ -1,0 +1,129 @@
+{
+  "fonte": "https://worldskills.org/",
+  "observacao_geral": "Dados extraídos das páginas oficiais de cada modalidade em worldskills.org e das Competition Rules (WSI_OD03, v11.0). A idade máxima é definida no ano-calendário da competição mundial: o competidor não pode completar a idade limite + 1 durante esse ano.",
+  "regra_de_idade": {
+    "padrao": "22 anos (a maioria das modalidades)",
+    "excecoes_25_anos": [
+      "Additive Manufacturing",
+      "Aircraft Maintenance",
+      "Digital Construction",
+      "Cloud Computing",
+      "Cyber Security",
+      "Industrial Design Technology",
+      "Industry 4.0",
+      "Information Network Cabling",
+      "Mechatronics",
+      "Manufacturing Team Challenge",
+      "Optoelectronic Technology",
+      "Robot Systems Integration",
+      "Water Technology"
+    ]
+  },
+  "calendario": {
+    "proximo_estadual": 2028,
+    "proximo_mundial": 2030,
+    "mensagem": "Para competir no Mundial de 2030, o candidato precisa ainda estar dentro da idade máxima permitida NAQUELE ano (2030), não em 2028. Ou seja, é preciso calcular a idade que a pessoa terá em 2030, não a idade atual. Quanto antes o treinamento começar, mais tempo o competidor tem para desenvolver a técnica, passar pelas etapas estadual (2028) e nacional, e chegar afiado ao mundial (2030) ainda dentro do limite de idade."
+  },
+  "modalidades": [
+    {
+      "codigo": "01",
+      "nome_pt": "Mecânica Industrial",
+      "nome_oficial": "Industrial Mechanics",
+      "categoria": "Manufacturing and Engineering Technology",
+      "descricao": "Profissional que projeta, planeja, instala, coloca em funcionamento, mantém, repara e desativa equipamentos e linhas de produção industrial. Atua em diferentes tipos de indústria, podendo ser especialista em um setor específico ou atuar em vários, tanto em ambientes internos quanto externos, em projetos pequenos e grandes.",
+      "idade_maxima_mundial": 22,
+      "fonte_url": "https://worldskills.org/skills/id/740/"
+    },
+    {
+      "codigo": "04",
+      "nome_pt": "Mecatrônica",
+      "nome_oficial": "Mechatronics",
+      "categoria": "Manufacturing and Engineering Technology (Team Skill)",
+      "descricao": "Modalidade que une mecânica, pneumática, eletrônica, programação e robótica para construir sistemas automatizados usados na indústria. É uma prova em dupla, e o técnico em mecatrônica projeta, monta, mantém e repara equipamentos automatizados, além de programar seus sistemas de controle.",
+      "idade_maxima_mundial": 25,
+      "fonte_url": "https://worldskills.org/skills/id/216/"
+    },
+    {
+      "codigo": "05",
+      "nome_pt": "Desenho Mecânico em CAD",
+      "nome_oficial": "Mechanical Engineering CAD",
+      "categoria": "Manufacturing and Engineering Technology",
+      "descricao": "Uso de softwares especializados de CAD para criar e desenvolver projetos de manufatura, desde a indústria naval até a aeroespacial. O CAD é essencial para representar dimensões, materiais e tolerâncias, ajudando a visualizar e simular como um projeto vai se comportar no mundo real antes de ser fabricado.",
+      "idade_maxima_mundial": 22,
+      "fonte_url": "https://worldskills.org/skills/id/217/"
+    },
+    {
+      "codigo": "18",
+      "nome_pt": "Instalações Elétricas",
+      "nome_oficial": "Electrical Installations",
+      "categoria": "Manufacturing and Engineering Technology",
+      "descricao": "O eletricista planeja, projeta, seleciona, instala, testa, mantém e conserta sistemas elétricos em projetos comerciais, residenciais e industriais. Trabalha respeitando altos padrões de segurança, já que erros nessa área podem ser caros e até colocar vidas em risco.",
+      "idade_maxima_mundial": 22,
+      "fonte_url": "https://worldskills.org/skills/id/145/"
+    },
+    {
+      "codigo": "19",
+      "nome_pt": "Controle Industrial",
+      "nome_oficial": "Industrial Control",
+      "categoria": "Manufacturing and Engineering Technology",
+      "descricao": "Envolve instalar, diagnosticar falhas e manter sistemas automatizados e elétricos de produção industrial. Reúne elementos de instalações elétricas e de automação, incluindo instalação de conduítes, cabos, instrumentos, CLPs (controladores lógicos programáveis) e configuração de interfaces homem-máquina.",
+      "idade_maxima_mundial": 22,
+      "fonte_url": "https://worldskills.org/skills/id/146/"
+    },
+    {
+      "codigo": "50",
+      "nome_pt": "Arte Digital 3D para Games",
+      "nome_oficial": "3D Digital Game Art",
+      "categoria": "Creative Arts and Fashion",
+      "descricao": "O artista de games 3D usa criatividade, tecnologia e noções de geometria para criar personagens e cenários animados de videogames. A partir do briefing de um designer, o profissional passa pela arte conceitual em 2D, modelagem 3D, texturização, rigging (esqueleto do modelo) e animação.",
+      "idade_maxima_mundial": 22,
+      "fonte_url": "https://worldskills.org/skills/id/483/"
+    },
+    {
+      "codigo": "24",
+      "nome_pt": "Produção Industrial de Móveis",
+      "nome_oficial": "Cabinetmaking (equivalente internacional mais próximo)",
+      "categoria": "Construction and Building Technology",
+      "descricao": "Fabricação de móveis e peças de madeira de alta qualidade, unindo domínio técnico com sensibilidade estética de design e acabamento. O profissional interpreta e adapta desenhos técnicos, corta, monta encaixes (juntas) e finaliza as peças com precisão, já que erros nessa etapa costumam ser caros e difíceis de corrigir.",
+      "observacao": "A nomenclatura 'Produção Industrial de Móveis' é usada nas competições brasileiras (WorldSkills Brasil/SENAI); no catálogo internacional do WorldSkills, a modalidade equivalente mais próxima é 'Cabinetmaking'. Vale confirmar a nomenclatura exata usada na etapa estadual do seu estado.",
+      "idade_maxima_mundial": 22,
+      "fonte_url": "https://worldskills.org/skills/id/236/"
+    },
+    {
+      "codigo": "59",
+      "nome_pt": "Tecnologia de Design Industrial",
+      "nome_oficial": "Industrial Design Technology",
+      "categoria": "Manufacturing and Engineering Technology",
+      "descricao": "Une design e engenharia para garantir que produtos de consumo funcionem bem e tenham boa aparência, além de serem viáveis de fabricar e atender às necessidades do mercado a um preço competitivo. Envolve pesquisa de mercado, design, engenharia, análise de produto, materiais e boa comunicação.",
+      "idade_maxima_mundial": 25,
+      "fonte_url": "https://worldskills.org/skills/id/557/"
+    },
+    {
+      "codigo": "52",
+      "nome_pt": "Tecnologia em Laboratório Químico",
+      "nome_oficial": "Chemical Laboratory Technology",
+      "categoria": "Manufacturing and Engineering Technology",
+      "descricao": "O analista químico de laboratório estuda substâncias para determinar sua composição química, seja para pesquisa ou desenvolvimento de produtos. Usa métodos analíticos químicos e físico-químicos para analisar materiais naturais e sintéticos, atuando em laboratórios de controle de qualidade e P&D das indústrias química, petroquímica e farmacêutica.",
+      "idade_maxima_mundial": 22,
+      "fonte_url": "https://worldskills.org/skills/id/544/"
+    },
+    {
+      "codigo": "17",
+      "nome_pt": "Tecnologias Web",
+      "nome_oficial": "Web Technologies",
+      "categoria": "Information and Communication Technology",
+      "descricao": "Envolve planejar, projetar, testar e manter sites, incorporando plataformas de terceiros e integrando redes sociais. É uma das modalidades mais diversas do WorldSkills, exigindo habilidades de design, banco de dados, programação e testes de bugs, além de entender bem o público-alvo e as tendências do setor.",
+      "idade_maxima_mundial": 22,
+      "fonte_url": "https://worldskills.org/skills/id/127/"
+    },
+    {
+      "codigo": "08",
+      "nome_pt": "Desenvolvimento de Aplicativos Mobile",
+      "nome_oficial": "Mobile Applications Development",
+      "categoria": "Information and Communication Technology",
+      "descricao": "O desenvolvedor mobile usa tecnologia e design para criar aplicativos atraentes e funcionais para celular. É uma das profissões que mais crescem no mundo, com oportunidades tanto para empregados de empresas quanto para freelancers que atendem negócios menores.",
+      "idade_maxima_mundial": 22,
+      "fonte_url": "https://worldskills.org/skills/id/562/"
+    }
+  ]
+}

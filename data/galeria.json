@@ -1,0 +1,58 @@
+[
+  {
+    "id": 4,
+    "tipo": "video",
+    "categoria": "treinamento",
+    "url": "assets/galeria/treinamento/24-producao-industrial-de-moveis.mp4",
+    "titulo": "Treinamento — Produção Industrial de Móveis",
+    "modalidadeId": 8,
+    "createdAt": "2026-07-20T22:25:53.205Z",
+    "modalidade": {
+      "id": 8,
+      "nome": "Produção Industrial de Móveis",
+      "codigo": "24"
+    }
+  },
+  {
+    "id": 3,
+    "tipo": "video",
+    "categoria": "treinamento",
+    "url": "assets/galeria/treinamento/18-instalacoes-eletricas.mp4",
+    "titulo": "Treinamento — Instalações Elétricas",
+    "modalidadeId": 6,
+    "createdAt": "2026-07-20T22:25:53.202Z",
+    "modalidade": {
+      "id": 6,
+      "nome": "Instalações Elétricas",
+      "codigo": "18"
+    }
+  },
+  {
+    "id": 2,
+    "tipo": "video",
+    "categoria": "treinamento",
+    "url": "assets/galeria/treinamento/17-tecnologias-web.mp4",
+    "titulo": "Treinamento — Tecnologias Web",
+    "modalidadeId": 5,
+    "createdAt": "2026-07-20T22:25:53.198Z",
+    "modalidade": {
+      "id": 5,
+      "nome": "Tecnologias Web",
+      "codigo": "17"
+    }
+  },
+  {
+    "id": 1,
+    "tipo": "video",
+    "categoria": "treinamento",
+    "url": "assets/galeria/treinamento/08-desenvolvimento-de-aplicativos-mobile.mp4",
+    "titulo": "Treinamento — Desenvolvimento de Aplicativos Mobile",
+    "modalidadeId": 4,
+    "createdAt": "2026-07-20T22:25:53.166Z",
+    "modalidade": {
+      "id": 4,
+      "nome": "Desenvolvimento de Aplicativos Mobile",
+      "codigo": "08"
+    }
+  }
+]

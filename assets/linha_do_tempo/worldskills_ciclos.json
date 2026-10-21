@@ -1,0 +1,1416 @@
+{
+  "1995": [
+    {
+      "id": 1,
+      "ciclo": "1995",
+      "etapa": "Estadual - São Paulo Skills 1994",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Ferramentaria",
+      "competidor": "Pedro Othon",
+      "pais": "Brasil"
+    },
+    {
+      "id": 2,
+      "ciclo": "1995",
+      "etapa": "Nacional - WorldSkills Brasil 1994",
+      "tipoEtapa": "Nacional",
+      "medalha": "-",
+      "modalidade": "-",
+      "competidor": "-",
+      "pais": "Brasil"
+    },
+    {
+      "id": 3,
+      "ciclo": "1995",
+      "etapa": "Mundial - WorldSkills 1995",
+      "tipoEtapa": "Mundial",
+      "medalha": "Excelência",
+      "modalidade": "Ferramentaria",
+      "competidor": "Pedro Othon",
+      "pais": null
+    }
+  ],
+  "(2003-2005)": [
+    {
+      "id": 4,
+      "ciclo": "(2003-2005)",
+      "etapa": "Estadual - São Paulo Skills 2003",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Mecânica Geral",
+      "competidor": "Thiago Luiz",
+      "pais": "Brasil"
+    },
+    {
+      "id": 5,
+      "ciclo": "(2003-2005)",
+      "etapa": "Estadual - São Paulo Skills 2003",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Telecomunicações",
+      "competidor": "Carlos Mangini",
+      "pais": "Brasil"
+    },
+    {
+      "id": 6,
+      "ciclo": "(2003-2005)",
+      "etapa": "Estadual - São Paulo Skills 2003",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Ferramentaria",
+      "competidor": "Gerson Marcos",
+      "pais": "Brasil"
+    },
+    {
+      "id": 7,
+      "ciclo": "(2003-2005)",
+      "etapa": "Nacional - WorldSkills Brasil 2004",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Mecânica Geral",
+      "competidor": "Thiago Luiz",
+      "pais": "Brasil"
+    },
+    {
+      "id": 8,
+      "ciclo": "(2003-2005)",
+      "etapa": "Nacional - WorldSkills Brasil 2004",
+      "tipoEtapa": "Nacional",
+      "medalha": "Bronze",
+      "modalidade": "Telecomunicações",
+      "competidor": "Carlos Mangini",
+      "pais": "Brasil"
+    },
+    {
+      "id": 9,
+      "ciclo": "(2003-2005)",
+      "etapa": "Mundial - WorldSkills Helsinki 2005",
+      "tipoEtapa": "Mundial",
+      "medalha": "-",
+      "modalidade": "-",
+      "competidor": "-",
+      "pais": "Finlândia"
+    }
+  ],
+  "(2005-2007)": [
+    {
+      "id": 10,
+      "ciclo": "(2005-2007)",
+      "etapa": "Estadual - São Paulo Skills 2005",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Panificação",
+      "competidor": "Thais Luiza",
+      "pais": "Brasil"
+    },
+    {
+      "id": 11,
+      "ciclo": "(2005-2007)",
+      "etapa": "Estadual - São Paulo Skills 2005",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Mecânica de Manutenção",
+      "competidor": "Rodrigo Cesar",
+      "pais": "Brasil"
+    },
+    {
+      "id": 12,
+      "ciclo": "(2005-2007)",
+      "etapa": "Estadual - São Paulo Skills 2005",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Telecomunicações",
+      "competidor": "Henrique Soares",
+      "pais": "Brasil"
+    },
+    {
+      "id": 13,
+      "ciclo": "(2005-2007)",
+      "etapa": "Estadual - São Paulo Skills 2005",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Tecnologia da Informação",
+      "competidor": "Jose Ricardo",
+      "pais": "Brasil"
+    },
+    {
+      "id": 14,
+      "ciclo": "(2005-2007)",
+      "etapa": "Nacional - WorldSkills Brasil 2006",
+      "tipoEtapa": "Nacional",
+      "medalha": "-",
+      "modalidade": "-",
+      "competidor": "-",
+      "pais": "Brasil"
+    },
+    {
+      "id": 15,
+      "ciclo": "(2005-2007)",
+      "etapa": "Mundial - WorldSkills Shizuoka 2007",
+      "tipoEtapa": "Mundial",
+      "medalha": "-",
+      "modalidade": "-",
+      "competidor": "-",
+      "pais": "Japão"
+    }
+  ],
+  "(2007-2009)": [
+    {
+      "id": 16,
+      "ciclo": "(2007-2009)",
+      "etapa": "Estadual - São Paulo Skills 2007",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Tecnologia da Informação",
+      "competidor": "Thiago Da Silva",
+      "pais": "Brasil"
+    },
+    {
+      "id": 17,
+      "ciclo": "(2007-2009)",
+      "etapa": "Estadual - São Paulo Skills 2007",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Manufatura Integrada",
+      "competidor": "Celso Santos/Everton Bono/Gustavo Rufino",
+      "pais": "Brasil"
+    },
+    {
+      "id": 18,
+      "ciclo": "(2007-2009)",
+      "etapa": "Nacional - WorldSkills Brasil 2008",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Tecnologia da Informação",
+      "competidor": "Thiago Da Silva",
+      "pais": "Brasil"
+    },
+    {
+      "id": 19,
+      "ciclo": "(2007-2009)",
+      "etapa": "Nacional - WorldSkills Brasil 2008",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Robótica Industrial",
+      "competidor": "Daiana Pinto/Felipe Engel",
+      "pais": "Brasil"
+    },
+    {
+      "id": 20,
+      "ciclo": "(2007-2009)",
+      "etapa": "Mundial - WorldSkills Calgary 2009",
+      "tipoEtapa": "Mundial",
+      "medalha": "-",
+      "modalidade": "-",
+      "competidor": "-",
+      "pais": "Canadá"
+    }
+  ],
+  "(2009-2011)": [
+    {
+      "id": 21,
+      "ciclo": "(2009-2011)",
+      "etapa": "Estadual - São Paulo Skills 2009",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Ferramentaria",
+      "competidor": "Bruno Gomes",
+      "pais": "Brasil"
+    },
+    {
+      "id": 22,
+      "ciclo": "(2009-2011)",
+      "etapa": "Estadual - São Paulo Skills 2009",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Confeitaria",
+      "competidor": "Sabrina Souza",
+      "pais": "Brasil"
+    },
+    {
+      "id": 23,
+      "ciclo": "(2009-2011)",
+      "etapa": "Estadual - São Paulo Skills 2009",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Mecânica de Precisão",
+      "competidor": "Caio Cesar",
+      "pais": "Brasil"
+    },
+    {
+      "id": 24,
+      "ciclo": "(2009-2011)",
+      "etapa": "Estadual - São Paulo Skills 2009",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Robótica Industrial",
+      "competidor": "Anderson dos Santos/Bruno Cortez/Rafael Costa",
+      "pais": "Brasil"
+    },
+    {
+      "id": 25,
+      "ciclo": "(2009-2011)",
+      "etapa": "Estadual - São Paulo Skills 2009",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Manufatura Integrada",
+      "competidor": "Eliana Rodrigues/Jofre Bezerra/Takashi Onishi",
+      "pais": "Brasil"
+    },
+    {
+      "id": 26,
+      "ciclo": "(2009-2011)",
+      "etapa": "Estadual - São Paulo Skills 2009",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Tornearia Mecânica",
+      "competidor": "Danilo de Lima",
+      "pais": "Brasil"
+    },
+    {
+      "id": 27,
+      "ciclo": "(2009-2011)",
+      "etapa": "Estadual - São Paulo Skills 2009",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Mecânica Geral",
+      "competidor": "Henrique Silva",
+      "pais": "Brasil"
+    },
+    {
+      "id": 28,
+      "ciclo": "(2009-2011)",
+      "etapa": "Nacional - WorldSkills Brasil 2010",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Manufatura Integrada",
+      "competidor": "Eliana Rodrigues/Jofre Bezerra/Takashi Onishi",
+      "pais": "Brasil"
+    },
+    {
+      "id": 29,
+      "ciclo": "(2009-2011)",
+      "etapa": "Nacional - WorldSkills Brasil 2010",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Mecânica de Precisão",
+      "competidor": "Caio Cesar",
+      "pais": "Brasil"
+    },
+    {
+      "id": 30,
+      "ciclo": "(2009-2011)",
+      "etapa": "Nacional - WorldSkills Brasil 2010",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Robótica Industrial",
+      "competidor": "Anderson dos Santos/Bruno Cortez/Rafael Costa",
+      "pais": "Brasil"
+    },
+    {
+      "id": 31,
+      "ciclo": "(2009-2011)",
+      "etapa": "Américas - WorldSkills Américas Rio de Janeiro 2010",
+      "tipoEtapa": "Américas",
+      "medalha": "Ouro",
+      "modalidade": "Mecânica Geral",
+      "competidor": "Henrique Silva",
+      "pais": "Brasil"
+    },
+    {
+      "id": 32,
+      "ciclo": "(2009-2011)",
+      "etapa": "Américas - WorldSkills Américas Rio de Janeiro 2010",
+      "tipoEtapa": "Américas",
+      "medalha": "Ouro",
+      "modalidade": "Mecânica de Precisão",
+      "competidor": "Caio Cesar",
+      "pais": "Brasil"
+    },
+    {
+      "id": 33,
+      "ciclo": "(2009-2011)",
+      "etapa": "Américas - WorldSkills Américas Rio de Janeiro 2010",
+      "tipoEtapa": "Américas",
+      "medalha": "Ouro",
+      "modalidade": "Robótica Industrial",
+      "competidor": "Anderson dos Santos/Bruno Cortez/Rafael Costa",
+      "pais": "Brasil"
+    },
+    {
+      "id": 34,
+      "ciclo": "(2009-2011)",
+      "etapa": "Américas - WorldSkills Américas Rio de Janeiro 2010",
+      "tipoEtapa": "Américas",
+      "medalha": "Ouro",
+      "modalidade": "Manufatura Integrada",
+      "competidor": "Eliana Rodrigues/Jofre Bezerra/Takashi Onishi",
+      "pais": "Brasil"
+    },
+    {
+      "id": 35,
+      "ciclo": "(2009-2011)",
+      "etapa": "Mundial - WorldSkills London 2011",
+      "tipoEtapa": "Mundial",
+      "medalha": "-",
+      "modalidade": "-",
+      "competidor": "-",
+      "pais": "Reino Unido"
+    }
+  ],
+  "(2011-2013)": [
+    {
+      "id": 36,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Segurança no Trabalho",
+      "competidor": "Amanda de Melo",
+      "pais": "Brasil"
+    },
+    {
+      "id": 37,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Tornearia Mecânica",
+      "competidor": "Igor Sampaio",
+      "pais": "Brasil"
+    },
+    {
+      "id": 38,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Ferramentaria",
+      "competidor": "Jhony Cristyan",
+      "pais": "Brasil"
+    },
+    {
+      "id": 39,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Manufatura Integrada",
+      "competidor": "Alaf Silva/Hector Luz/Douglas Willian",
+      "pais": "Brasil"
+    },
+    {
+      "id": 40,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Polimecânica",
+      "competidor": "Richard Souza",
+      "pais": "Brasil"
+    },
+    {
+      "id": 41,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Integração de Sistemas Robóticos",
+      "competidor": "Alexandre de Freitas e Débora Batista",
+      "pais": "Brasil"
+    },
+    {
+      "id": 42,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Engenharia de Moldes",
+      "competidor": "Bruno Yuji",
+      "pais": "Brasil"
+    },
+    {
+      "id": 43,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Mecânica de Precisão",
+      "competidor": "William de Sá",
+      "pais": "Brasil"
+    },
+    {
+      "id": 44,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Robótica Industrial",
+      "competidor": "Eduardo da Silva/Max Mazakina/Vinicius Oliveira",
+      "pais": "Brasil"
+    },
+    {
+      "id": 45,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Mecânica Geral",
+      "competidor": "Lucas Medeiros",
+      "pais": "Brasil"
+    },
+    {
+      "id": 46,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Fresagem CNC",
+      "competidor": "Elton Pergoraro",
+      "pais": "Brasil"
+    },
+    {
+      "id": 47,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Mecânica de Manutenção",
+      "competidor": "Leonardo Perego Fagundes",
+      "pais": "Brasil"
+    },
+    {
+      "id": 48,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Confeitaria",
+      "competidor": "Abner Colombati",
+      "pais": "Brasil"
+    },
+    {
+      "id": 49,
+      "ciclo": "(2011-2013)",
+      "etapa": "Estadual - São Paulo Skills 2011",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Sistemas de Transporte de Informação",
+      "competidor": "Wellington Souza",
+      "pais": "Brasil"
+    },
+    {
+      "id": 50,
+      "ciclo": "(2011-2013)",
+      "etapa": "Nacional - WorldSkills Brasil 2012",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Polimecânica",
+      "competidor": "Richard Souza",
+      "pais": "Brasil"
+    },
+    {
+      "id": 51,
+      "ciclo": "(2011-2013)",
+      "etapa": "Nacional - WorldSkills Brasil 2012",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Integração de Sistemas Robóticos",
+      "competidor": "Alexandre de Freitas e Débora Batista",
+      "pais": "Brasil"
+    },
+    {
+      "id": 52,
+      "ciclo": "(2011-2013)",
+      "etapa": "Nacional - WorldSkills Brasil 2012",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Engenharia de Moldes",
+      "competidor": "Bruno Yuji Ramalho",
+      "pais": "Brasil"
+    },
+    {
+      "id": 53,
+      "ciclo": "(2011-2013)",
+      "etapa": "Nacional - WorldSkills Brasil 2012",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Tornearia Mecânica",
+      "competidor": "Igor Sampaio",
+      "pais": "Brasil"
+    },
+    {
+      "id": 54,
+      "ciclo": "(2011-2013)",
+      "etapa": "Nacional - WorldSkills Brasil 2012",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Mecânica Geral",
+      "competidor": "Lucas Medeiros",
+      "pais": "Brasil"
+    },
+    {
+      "id": 55,
+      "ciclo": "(2011-2013)",
+      "etapa": "Nacional - WorldSkills Brasil 2012",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Mecânica de Precisão",
+      "competidor": "William de Sá",
+      "pais": "Brasil"
+    },
+    {
+      "id": 56,
+      "ciclo": "(2011-2013)",
+      "etapa": "Nacional - WorldSkills Brasil 2012",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Ferramentaria",
+      "competidor": "Jhony Crystian",
+      "pais": "Brasil"
+    },
+    {
+      "id": 57,
+      "ciclo": "(2011-2013)",
+      "etapa": "Américas - WorldSkills Américas 2012",
+      "tipoEtapa": "Américas",
+      "medalha": "Ouro",
+      "modalidade": "Fresagem CNC",
+      "competidor": "Hector Luz",
+      "pais": null
+    },
+    {
+      "id": 58,
+      "ciclo": "(2011-2013)",
+      "etapa": "Mundial - WorldSkills Leipzig 2013",
+      "tipoEtapa": "Mundial",
+      "medalha": "Ouro",
+      "modalidade": "Polimecânica",
+      "competidor": "Richard Souza",
+      "pais": "Alemanha"
+    },
+    {
+      "id": 59,
+      "ciclo": "(2011-2013)",
+      "etapa": "Mundial - WorldSkills Leipzig 2013",
+      "tipoEtapa": "Mundial",
+      "medalha": "Excelência",
+      "modalidade": "Engenharia de Moldes",
+      "competidor": "Bruno Yuji Ramalho",
+      "pais": "Alemanha"
+    }
+  ],
+  "(2013-2015)": [
+    {
+      "id": 60,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Instalações Elétricas",
+      "competidor": "Lucas Pardinho",
+      "pais": "Brasil"
+    },
+    {
+      "id": 61,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Tornearia Mecânica",
+      "competidor": "Bruno Ribeiro",
+      "pais": "Brasil"
+    },
+    {
+      "id": 62,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Polimecânica",
+      "competidor": "Felipe Augusto",
+      "pais": "Brasil"
+    },
+    {
+      "id": 63,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Fresagem",
+      "competidor": "Lucas Oliveira",
+      "pais": "Brasil"
+    },
+    {
+      "id": 64,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Engenharia de Moldes",
+      "competidor": "Mailson de Oliveira",
+      "pais": "Brasil"
+    },
+    {
+      "id": 65,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Ferramentaria",
+      "competidor": "Olívio Pereira",
+      "pais": "Brasil"
+    },
+    {
+      "id": 66,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Fresagem CNC",
+      "competidor": "Alafi Silva",
+      "pais": "Brasil"
+    },
+    {
+      "id": 67,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Segurança no Trabalho",
+      "competidor": "Janaína Santiago",
+      "pais": "Brasil"
+    },
+    {
+      "id": 68,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Mecânica de Usinagem",
+      "competidor": "Rodrigo Romero",
+      "pais": "Brasil"
+    },
+    {
+      "id": 69,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Confeitaria",
+      "competidor": "Abner Colombati",
+      "pais": "Brasil"
+    },
+    {
+      "id": 70,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Integração de Sistemas Robóticos",
+      "competidor": "Lucas Vinícios / Jaqueline de Moura",
+      "pais": "Brasil"
+    },
+    {
+      "id": 71,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Eletrônica Industrial",
+      "competidor": "Caio Teascheti",
+      "pais": "Brasil"
+    },
+    {
+      "id": 72,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Panificação",
+      "competidor": "Letícia Fernanda",
+      "pais": "Brasil"
+    },
+    {
+      "id": 73,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Sistemas de Transporte de Informação",
+      "competidor": "Vinicius Basilio",
+      "pais": "Brasil"
+    },
+    {
+      "id": 74,
+      "ciclo": "(2013-2015)",
+      "etapa": "Estadual - São Paulo Skills 2013",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Mecânica de Precisão",
+      "competidor": "Bruno Kanô",
+      "pais": "Brasil"
+    },
+    {
+      "id": 75,
+      "ciclo": "(2013-2015)",
+      "etapa": "Nacional - WorldSkills Brasil 2014",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Fresagem CNC",
+      "competidor": "Alafi Silva",
+      "pais": "Brasil"
+    },
+    {
+      "id": 76,
+      "ciclo": "(2013-2015)",
+      "etapa": "Nacional - WorldSkills Brasil 2014",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Polimecânica",
+      "competidor": "Felipe Augusto",
+      "pais": "Brasil"
+    },
+    {
+      "id": 77,
+      "ciclo": "(2013-2015)",
+      "etapa": "Nacional - WorldSkills Brasil 2014",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Engenharia de Moldes",
+      "competidor": "Mailson de Oliveira",
+      "pais": "Brasil"
+    },
+    {
+      "id": 78,
+      "ciclo": "(2013-2015)",
+      "etapa": "Nacional - WorldSkills Brasil 2014",
+      "tipoEtapa": "Nacional",
+      "medalha": "Prata",
+      "modalidade": "Instalações Elétricas",
+      "competidor": "Lucas Pardinho",
+      "pais": "Brasil"
+    },
+    {
+      "id": 79,
+      "ciclo": "(2013-2015)",
+      "etapa": "Mundial - WorldSkills São Paulo 2015",
+      "tipoEtapa": "Mundial",
+      "medalha": "Ouro",
+      "modalidade": "Polimecânica",
+      "competidor": "Felipe Augusto",
+      "pais": "Brasil"
+    },
+    {
+      "id": 80,
+      "ciclo": "(2013-2015)",
+      "etapa": "Mundial - WorldSkills São Paulo 2015",
+      "tipoEtapa": "Mundial",
+      "medalha": "Prata",
+      "modalidade": "Engenharia de Moldes",
+      "competidor": "Mailson de Oliveira",
+      "pais": "Brasil"
+    }
+  ],
+  "(2015-2017)": [
+    {
+      "id": 81,
+      "ciclo": "(2015-2017)",
+      "etapa": "Estadual - São Paulo Skills 2016",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Polimecânica",
+      "competidor": "Lucas Silva",
+      "pais": "Brasil"
+    },
+    {
+      "id": 82,
+      "ciclo": "(2015-2017)",
+      "etapa": "Estadual - São Paulo Skills 2016",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Panificação",
+      "competidor": "Gabryella Aquino",
+      "pais": "Brasil"
+    },
+    {
+      "id": 83,
+      "ciclo": "(2015-2017)",
+      "etapa": "Estadual - São Paulo Skills 2016",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Modelagem de Protótipos",
+      "competidor": "Reginaldo Souza",
+      "pais": "Brasil"
+    },
+    {
+      "id": 84,
+      "ciclo": "(2015-2017)",
+      "etapa": "Estadual - São Paulo Skills 2016",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Segurança no Trabalho",
+      "competidor": "Lilian Boccia",
+      "pais": "Brasil"
+    },
+    {
+      "id": 85,
+      "ciclo": "(2015-2017)",
+      "etapa": "Estadual - São Paulo Skills 2016",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Redes de Cabeamento Estruturado",
+      "competidor": "Pâmela Santos",
+      "pais": "Brasil"
+    },
+    {
+      "id": 86,
+      "ciclo": "(2015-2017)",
+      "etapa": "Estadual - São Paulo Skills 2016",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Integração de Sistemas Robóticos",
+      "competidor": "Denilson Vargas/Diana Lima",
+      "pais": "Brasil"
+    },
+    {
+      "id": 87,
+      "ciclo": "(2015-2017)",
+      "etapa": "Estadual - São Paulo Skills 2016",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Fresagem CNC",
+      "competidor": "Gustavo Oliveira",
+      "pais": "Brasil"
+    },
+    {
+      "id": 88,
+      "ciclo": "(2015-2017)",
+      "etapa": "Estadual - São Paulo Skills 2016",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Engenharia de Moldes",
+      "competidor": "Mateus Elias",
+      "pais": "Brasil"
+    },
+    {
+      "id": 89,
+      "ciclo": "(2015-2017)",
+      "etapa": "Estadual - São Paulo Skills 2016",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Instalações Elétricas",
+      "competidor": "Guilherme Nascimento",
+      "pais": "Brasil"
+    },
+    {
+      "id": 90,
+      "ciclo": "(2015-2017)",
+      "etapa": "Estadual - São Paulo Skills 2016",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Elétrica Industrial",
+      "competidor": "Étni Silva",
+      "pais": "Brasil"
+    },
+    {
+      "id": 91,
+      "ciclo": "(2015-2017)",
+      "etapa": "Estadual - São Paulo Skills 2016",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Mecatrônica",
+      "competidor": "Gabriel Marques / Hugo Ferreira",
+      "pais": "Brasil"
+    },
+    {
+      "id": 92,
+      "ciclo": "(2015-2017)",
+      "etapa": "Nacional - WorldSkills Brasil 2016",
+      "tipoEtapa": "Nacional",
+      "medalha": "Prata",
+      "modalidade": "Polimecânica",
+      "competidor": "Lucas Silva",
+      "pais": "Brasil"
+    },
+    {
+      "id": 93,
+      "ciclo": "(2015-2017)",
+      "etapa": "Mundial - WorldSkills Abu Dhabi",
+      "tipoEtapa": "Mundial",
+      "medalha": "-",
+      "modalidade": "-",
+      "competidor": "-",
+      "pais": "Emirados Árabes Unidos"
+    }
+  ],
+  "(2017-2019)": [
+    {
+      "id": 94,
+      "ciclo": "(2017-2019)",
+      "etapa": "Estadual - São Paulo Skills 2017",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Polimecânica",
+      "competidor": "Arthur Souza",
+      "pais": "Brasil"
+    },
+    {
+      "id": 95,
+      "ciclo": "(2017-2019)",
+      "etapa": "Estadual - São Paulo Skills 2017",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Instalações Elétricas",
+      "competidor": "Gustavo Arraias",
+      "pais": "Brasil"
+    },
+    {
+      "id": 96,
+      "ciclo": "(2017-2019)",
+      "etapa": "Estadual - São Paulo Skills 2017",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Engenharia de Moldes",
+      "competidor": "Vitor Galdino",
+      "pais": "Brasil"
+    },
+    {
+      "id": 97,
+      "ciclo": "(2017-2019)",
+      "etapa": "Estadual - São Paulo Skills 2017",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Panificação",
+      "competidor": "Gustavo Alves",
+      "pais": "Brasil"
+    },
+    {
+      "id": 98,
+      "ciclo": "(2017-2019)",
+      "etapa": "Estadual - São Paulo Skills 2017",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Integração de Sistemas Robóticos",
+      "competidor": "Gabriel Correia / Lucas Rocha",
+      "pais": "Brasil"
+    },
+    {
+      "id": 99,
+      "ciclo": "(2017-2019)",
+      "etapa": "Estadual - São Paulo Skills 2017",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Modelagem de Protótipos",
+      "competidor": "Igor de Souza",
+      "pais": "Brasil"
+    },
+    {
+      "id": 100,
+      "ciclo": "(2017-2019)",
+      "etapa": "Estadual - São Paulo Skills 2017",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Elétrica Industrial",
+      "competidor": "Andre Lucena",
+      "pais": "Brasil"
+    },
+    {
+      "id": 101,
+      "ciclo": "(2017-2019)",
+      "etapa": "Estadual - São Paulo Skills 2017",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Mecatrônica",
+      "competidor": "Felipe Freire/ Jadson Santos",
+      "pais": "Brasil"
+    },
+    {
+      "id": 102,
+      "ciclo": "(2017-2019)",
+      "etapa": "Estadual - São Paulo Skills 2017",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Eletrônica",
+      "competidor": "Pedro Henrique Martins",
+      "pais": "Brasil"
+    },
+    {
+      "id": 103,
+      "ciclo": "(2017-2019)",
+      "etapa": "Estadual - São Paulo Skills 2017",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Mecânica Industrial",
+      "competidor": "Paulo Lima",
+      "pais": "Brasil"
+    },
+    {
+      "id": 104,
+      "ciclo": "(2017-2019)",
+      "etapa": "Estadual - São Paulo Skills 2017",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Desenho Mecânico em CAD",
+      "competidor": "Giovanna Ribeiro",
+      "pais": "Brasil"
+    },
+    {
+      "id": 105,
+      "ciclo": "(2017-2019)",
+      "etapa": "Nacional - WorldSkills Brasil 2018",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Polimecânica",
+      "competidor": "Arthur Souza",
+      "pais": "Brasil"
+    },
+    {
+      "id": 106,
+      "ciclo": "(2017-2019)",
+      "etapa": "Nacional - WorldSkills Brasil 2018",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Instalações Elétricas",
+      "competidor": "Gustavo Arraias",
+      "pais": "Brasil"
+    },
+    {
+      "id": 107,
+      "ciclo": "(2017-2019)",
+      "etapa": "Nacional - WorldSkills Brasil 2018",
+      "tipoEtapa": "Nacional",
+      "medalha": "Prata",
+      "modalidade": "Engenharia de Moldes",
+      "competidor": "Vitor Galdino",
+      "pais": "Brasil"
+    },
+    {
+      "id": 108,
+      "ciclo": "(2017-2019)",
+      "etapa": "Nacional - WorldSkills Brasil 2018",
+      "tipoEtapa": "Nacional",
+      "medalha": "Bronze",
+      "modalidade": "Integração de Sistemas Robóticos",
+      "competidor": "Gabriel Correia / Lucas Rocha",
+      "pais": "Brasil"
+    },
+    {
+      "id": 109,
+      "ciclo": "(2017-2019)",
+      "etapa": "Nacional - WorldSkills Brasil 2018",
+      "tipoEtapa": "Nacional",
+      "medalha": "Bronze",
+      "modalidade": "Panificação",
+      "competidor": "Gustavo Alves (?)",
+      "pais": "Brasil"
+    },
+    {
+      "id": 110,
+      "ciclo": "(2017-2019)",
+      "etapa": "Mundial - WorldSkills Kazan 2019",
+      "tipoEtapa": "Mundial",
+      "medalha": "Prata",
+      "modalidade": "Engenharia de Moldes",
+      "competidor": "Vitor Galdino",
+      "pais": "Rússia"
+    }
+  ],
+  "(2019-2022)": [
+    {
+      "id": 111,
+      "ciclo": "(2019-2022)",
+      "etapa": "Estadual - São Paulo Skills 2019",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Engenharia de Moldes",
+      "competidor": "Guilherme Eliel",
+      "pais": "Brasil"
+    },
+    {
+      "id": 112,
+      "ciclo": "(2019-2022)",
+      "etapa": "Estadual - São Paulo Skills 2019",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Integração de Sistemas Robóticos",
+      "competidor": "Eli Abner/ Lucas Batista",
+      "pais": "Brasil"
+    },
+    {
+      "id": 113,
+      "ciclo": "(2019-2022)",
+      "etapa": "Estadual - São Paulo Skills 2019",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Panificação",
+      "competidor": "Larissa da Silva",
+      "pais": "Brasil"
+    },
+    {
+      "id": 114,
+      "ciclo": "(2019-2022)",
+      "etapa": "Estadual - São Paulo Skills 2019",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Controle Industrial",
+      "competidor": "Andre Lucena",
+      "pais": "Brasil"
+    },
+    {
+      "id": 115,
+      "ciclo": "(2019-2022)",
+      "etapa": "Estadual - São Paulo Skills 2019",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Instalações Elétricas",
+      "competidor": "Marco Anthonio",
+      "pais": "Brasil"
+    },
+    {
+      "id": 116,
+      "ciclo": "(2019-2022)",
+      "etapa": "Estadual - São Paulo Skills 2019",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Confeitaria",
+      "competidor": "Caroline Gomes",
+      "pais": "Brasil"
+    },
+    {
+      "id": 117,
+      "ciclo": "(2019-2022)",
+      "etapa": "Estadual - São Paulo Skills 2019",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Polimecânica",
+      "competidor": "Augusto (??)",
+      "pais": "Brasil"
+    },
+    {
+      "id": 118,
+      "ciclo": "(2019-2022)",
+      "etapa": "Nacional - WorldSkills Brasil 2021",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Engenharia de Moldes",
+      "competidor": "Guilherme Eliel",
+      "pais": "Brasil"
+    },
+    {
+      "id": 119,
+      "ciclo": "(2019-2022)",
+      "etapa": "Nacional - WorldSkills Brasil 2021",
+      "tipoEtapa": "Nacional",
+      "medalha": "Prata",
+      "modalidade": "Integração de Sistemas Robóticos",
+      "competidor": "Eli Abner/ Lucas Batista",
+      "pais": "Brasil"
+    },
+    {
+      "id": 120,
+      "ciclo": "(2019-2022)",
+      "etapa": "Nacional - WorldSkills Brasil 2021",
+      "tipoEtapa": "Nacional",
+      "medalha": "Prata",
+      "modalidade": "Panificação",
+      "competidor": "Larissa da Silva",
+      "pais": "Brasil"
+    },
+    {
+      "id": 121,
+      "ciclo": "(2019-2022)",
+      "etapa": "Nacional - WorldSkills Brasil 2021",
+      "tipoEtapa": "Nacional",
+      "medalha": "Prata",
+      "modalidade": "Mecatrônica",
+      "competidor": "Roger Malmagro/Bruno Alves Martins",
+      "pais": "Brasil"
+    },
+    {
+      "id": 122,
+      "ciclo": "(2019-2022)",
+      "etapa": "Mundial - WorldSkills Edição Especial 2022",
+      "tipoEtapa": "Mundial",
+      "medalha": "-",
+      "modalidade": "-",
+      "competidor": "-",
+      "pais": null
+    }
+  ],
+  "(2021-2024)": [
+    {
+      "id": 123,
+      "ciclo": "(2021-2024)",
+      "etapa": "Estadual - São Paulo Skills 2023",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Arte Digital 3D para Games",
+      "competidor": "Júlia Morgana",
+      "pais": "Brasil"
+    },
+    {
+      "id": 124,
+      "ciclo": "(2021-2024)",
+      "etapa": "Estadual - São Paulo Skills 2023",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Integração de Sistemas Robóticos",
+      "competidor": "Gabriel / Felipe",
+      "pais": "Brasil"
+    },
+    {
+      "id": 125,
+      "ciclo": "(2021-2024)",
+      "etapa": "Estadual - São Paulo Skills 2023",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Mecatrônica",
+      "competidor": "Jadson/Daniel",
+      "pais": "Brasil"
+    },
+    {
+      "id": 126,
+      "ciclo": "(2021-2024)",
+      "etapa": "Estadual - São Paulo Skills 2023",
+      "tipoEtapa": "Estadual",
+      "medalha": "Prata",
+      "modalidade": "Instalações Elétricas",
+      "competidor": "Lucas (??)",
+      "pais": "Brasil"
+    },
+    {
+      "id": 127,
+      "ciclo": "(2021-2024)",
+      "etapa": "Nacional - WorldSkills Brasil 2023",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Arte Digital 3D para Games",
+      "competidor": "Júlia Morgana",
+      "pais": "Brasil"
+    },
+    {
+      "id": 128,
+      "ciclo": "(2021-2024)",
+      "etapa": "Mundial - WorldSkills Lyon 2024",
+      "tipoEtapa": "Mundial",
+      "medalha": "-",
+      "modalidade": "-",
+      "competidor": "-",
+      "pais": "França"
+    }
+  ],
+  "(2024-2026)": [
+    {
+      "id": 129,
+      "ciclo": "(2024-2026)",
+      "etapa": "Estadual - São Paulo Skills 2024",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Arte Digital 3D para Games",
+      "competidor": "Giovanna Candido",
+      "pais": "Brasil"
+    },
+    {
+      "id": 130,
+      "ciclo": "(2024-2026)",
+      "etapa": "Estadual - São Paulo Skills 2024",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Controle Industrial",
+      "competidor": "Kawan",
+      "pais": "Brasil"
+    },
+    {
+      "id": 135,
+      "ciclo": "(2024-2026)",
+      "etapa": "Estadual - São Paulo Skills 2024",
+      "tipoEtapa": "Estadual",
+      "medalha": "Bronze",
+      "modalidade": "Tecnologia de Design Industrial",
+      "competidor": "Pedro Martins",
+      "pais": "Brasil"
+    },
+    {
+      "id": 136,
+      "ciclo": "(2024-2026)",
+      "etapa": "Estadual - São Paulo Skills 2024",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Integração de Sistemas Robóticos",
+      "competidor": "Flávio Eduardo Alves Martins/ Gabriel Nascimento Luz",
+      "pais": "Brasil"
+    },
+    {
+      "id": 137,
+      "ciclo": "(2024-2026)",
+      "etapa": "Estadual - São Paulo Skills 2024",
+      "tipoEtapa": "Estadual",
+      "medalha": "Ouro",
+      "modalidade": "Mecatrônica",
+      "competidor": "Gustavo Rodrigues/ Bruno Pantolfo Melo",
+      "pais": "Brasil"
+    },
+    {
+      "id": 131,
+      "ciclo": "(2024-2026)",
+      "etapa": "Nacional - WorldSkills Brasil 2025",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Arte Digital 3D para Games",
+      "competidor": "Giovanna Candido",
+      "pais": "Brasil"
+    },
+    {
+      "id": 132,
+      "ciclo": "(2024-2026)",
+      "etapa": "Nacional - WorldSkills Brasil 2025",
+      "tipoEtapa": "Nacional",
+      "medalha": "Ouro",
+      "modalidade": "Controle Industrial",
+      "competidor": "Kawan",
+      "pais": "Brasil"
+    },
+    {
+      "id": 138,
+      "ciclo": "(2024-2026)",
+      "etapa": "Nacional - São Paulo Skills 2024",
+      "tipoEtapa": "Nacional",
+      "medalha": "Bronze",
+      "modalidade": "Integração de Sistemas Robóticos",
+      "competidor": "Flávio Eduardo Alves Martins/ Gabriel Nascimento Luz",
+      "pais": "Brasil"
+    },
+    {
+      "id": 139,
+      "ciclo": "(2024-2026)",
+      "etapa": "Nacional - São Paulo Skills 2024",
+      "tipoEtapa": "Nacional",
+      "medalha": "Prata",
+      "modalidade": "Mecatrônica",
+      "competidor": "Gustavo Rodrigues/ Bruno Pantolfo Melo",
+      "pais": "Brasil"
+    },
+    {
+      "id": 133,
+      "ciclo": "(2024-2026)",
+      "etapa": "Américas - WorldSkills Américas Chile 2025",
+      "tipoEtapa": "Américas",
+      "medalha": "Ouro",
+      "modalidade": "Controle Industrial",
+      "competidor": "Kawan",
+      "pais": "Chile"
+    },
+    {
+      "id": 134,
+      "ciclo": "(2024-2026)",
+      "etapa": "Mundial - WorldSkills Xanghai 2026",
+      "tipoEtapa": "Mundial",
+      "medalha": "",
+      "modalidade": "",
+      "competidor": "",
+      "pais": "China"
+    }
+  ]
+}

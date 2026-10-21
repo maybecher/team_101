@@ -1,0 +1,380 @@
+import { api } from '../api.js';
+import { renderPublicHeader, renderPublicFooter } from '../components.js';
+import {
+  escapeHtml, statusBadgeHtml, GALERIA_CATEGORIA_LABELS, GALERIA_CATEGORIAS_ORDEM, pareceNomeFeminino, formatDate,
+} from '../utils.js';
+import { iconeSvg } from '../icons.js';
+
+renderPublicHeader();
+renderPublicFooter();
+
+const BENEFICIOS = [
+  ['graduationCap', 'Aprendizado além da sala de aula'],
+  ['cog', 'Contato com tecnologias reais'],
+  ['trendingUp', 'Desenvolvimento profissional'],
+  ['handshake', 'Networking'],
+  ['trophy', 'Experiência em competições estaduais, nacionais e mundiais'],
+  ['flag', 'Representar a escola e o Brasil'],
+  ['fileText', 'Currículo diferenciado'],
+];
+
+document.getElementById('beneficios-grid').innerHTML = BENEFICIOS.map(
+  ([icone, texto]) => `
+    <div style="background:var(--cinza-claro);border-radius:14px;padding:18px;">
+      <div style="font-size:1.4rem" class="icone-dourado">${iconeSvg(icone)}</div>
+      <div class="mt-8" style="font-weight:600;color:var(--texto-primario)">${escapeHtml(texto)}</div>
+    </div>`
+).join('');
+
+const FAQ = [
+  ['Preciso ser o melhor aluno da turma?', 'Não. O mais importante é interesse, dedicação e vontade de aprender. As habilidades técnicas são desenvolvidas ao longo dos treinamentos.'],
+  ['Preciso ter experiência prévia?', 'Não é obrigatório. Cada modalidade tem um período de treinamento para desenvolver as competências necessárias antes das competições.'],
+  ['Quanto tempo dura a preparação?', 'Varia por modalidade, mas geralmente envolve treinamentos semanais ao longo do ano letivo, com intensificação próximo às etapas classificatórias.'],
+];
+
+document.getElementById('faq-list').innerHTML = FAQ.map(
+  ([pergunta, resposta], i) => `
+    <div class="faq-item" data-index="${i}">
+      <div class="faq-question">
+        <span>${escapeHtml(pergunta)}</span>
+        <span class="arrow">${iconeSvg('chevronDown')}</span>
+      </div>
+      <div class="faq-answer"><p class="text-sm">${escapeHtml(resposta)}</p></div>
+    </div>`
+).join('');
+
+document.querySelectorAll('.faq-item').forEach((item) => {
+  item.querySelector('.faq-question').addEventListener('click', () => item.classList.toggle('open'));
+});
+
+// ---------- Carrossel (compartilhado) ----------
+
+function attachCarousel(trackId, prevId, nextId, cardSelector, autoMs) {
+  const track = document.getElementById(trackId);
+  const gap = 20;
+
+  const step = (direction) => {
+    const card = track.querySelector(cardSelector);
+    const amount = card ? card.getBoundingClientRect().width + gap : 300;
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    let target = track.scrollLeft + direction * amount;
+
+    // Ao chegar perto do fim/início, o próximo clique volta ao outro extremo — mas só
+    // depois de realmente exibir o último item, em vez de pular direto pra ele.
+    if (direction > 0) {
+      target = track.scrollLeft >= maxScroll - 4 ? 0 : Math.min(target, maxScroll);
+    } else {
+      target = track.scrollLeft <= 4 ? maxScroll : Math.max(target, 0);
+    }
+
+    track.scrollTo({ left: target, behavior: 'smooth' });
+  };
+
+  document.getElementById(prevId).addEventListener('click', () => step(-1));
+  document.getElementById(nextId).addEventListener('click', () => step(1));
+
+  if (autoMs) setInterval(() => step(1), autoMs);
+}
+
+// ---------- Modalidades (carrossel automático) ----------
+
+let todasModalidades = [];
+
+function renderModalidades() {
+  const busca = document.getElementById('modalidades-busca').value.trim().toLowerCase();
+  const status = document.getElementById('modalidades-filtro-status').value;
+  const filtradas = todasModalidades.filter((m) => {
+    const buscaOk = !busca || m.nome.toLowerCase().includes(busca);
+    const statusOk = !status || m.status === status;
+    return buscaOk && statusOk;
+  });
+
+  const track = document.getElementById('modalidades-track');
+  if (filtradas.length === 0) {
+    track.innerHTML = `<div class="empty-state"><div class="icon icone-branco">${iconeSvg('search')}</div>Nenhuma modalidade encontrada.</div>`;
+    return;
+  }
+
+  track.innerHTML = filtradas.map((m) => `
+    <a class="card modalidade-card" href="modalidade.html?id=${m.id}" style="display:block">
+      ${m.imagemUrl
+        ? `<img class="thumb" src="${escapeHtml(m.imagemUrl)}" alt="${escapeHtml(m.nome)}" />`
+        : `<div class="thumb icone-branco">${iconeSvg('wrench')}</div>`}
+      <div class="card-body">
+        <div class="text-sm" style="font-weight:600;color:var(--texto-secundario)">#${escapeHtml(m.codigo)}</div>
+        <h3 class="mt-8" style="font-size:1.1rem">${escapeHtml(m.nome)}</h3>
+        <div class="mt-8">${statusBadgeHtml(m.status)}</div>
+        <div class="mt-16" style="color:var(--azul-vibrante);font-weight:600">Ver mais ${iconeSvg('chevronRight')}</div>
+      </div>
+    </a>
+  `).join('');
+}
+
+api.get('/modalidades').then((modalidades) => {
+  todasModalidades = modalidades;
+  renderModalidades();
+}).catch(() => {
+  document.getElementById('modalidades-track').innerHTML = '<div class="empty-state">Não foi possível carregar as modalidades agora.</div>';
+});
+
+document.getElementById('modalidades-busca').addEventListener('input', renderModalidades);
+document.getElementById('modalidades-filtro-status').addEventListener('change', renderModalidades);
+attachCarousel('modalidades-track', 'modalidades-prev', 'modalidades-next', '.modalidade-card', 4500);
+
+// ---------- Competidores (carrossel automático) ----------
+
+api.get('/competidores').then((competidores) => {
+  const destaqueSection = document.getElementById('destaque-mundial');
+  const destaqueEl = document.getElementById('competidores-destaque');
+  const track = document.getElementById('competidores-track');
+  const tituloEl = document.getElementById('competidores-titulo');
+
+  // A home só deve mostrar a equipe do ciclo mais recente — sem isso, competidores
+  // antigos cadastrados no admin (histórico por ciclo) ficariam misturados aqui como
+  // se fossem o time atual. O "ano" de cada um é o ano em que ele começou (ver admin
+  // de competidores), então o maior valor é sempre o ciclo mais novo.
+  const anosCadastrados = competidores.map((c) => c.ano).filter((a) => a != null);
+  const anoAtual = anosCadastrados.length ? Math.max(...anosCadastrados) : null;
+  tituloEl.textContent = anoAtual ? `Conheça a Equipe ${anoAtual}` : 'Conheça a Equipe';
+
+  const destacados = competidores.filter((c) => c.destaque);
+  const resto = competidores.filter((c) => !c.destaque && (anoAtual === null || c.ano === anoAtual));
+
+  destaqueSection.hidden = destacados.length === 0;
+  destaqueEl.innerHTML = destacados.map((c) => {
+    const titulo = c.conquistas ? c.conquistas.split('·')[0].trim() : (pareceNomeFeminino(c.nome) ? 'Campeã Nacional' : 'Campeão Nacional');
+    return `
+    <div class="card competidor-card competidor-card--destaque">
+      ${c.fotoUrl ? `<img class="thumb thumb--retrato" src="${escapeHtml(c.fotoUrl)}" alt="${escapeHtml(c.nome)}" />` : `<div class="thumb icone-branco">${iconeSvg('user')}</div>`}
+      <div class="card-body">
+        <span class="badge" style="background:var(--dourado-suave);color:var(--dourado-claro)">${iconeSvg('medal')}${escapeHtml(titulo)}</span>
+        <h3 class="mt-8" style="font-size:1.1rem">${escapeHtml(c.nome)}</h3>
+        ${c.modalidade ? `<div class="text-sm" style="color:var(--azul-vibrante);font-weight:600">${escapeHtml(c.modalidade.nome)}</div>` : ''}
+      </div>
+    </div>
+  `;
+  }).join('');
+
+  if (resto.length === 0) {
+    track.innerHTML = `<div class="empty-state"><div class="icon icone-dourado">${iconeSvg('trophy')}</div>Em breve, os primeiros nomes da equipe.</div>`;
+    return;
+  }
+  track.innerHTML = resto.map((c) => `
+    <div class="card competidor-card">
+      ${c.fotoUrl ? `<img class="thumb thumb--retrato" src="${escapeHtml(c.fotoUrl)}" alt="${escapeHtml(c.nome)}" />` : `<div class="thumb icone-branco">${iconeSvg('user')}</div>`}
+      <div class="card-body">
+        <h3 style="font-size:1.05rem">${escapeHtml(c.nome)}</h3>
+        <div class="text-sm mt-8">${[c.curso, c.ano].filter(Boolean).map(escapeHtml).join(' · ')}</div>
+        ${c.modalidade ? `<div class="text-sm" style="color:var(--azul-vibrante);font-weight:600">${escapeHtml(c.modalidade.nome)}</div>` : ''}
+        ${c.conquistas ? `<div class="text-sm mt-8"><span class="icone-dourado">${iconeSvg('medal')}</span> ${escapeHtml(c.conquistas)}</div>` : ''}
+        ${c.depoimento ? `<div class="text-sm mt-8" style="font-style:italic">"${escapeHtml(c.depoimento)}"</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+}).catch(() => {
+  document.getElementById('competidores-track').innerHTML = '<div class="empty-state">Não foi possível carregar os competidores.</div>';
+});
+attachCarousel('competidores-track', 'competidores-prev', 'competidores-next', '.competidor-card', 4500);
+
+// ---------- Galeria ----------
+
+let todaGaleria = [];
+let categoriaAtiva = '';
+let videoAtual = null;
+
+function galeriaLegenda(item) {
+  return item.modalidade?.nome || item.titulo || '';
+}
+
+// Ordena por modalidade em ordem alfabética — itens sem modalidade (título ou "Geral")
+// caem no fim, já que localeCompare já lida bem com string vazia por último.
+function ordenarPorModalidade(lista) {
+  return [...lista].sort((a, b) => galeriaLegenda(a).localeCompare(galeriaLegenda(b), 'pt-BR', { sensitivity: 'base' }));
+}
+
+function galeriaItemHtml(item) {
+  const legenda = galeriaLegenda(item);
+  const midia = item.tipo === 'foto'
+    ? `<img class="thumb lightbox-trigger" data-url="${escapeHtml(item.url)}" src="${escapeHtml(item.url)}" alt="${escapeHtml(item.titulo || '')}" style="cursor:pointer" />`
+    : `<div class="thumb thumb--video">
+         <video src="${escapeHtml(item.url)}" muted preload="metadata"></video>
+         <span class="play-icon">${iconeSvg('play')}</span>
+       </div>`;
+  return `
+    <div class="card">
+      ${midia}
+      ${legenda ? `<div class="card-body" style="padding:12px 16px"><div class="text-sm" style="font-weight:600;color:var(--texto-primario)">${escapeHtml(legenda)}</div></div>` : ''}
+    </div>
+  `;
+}
+
+function renderGaleria() {
+  const grid = document.getElementById('galeria-grid');
+  const itens = categoriaAtiva ? todaGaleria.filter((i) => i.categoria === categoriaAtiva) : todaGaleria;
+  if (itens.length === 0) {
+    grid.innerHTML = `<div class="empty-state"><div class="icon icone-branco">${iconeSvg('image')}</div>Nenhum item na galeria ainda.</div>`;
+    return;
+  }
+
+  // Com "Todos" selecionado, separamos em uma seção por categoria; com um filtro
+  // específico ativo, mostramos só a grade daquela categoria, sem repetir o título.
+  const grupos = categoriaAtiva
+    ? [[categoriaAtiva, ordenarPorModalidade(itens)]]
+    : GALERIA_CATEGORIAS_ORDEM
+        .map((categoria) => [categoria, ordenarPorModalidade(itens.filter((i) => i.categoria === categoria))])
+        .filter(([, lista]) => lista.length > 0);
+
+  grid.innerHTML = grupos.map(([categoria, lista]) => `
+    <div class="grupo">
+      ${!categoriaAtiva ? `<h3 class="grupo-titulo">${escapeHtml(GALERIA_CATEGORIA_LABELS[categoria] || categoria)}</h3>` : ''}
+      <div class="grid grid-4">${lista.map(galeriaItemHtml).join('')}</div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.lightbox-trigger').forEach((el) => {
+    el.addEventListener('click', () => abrirLightbox(el.dataset.url));
+  });
+
+  grid.querySelectorAll('.thumb--video').forEach((wrap) => {
+    const video = wrap.querySelector('video');
+    const playIcon = wrap.querySelector('.play-icon');
+
+    // Sem um poster de verdade, forçamos a decodificação de um frame perto do início
+    // assim que os metadados carregam — sem isso o vídeo fica com tela preta/vazia
+    // até o usuário dar play.
+    video.addEventListener('loadedmetadata', () => {
+      video.currentTime = video.duration > 0.2 ? 0.1 : video.duration / 2;
+    }, { once: true });
+
+    // O ícone reaparece sempre que o vídeo está pausado (seja por clique em outro
+    // vídeo, seja pelo controle nativo), então sempre há um jeito fácil de retomar.
+    playIcon.addEventListener('click', () => {
+      if (videoAtual && videoAtual !== video) videoAtual.pause();
+      video.muted = false;
+      video.controls = true;
+      video.play();
+    });
+
+    // Garante que apenas um vídeo toque por vez, mesmo se retomado pelos controles nativos.
+    video.addEventListener('play', () => {
+      if (videoAtual && videoAtual !== video) videoAtual.pause();
+      videoAtual = video;
+      playIcon.style.display = 'none';
+    });
+
+    video.addEventListener('pause', () => {
+      playIcon.style.display = '';
+    });
+  });
+}
+
+function abrirLightbox(url) {
+  const root = document.getElementById('lightbox-root');
+  root.innerHTML = `
+    <div class="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img src="${escapeHtml(url)}" alt="" />
+    </div>
+  `;
+  const close = () => { root.innerHTML = ''; };
+  root.querySelector('.lightbox').addEventListener('click', (e) => { if (e.target.closest('img')) return; close(); });
+}
+
+api.get('/galeria').then((itens) => {
+  todaGaleria = itens;
+  renderGaleria();
+}).catch(() => {
+  document.getElementById('galeria-grid').innerHTML = '<div class="empty-state">Não foi possível carregar a galeria.</div>';
+});
+
+document.querySelectorAll('#galeria-filtros .chip').forEach((chip) => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('#galeria-filtros .chip').forEach((c) => c.classList.remove('active'));
+    chip.classList.add('active');
+    categoriaAtiva = chip.dataset.categoria;
+    renderGaleria();
+  });
+});
+
+// ---------- Inscrições abertas ----------
+
+api.get('/modalidades?abertaSomente=true').then((modalidades) => {
+  const list = document.getElementById('inscricoes-abertas-list');
+  if (modalidades.length === 0) {
+    list.innerHTML = `<div class="empty-state"><div class="icon icone-branco">${iconeSvg('inbox')}</div>No momento não há inscrições abertas.</div>`;
+    return;
+  }
+  list.innerHTML = modalidades.map((m) => `
+    <div class="card">
+      <div class="card-body">
+        <div class="text-sm" style="font-weight:600;color:var(--texto-secundario)">#${escapeHtml(m.codigo)}</div>
+        <h3 class="mt-8" style="font-size:1.1rem">${escapeHtml(m.nome)}</h3>
+        <a class="btn btn-primary btn-block mt-16" href="inscricao.html?modalidadeId=${m.id}">Inscrever-se</a>
+      </div>
+    </div>
+  `).join('');
+}).catch(() => {
+  document.getElementById('inscricoes-abertas-list').innerHTML = '<div class="empty-state">Não foi possível carregar as inscrições agora.</div>';
+});
+
+// ---------- Notícias (carrossel) ----------
+
+let todasNoticias = [];
+
+api.get('/noticias').then((noticias) => {
+  todasNoticias = noticias;
+  const track = document.getElementById('noticias-track');
+  if (noticias.length === 0) {
+    track.innerHTML = `<div class="empty-state"><div class="icon icone-branco">${iconeSvg('newspaper')}</div>Nenhuma notícia publicada ainda.</div>`;
+    return;
+  }
+  track.innerHTML = noticias.map((n) => `
+    <div class="card noticia-card" data-id="${n.id}" style="cursor:pointer">
+      ${n.imagemUrl ? `<img class="thumb" src="${escapeHtml(n.imagemUrl)}" alt="${escapeHtml(n.titulo)}" />` : `<div class="thumb icone-branco">${iconeSvg('newspaper')}</div>`}
+      <div class="card-body">
+        <div class="text-sm" style="color:var(--texto-secundario)">${formatDate(n.createdAt)}</div>
+        <h3 class="mt-8" style="font-size:1.05rem">${escapeHtml(n.titulo)}</h3>
+        ${n.resumo ? `<p class="text-sm mt-8" style="color:var(--texto-secundario)">${escapeHtml(n.resumo)}</p>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  track.querySelectorAll('.noticia-card').forEach((el) => {
+    el.addEventListener('click', () => abrirNoticiaModal(Number(el.dataset.id)));
+  });
+}).catch(() => {
+  document.getElementById('noticias-track').innerHTML = '<div class="empty-state">Não foi possível carregar as notícias agora.</div>';
+});
+attachCarousel('noticias-track', 'noticias-prev', 'noticias-next', '.noticia-card');
+
+function abrirNoticiaModal(id) {
+  const n = todasNoticias.find((item) => item.id === id);
+  if (!n) return;
+  const root = document.getElementById('noticia-modal-root');
+  root.innerHTML = `
+    <div class="overlay">
+      <div class="modal">
+        ${n.imagemUrl ? `<img src="${escapeHtml(n.imagemUrl)}" alt="${escapeHtml(n.titulo)}" style="width:100%;border-radius:var(--raio);margin-bottom:20px" />` : ''}
+        <div class="text-sm" style="color:var(--texto-secundario)">${formatDate(n.createdAt)}</div>
+        <h2 class="mt-8" style="font-size:1.4rem">${escapeHtml(n.titulo)}</h2>
+        <p class="mt-16" style="white-space:pre-line">${escapeHtml(n.conteudo)}</p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="noticia-modal-close">Fechar</button>
+        </div>
+      </div>
+    </div>
+  `;
+  const close = () => { root.innerHTML = ''; };
+  root.querySelector('.overlay').addEventListener('click', (e) => { if (e.target.classList.contains('overlay')) close(); });
+  root.querySelector('#noticia-modal-close').addEventListener('click', close);
+  document.addEventListener('keydown', function onKeydown(e) {
+    if (!root.querySelector('.overlay')) {
+      document.removeEventListener('keydown', onKeydown);
+      return;
+    }
+    if (e.key === 'Escape') {
+      document.removeEventListener('keydown', onKeydown);
+      close();
+    }
+  });
+}

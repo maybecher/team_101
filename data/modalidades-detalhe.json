@@ -1,0 +1,700 @@
+{
+  "1": {
+    "id": 1,
+    "codigo": "01",
+    "nome": "Mecânica Industrial",
+    "descricao": "Montagem, ajuste e manutenção de sistemas mecânicos industriais.",
+    "imagemUrl": "assets/modalidades/01.png",
+    "treinadorNome": "",
+    "status": "inscricoes_encerradas",
+    "vagas": null,
+    "dataInicio": null,
+    "dataFim": null,
+    "createdAt": "2026-07-23T20:39:51.521Z",
+    "updatedAt": "2026-07-23T20:57:41.748Z",
+    "projetos": [],
+    "competidores": [
+      {
+        "id": 9,
+        "nome": "Mateus Roseno",
+        "fotoUrl": "assets/competidores/2026/mateus-henrique-roseno.png",
+        "curso": null,
+        "ano": 2026,
+        "modalidadeId": 1,
+        "conquistas": null,
+        "depoimento": null,
+        "destaque": false,
+        "createdAt": "2026-07-20T20:21:31.669Z"
+      }
+    ],
+    "linhaDoTempo": [
+      {
+        "id": 794,
+        "ordem": 103,
+        "ciclo": "(2017-2019)",
+        "etapa": "Estadual - São Paulo Skills 2017",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Bronze",
+        "modalidade": "Mecânica Industrial",
+        "competidor": "Paulo Lima",
+        "fotoUrl": null,
+        "modalidadeId": 1
+      }
+    ]
+  },
+  "2": {
+    "id": 2,
+    "codigo": "04",
+    "nome": "Mecatrônica",
+    "descricao": "Integração de mecânica, eletrônica e automação em sistemas produtivos.",
+    "imagemUrl": "assets/modalidades/04.png",
+    "treinadorNome": "",
+    "status": "inscricoes_encerradas",
+    "vagas": null,
+    "dataInicio": null,
+    "dataFim": null,
+    "createdAt": "2026-07-23T20:39:51.531Z",
+    "updatedAt": "2026-07-23T20:57:41.755Z",
+    "projetos": [],
+    "competidores": [
+      {
+        "id": 2,
+        "nome": "Arthur Walter",
+        "fotoUrl": "assets/competidores/2026/arthur-walter-silva.png",
+        "curso": null,
+        "ano": 2026,
+        "modalidadeId": 2,
+        "conquistas": null,
+        "depoimento": null,
+        "destaque": false,
+        "createdAt": "2026-07-20T20:21:31.613Z"
+      },
+      {
+        "id": 5,
+        "nome": "Gustavo Moura",
+        "fotoUrl": "assets/competidores/2026/gustavo-moura-da-silva.png",
+        "curso": null,
+        "ano": 2026,
+        "modalidadeId": 2,
+        "conquistas": null,
+        "depoimento": null,
+        "destaque": false,
+        "createdAt": "2026-07-20T20:21:31.636Z"
+      }
+    ],
+    "linhaDoTempo": [
+      {
+        "id": 828,
+        "ordem": 137,
+        "ciclo": "(2024-2026)",
+        "etapa": "Nacional - WorldSkills Brasil 2025",
+        "tipoEtapa": "Nacional",
+        "pais": "Brasil",
+        "medalha": "Prata",
+        "modalidade": "Mecatrônica",
+        "competidor": "Gustavo Rodrigues/ Bruno Pantolfo Melo",
+        "fotoUrl": null,
+        "modalidadeId": 2
+      },
+      {
+        "id": 824,
+        "ordem": 133,
+        "ciclo": "(2024-2026)",
+        "etapa": "Estadual - São Paulo Skills 2024",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Ouro",
+        "modalidade": "Mecatrônica",
+        "competidor": "Gustavo Rodrigues/ Bruno Pantolfo Melo",
+        "fotoUrl": null,
+        "modalidadeId": 2
+      },
+      {
+        "id": 816,
+        "ordem": 125,
+        "ciclo": "(2021-2024)",
+        "etapa": "Estadual - São Paulo Skills 2023",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Ouro",
+        "modalidade": "Mecatrônica",
+        "competidor": "Jadson/Daniel",
+        "fotoUrl": null,
+        "modalidadeId": 2
+      },
+      {
+        "id": 812,
+        "ordem": 121,
+        "ciclo": "(2019-2022)",
+        "etapa": "Nacional - WorldSkills Brasil 2021",
+        "tipoEtapa": "Nacional",
+        "pais": "Brasil",
+        "medalha": "Prata",
+        "modalidade": "Mecatrônica",
+        "competidor": "Roger Malmagro/Bruno Alves Martins",
+        "fotoUrl": null,
+        "modalidadeId": 2
+      },
+      {
+        "id": 792,
+        "ordem": 101,
+        "ciclo": "(2017-2019)",
+        "etapa": "Estadual - São Paulo Skills 2017",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Bronze",
+        "modalidade": "Mecatrônica",
+        "competidor": "Felipe Freire/ Jadson Santos",
+        "fotoUrl": null,
+        "modalidadeId": 2
+      },
+      {
+        "id": 782,
+        "ordem": 91,
+        "ciclo": "(2015-2017)",
+        "etapa": "Estadual - São Paulo Skills 2016",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Bronze",
+        "modalidade": "Mecatrônica",
+        "competidor": "Gabriel Marques / Hugo Ferreira",
+        "fotoUrl": null,
+        "modalidadeId": 2
+      }
+    ]
+  },
+  "3": {
+    "id": 3,
+    "codigo": "05",
+    "nome": "Desenho Mecânico em CAD",
+    "descricao": "Projeto e modelagem de peças e conjuntos mecânicos em CAD 2D/3D.",
+    "imagemUrl": "assets/modalidades/05.png",
+    "treinadorNome": "",
+    "status": "inscricoes_encerradas",
+    "vagas": null,
+    "dataInicio": null,
+    "dataFim": null,
+    "createdAt": "2026-07-23T20:39:51.539Z",
+    "updatedAt": "2026-07-23T20:57:41.762Z",
+    "projetos": [],
+    "competidores": [
+      {
+        "id": 3,
+        "nome": "Gabriel Soares",
+        "fotoUrl": "assets/competidores/2026/gabriel-soares-de-carvalho.png",
+        "curso": "",
+        "ano": 2026,
+        "modalidadeId": 3,
+        "conquistas": "",
+        "depoimento": "",
+        "destaque": false,
+        "createdAt": "2026-07-20T20:21:31.616Z"
+      }
+    ],
+    "linhaDoTempo": [
+      {
+        "id": 795,
+        "ordem": 104,
+        "ciclo": "(2017-2019)",
+        "etapa": "Estadual - São Paulo Skills 2017",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Bronze",
+        "modalidade": "Desenho Mecânico em CAD",
+        "competidor": "Giovanna Ribeiro",
+        "fotoUrl": null,
+        "modalidadeId": 3
+      }
+    ]
+  },
+  "4": {
+    "id": 4,
+    "codigo": "08",
+    "nome": "Desenvolvimento de Aplicativos Mobile",
+    "descricao": "Criação de aplicativos móveis nativos e multiplataforma.",
+    "imagemUrl": "assets/modalidades/08.png",
+    "treinadorNome": "",
+    "status": "inscricoes_abertas",
+    "vagas": null,
+    "dataInicio": null,
+    "dataFim": null,
+    "createdAt": "2026-07-23T20:39:51.547Z",
+    "updatedAt": "2026-07-23T20:57:41.796Z",
+    "projetos": [],
+    "competidores": [
+      {
+        "id": 10,
+        "nome": "Mateus Vieira",
+        "fotoUrl": "assets/competidores/2026/mateus-vieira-souza.png",
+        "curso": null,
+        "ano": 2026,
+        "modalidadeId": 4,
+        "conquistas": null,
+        "depoimento": null,
+        "destaque": false,
+        "createdAt": "2026-07-20T20:21:31.673Z"
+      }
+    ],
+    "linhaDoTempo": []
+  },
+  "5": {
+    "id": 5,
+    "codigo": "17",
+    "nome": "Tecnologias Web",
+    "descricao": "Desenvolvimento de aplicações e sistemas para a web.",
+    "imagemUrl": "assets/modalidades/17.png",
+    "treinadorNome": "",
+    "status": "inscricoes_encerradas",
+    "vagas": null,
+    "dataInicio": null,
+    "dataFim": null,
+    "createdAt": "2026-07-23T20:39:51.554Z",
+    "updatedAt": "2026-07-23T20:57:41.768Z",
+    "projetos": [],
+    "competidores": [
+      {
+        "id": 1,
+        "nome": "Amanda Barbosa",
+        "fotoUrl": "assets/competidores/2026/amanda-barbosa-godinho.png",
+        "curso": "",
+        "ano": 2026,
+        "modalidadeId": 5,
+        "conquistas": "",
+        "depoimento": "",
+        "destaque": false,
+        "createdAt": "2026-07-20T20:21:31.587Z"
+      }
+    ],
+    "linhaDoTempo": []
+  },
+  "6": {
+    "id": 6,
+    "codigo": "18",
+    "nome": "Instalações Elétricas",
+    "descricao": "Projeto e execução de instalações elétricas residenciais e industriais.",
+    "imagemUrl": "assets/modalidades/18.png",
+    "treinadorNome": null,
+    "status": "inscricoes_encerradas",
+    "vagas": null,
+    "dataInicio": null,
+    "dataFim": null,
+    "createdAt": "2026-07-23T20:39:51.561Z",
+    "updatedAt": "2026-07-23T20:57:41.724Z",
+    "projetos": [],
+    "competidores": [
+      {
+        "id": 11,
+        "nome": "Miguel de Oliveira",
+        "fotoUrl": "assets/competidores/2026/miguel-de-oliveira-brasil.png",
+        "curso": null,
+        "ano": 2026,
+        "modalidadeId": 6,
+        "conquistas": null,
+        "depoimento": null,
+        "destaque": false,
+        "createdAt": "2026-07-20T20:21:31.677Z"
+      }
+    ],
+    "linhaDoTempo": [
+      {
+        "id": 817,
+        "ordem": 126,
+        "ciclo": "(2021-2024)",
+        "etapa": "Estadual - São Paulo Skills 2023",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Prata",
+        "modalidade": "Instalações Elétricas",
+        "competidor": "Lucas Alves de Lima",
+        "fotoUrl": null,
+        "modalidadeId": 6
+      },
+      {
+        "id": 806,
+        "ordem": 115,
+        "ciclo": "(2019-2022)",
+        "etapa": "Estadual - São Paulo Skills 2019",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Bronze",
+        "modalidade": "Instalações Elétricas",
+        "competidor": "Marco Anthonio",
+        "fotoUrl": null,
+        "modalidadeId": 6
+      },
+      {
+        "id": 797,
+        "ordem": 106,
+        "ciclo": "(2017-2019)",
+        "etapa": "Nacional - WorldSkills Brasil 2018",
+        "tipoEtapa": "Nacional",
+        "pais": "Brasil",
+        "medalha": "Ouro",
+        "modalidade": "Instalações Elétricas",
+        "competidor": "Gustavo Arraias",
+        "fotoUrl": null,
+        "modalidadeId": 6
+      },
+      {
+        "id": 786,
+        "ordem": 95,
+        "ciclo": "(2017-2019)",
+        "etapa": "Estadual - São Paulo Skills 2017",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Ouro",
+        "modalidade": "Instalações Elétricas",
+        "competidor": "Gustavo Arraias",
+        "fotoUrl": null,
+        "modalidadeId": 6
+      },
+      {
+        "id": 780,
+        "ordem": 89,
+        "ciclo": "(2015-2017)",
+        "etapa": "Estadual - São Paulo Skills 2016",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Bronze",
+        "modalidade": "Instalações Elétricas",
+        "competidor": "Guilherme Nascimento",
+        "fotoUrl": null,
+        "modalidadeId": 6
+      },
+      {
+        "id": 769,
+        "ordem": 78,
+        "ciclo": "(2013-2015)",
+        "etapa": "Nacional - WorldSkills Brasil 2014",
+        "tipoEtapa": "Nacional",
+        "pais": "Brasil",
+        "medalha": "Prata",
+        "modalidade": "Instalações Elétricas",
+        "competidor": "Lucas Pardinho",
+        "fotoUrl": null,
+        "modalidadeId": 6
+      },
+      {
+        "id": 751,
+        "ordem": 60,
+        "ciclo": "(2013-2015)",
+        "etapa": "Estadual - São Paulo Skills 2013",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Ouro",
+        "modalidade": "Instalações Elétricas",
+        "competidor": "Lucas Pardinho",
+        "fotoUrl": null,
+        "modalidadeId": 6
+      }
+    ]
+  },
+  "7": {
+    "id": 7,
+    "codigo": "19",
+    "nome": "Controle Industrial",
+    "descricao": "Automação, programação de CLPs e supervisão de processos industriais.",
+    "imagemUrl": "assets/modalidades/19.png",
+    "treinadorNome": "",
+    "status": "inscricoes_encerradas",
+    "vagas": null,
+    "dataInicio": null,
+    "dataFim": null,
+    "createdAt": "2026-07-23T20:39:51.570Z",
+    "updatedAt": "2026-07-23T20:57:41.775Z",
+    "projetos": [],
+    "competidores": [
+      {
+        "id": 7,
+        "nome": "Kaio Martins",
+        "fotoUrl": "assets/competidores/2026/kaio-martins-almeida.png",
+        "curso": null,
+        "ano": 2026,
+        "modalidadeId": 7,
+        "conquistas": null,
+        "depoimento": null,
+        "destaque": false,
+        "createdAt": "2026-07-20T20:21:31.659Z"
+      },
+      {
+        "id": 13,
+        "nome": "Kawan Costa",
+        "fotoUrl": "assets/competidores/2024/kawan-costa.jpg",
+        "curso": "",
+        "ano": 2024,
+        "modalidadeId": 7,
+        "conquistas": "Campeão Nacional 2025 · Ouro na AmericasSkills 2025 · Rumo à WorldSkills Shanghai 2026",
+        "depoimento": "",
+        "destaque": true,
+        "createdAt": "2026-07-21T21:15:10.904Z"
+      }
+    ],
+    "linhaDoTempo": [
+      {
+        "id": 829,
+        "ordem": 138,
+        "ciclo": "(2024-2026)",
+        "etapa": "Américas - WorldSkills Américas Chile 2025",
+        "tipoEtapa": "Américas",
+        "pais": "Chile",
+        "medalha": "Ouro",
+        "modalidade": "Controle Industrial",
+        "competidor": "Kawan Costa",
+        "fotoUrl": "assets/competidores/2024/kawan-costa.jpg",
+        "modalidadeId": 7
+      },
+      {
+        "id": 826,
+        "ordem": 135,
+        "ciclo": "(2024-2026)",
+        "etapa": "Nacional - WorldSkills Brasil 2025",
+        "tipoEtapa": "Nacional",
+        "pais": "Brasil",
+        "medalha": "Ouro",
+        "modalidade": "Controle Industrial",
+        "competidor": "Kawan Costa",
+        "fotoUrl": "assets/competidores/2024/kawan-costa.jpg",
+        "modalidadeId": 7
+      },
+      {
+        "id": 821,
+        "ordem": 130,
+        "ciclo": "(2024-2026)",
+        "etapa": "Estadual - São Paulo Skills 2024",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Ouro",
+        "modalidade": "Controle Industrial",
+        "competidor": "Kawan Costa",
+        "fotoUrl": "assets/competidores/2024/kawan-costa.jpg",
+        "modalidadeId": 7
+      },
+      {
+        "id": 805,
+        "ordem": 114,
+        "ciclo": "(2019-2022)",
+        "etapa": "Estadual - São Paulo Skills 2019",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Prata",
+        "modalidade": "Controle Industrial",
+        "competidor": "Andre Lucena",
+        "fotoUrl": null,
+        "modalidadeId": 7
+      }
+    ]
+  },
+  "8": {
+    "id": 8,
+    "codigo": "24",
+    "nome": "Produção Industrial de Móveis",
+    "descricao": "Planejamento e fabricação industrial de móveis.",
+    "imagemUrl": "assets/modalidades/24.png",
+    "treinadorNome": null,
+    "status": "inscricoes_encerradas",
+    "vagas": null,
+    "dataInicio": null,
+    "dataFim": null,
+    "createdAt": "2026-07-23T20:39:51.578Z",
+    "updatedAt": "2026-07-23T20:57:41.733Z",
+    "projetos": [],
+    "competidores": [
+      {
+        "id": 12,
+        "nome": "Pablo Gonçalves",
+        "fotoUrl": "assets/competidores/2026/pablo-goncalves-rodrigues.png",
+        "curso": null,
+        "ano": 2026,
+        "modalidadeId": 8,
+        "conquistas": null,
+        "depoimento": null,
+        "destaque": false,
+        "createdAt": "2026-07-20T20:21:31.691Z"
+      }
+    ],
+    "linhaDoTempo": []
+  },
+  "9": {
+    "id": 9,
+    "codigo": "50",
+    "nome": "Arte Digital 3D para Games",
+    "descricao": "Modelagem, texturização e animação 3D para jogos digitais.",
+    "imagemUrl": "assets/modalidades/50.png",
+    "treinadorNome": "",
+    "status": "inscricoes_abertas",
+    "vagas": null,
+    "dataInicio": null,
+    "dataFim": null,
+    "createdAt": "2026-07-23T20:39:51.584Z",
+    "updatedAt": "2026-07-23T20:57:41.787Z",
+    "projetos": [],
+    "competidores": [
+      {
+        "id": 6,
+        "nome": "Júllia Santana",
+        "fotoUrl": "assets/competidores/2026/jullia-santana-santos.png",
+        "curso": null,
+        "ano": 2026,
+        "modalidadeId": 9,
+        "conquistas": null,
+        "depoimento": null,
+        "destaque": false,
+        "createdAt": "2026-07-20T20:21:31.653Z"
+      },
+      {
+        "id": 14,
+        "nome": "Giovanna Candido",
+        "fotoUrl": "assets/competidores/2024/giovanna-candido.jpg",
+        "curso": "",
+        "ano": 2024,
+        "modalidadeId": 9,
+        "conquistas": "Campeã Nacional 2025 · Rumo à WorldSkills Shanghai 2026",
+        "depoimento": "",
+        "destaque": true,
+        "createdAt": "2026-07-21T21:15:10.913Z"
+      }
+    ],
+    "linhaDoTempo": [
+      {
+        "id": 837,
+        "ordem": 141,
+        "ciclo": "(2024-2026)",
+        "etapa": "Mundial - WorldSkills Xanghai 2026",
+        "tipoEtapa": "Mundial",
+        "pais": "China",
+        "medalha": "Excelência",
+        "modalidade": "Arte Digital 3D para Games",
+        "competidor": "Giovanna Candido",
+        "fotoUrl": "assets/competidores/2024/giovanna-candido.jpg",
+        "modalidadeId": 9
+      },
+      {
+        "id": 825,
+        "ordem": 134,
+        "ciclo": "(2024-2026)",
+        "etapa": "Nacional - WorldSkills Brasil 2025",
+        "tipoEtapa": "Nacional",
+        "pais": "Brasil",
+        "medalha": "Ouro",
+        "modalidade": "Arte Digital 3D para Games",
+        "competidor": "Giovanna Candido",
+        "fotoUrl": "assets/competidores/2024/giovanna-candido.jpg",
+        "modalidadeId": 9
+      },
+      {
+        "id": 820,
+        "ordem": 129,
+        "ciclo": "(2024-2026)",
+        "etapa": "Estadual - São Paulo Skills 2024",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Ouro",
+        "modalidade": "Arte Digital 3D para Games",
+        "competidor": "Giovanna Candido",
+        "fotoUrl": "assets/competidores/2024/giovanna-candido.jpg",
+        "modalidadeId": 9
+      },
+      {
+        "id": 818,
+        "ordem": 127,
+        "ciclo": "(2021-2024)",
+        "etapa": "Nacional - WorldSkills Brasil 2023",
+        "tipoEtapa": "Nacional",
+        "pais": "Brasil",
+        "medalha": "Ouro",
+        "modalidade": "Arte Digital 3D para Games",
+        "competidor": "Júlia Morgana",
+        "fotoUrl": null,
+        "modalidadeId": 9
+      },
+      {
+        "id": 814,
+        "ordem": 123,
+        "ciclo": "(2021-2024)",
+        "etapa": "Estadual - São Paulo Skills 2023",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Ouro",
+        "modalidade": "Arte Digital 3D para Games",
+        "competidor": "Júlia Morgana",
+        "fotoUrl": null,
+        "modalidadeId": 9
+      }
+    ]
+  },
+  "10": {
+    "id": 10,
+    "codigo": "52",
+    "nome": "Tecnologia Lab. Química",
+    "descricao": "Ensaios, análises e boas práticas em laboratório químico.",
+    "imagemUrl": "assets/modalidades/52.png",
+    "treinadorNome": "",
+    "status": "inscricoes_encerradas",
+    "vagas": null,
+    "dataInicio": null,
+    "dataFim": null,
+    "createdAt": "2026-07-23T20:39:51.592Z",
+    "updatedAt": "2026-07-23T20:57:41.780Z",
+    "projetos": [],
+    "competidores": [
+      {
+        "id": 4,
+        "nome": "Guilherme dos Santos",
+        "fotoUrl": "assets/competidores/2026/guilherme-dos-santos.png",
+        "curso": null,
+        "ano": 2026,
+        "modalidadeId": 10,
+        "conquistas": null,
+        "depoimento": null,
+        "destaque": false,
+        "createdAt": "2026-07-20T20:21:31.620Z"
+      }
+    ],
+    "linhaDoTempo": []
+  },
+  "11": {
+    "id": 11,
+    "codigo": "59",
+    "nome": "Tecnologia de Design Industrial",
+    "descricao": "Desenvolvimento de produtos do conceito ao protótipo.",
+    "imagemUrl": "assets/modalidades/59.jpg",
+    "treinadorNome": null,
+    "status": "inscricoes_encerradas",
+    "vagas": null,
+    "dataInicio": null,
+    "dataFim": null,
+    "createdAt": "2026-07-23T20:39:51.599Z",
+    "updatedAt": "2026-07-23T20:57:41.740Z",
+    "projetos": [],
+    "competidores": [
+      {
+        "id": 8,
+        "nome": "Marianna Campos",
+        "fotoUrl": "assets/competidores/2026/marianna-souza-de-campos.png",
+        "curso": null,
+        "ano": 2026,
+        "modalidadeId": 11,
+        "conquistas": null,
+        "depoimento": null,
+        "destaque": false,
+        "createdAt": "2026-07-20T20:21:31.663Z"
+      }
+    ],
+    "linhaDoTempo": [
+      {
+        "id": 822,
+        "ordem": 131,
+        "ciclo": "(2024-2026)",
+        "etapa": "Estadual - São Paulo Skills 2024",
+        "tipoEtapa": "Estadual",
+        "pais": "Brasil",
+        "medalha": "Bronze",
+        "modalidade": "Tecnologia de Design Industrial",
+        "competidor": "Pedro Martins",
+        "fotoUrl": null,
+        "modalidadeId": 11
+      }
+    ]
+  }
+}

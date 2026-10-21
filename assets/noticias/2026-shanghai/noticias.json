@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "date": "2025-11",
+    "title": "O competidor Kawan Costa do SENAI 1.01 - Brás conquista medalha de ouro na AmericasSkills e fortalece preparação para a WorldSkills Shanghai",
+    "description": "Em novembro de 2025, o competidor Kawan Costa, representante do Brasil e do SENAI 1.01, conquistou a medalha de ouro na AmericasSkills, destacando-se entre representantes de 13 países das Américas. A conquista é resultado de muito empenho, disciplina e dedicação, consolidando sua posição entre os melhores competidores do continente. Este importante resultado enche de orgulho o Brasil e toda a equipe do SENAI 1.01, refletindo o compromisso com a excelência na formação profissional. Agora, seguimos ainda mais motivados e ansiosos para o próximo grande desafio: a WorldSkills Shanghai, onde Kawan levará toda a experiência adquirida para representar o país no maior campeonato de educação profissional do mundo.",
+    "image": "19-americaskills-kawan-costa.jpeg"
+  },
+  {
+    "id": 2,
+    "date": "2026-04",
+    "title": "A competidora Giovanna Candido do SENAI 1.01 - Brás conquista 2º lugar em competição internacional em Hong Kong",
+    "description": "Em abril de 2026, a competidora Giovanna Candido, representante do Brasil e do SENAI 1.01, conquistou o 2º lugar na competição internacional promovida pelo GDSC, realizada em Hong Kong. Disputando com 20 competidores de 14 países, Giovanna demonstrou excelência técnica, dedicação e determinação, alcançando um resultado que enche de orgulho nosso país e toda a comunidade do SENAI 1.01. Essa conquista representa mais um importante passo em sua trajetória rumo à excelência. Estamos extremamente felizes e orgulhosos por fazer parte dessa jornada e seguimos confiantes e ansiosos pelo próximo grande desafio: a WorldSkills Shanghai, onde Giovanna levará consigo toda a experiência adquirida e representará novamente o Brasil com muito talento e dedicação.",
+    "image": "50-competicao-hongkong-giovanna-candido.jpeg"
+  },
+  {
+    "id": 3,
+    "date": "2026-05",
+    "title": "O competidor Kawan Costa do SENAI 1.01 - Brás participa de treinamento na Coreia do Sul visando a WorldSkills Shanghai",
+    "description": "Em maio de 2026, o competidor Kawan Costa, representante do Brasil e do SENAI 1.01, participou de um treinamento técnico na Samsung Heavy Industries, na Coreia do Sul, uma das maiores referências mundiais em engenharia e construção naval. A experiência teve como objetivo aprimorar suas habilidades técnicas, ampliar seus conhecimentos e proporcionar vivências em um ambiente de excelência internacional. O treinamento fez parte da preparação para a WorldSkills Shanghai, fortalecendo ainda mais a jornada de desenvolvimento do competidor. Estamos muito orgulhosos por essa oportunidade e confiantes de que toda a experiência adquirida contribuirá para que Kawan represente o Brasil e o SENAI 1.01 com excelência no maior campeonato de educação profissional do mundo.",
+    "image": "19-treinamento-samsung-coreia-kawan-costa.jpeg"
+  }
+]

@@ -1,11 +1,11 @@
-import { api } from '../api.js?v=202610211445';
-import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211445';
+import { api } from '../api.js?v=202610211451';
+import { renderPublicHeader, renderPublicFooter } from '../components.js?v=202610211451';
 import {
   escapeHtml, statusBadgeHtml, GALERIA_CATEGORIA_LABELS, GALERIA_CATEGORIAS_ORDEM, pareceNomeFeminino, formatDate,
   AREAS, areaDaModalidade,
-} from '../utils.js?v=202610211445';
-import { iconeSvg } from '../icons.js?v=202610211445';
-import { revelarAoRolar, prepararCardsDeAtleta, reduzMovimento } from '../animacoes.js?v=202610211445';
+} from '../utils.js?v=202610211451';
+import { iconeSvg } from '../icons.js?v=202610211451';
+import { revelarAoRolar, prepararCardsDeAtleta, reduzMovimento } from '../animacoes.js?v=202610211451';
 
 renderPublicHeader();
 renderPublicFooter();
@@ -199,14 +199,17 @@ function attachCarousel(trackId, prevId, nextId, cardSelector, autoMs) {
   }, { threshold: 0.5 }).observe(track);
 }
 
+// Texto para busca: minúsculo e sem acento ("João" e "joao" batem).
+const normalizar = (texto) => texto.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
 // ---------- Modalidades disponíveis na escola (carrossel automático) ----------
 
 let todasModalidades = [];
 
 function renderModalidades() {
-  const busca = document.getElementById('modalidades-busca').value.trim().toLowerCase();
+  const busca = normalizar(document.getElementById('modalidades-busca').value.trim());
   const filtradas = todasModalidades.filter((m) => !busca
-    || m.nome.toLowerCase().includes(busca) || m.codigo.includes(busca.replace('#', '')));
+    || normalizar(m.nome).includes(busca) || m.codigo.includes(busca.replace('#', '')));
 
   const grid = document.getElementById('modalidades-track');
   if (filtradas.length === 0) {
@@ -303,7 +306,31 @@ api.get('/competidores').then((competidores) => {
     track.innerHTML = `<div class="empty-state"><div class="icon icone-dourado">${iconeSvg('trophy')}</div>Em breve, os primeiros nomes da equipe.</div>`;
     return;
   }
-  track.innerHTML = resto.map((c) => `
+  equipeAtual = resto;
+  renderEquipe();
+}).catch(() => {
+  document.getElementById('competidores-track').innerHTML = '<div class="empty-state">Não foi possível carregar os competidores.</div>';
+});
+attachCarousel('competidores-track', 'competidores-prev', 'competidores-next', '.competidor-card', 3800);
+attachCarousel('competidores-destaque', 'destaque-prev', 'destaque-next', '.competidor-card', 5000);
+
+// Equipe do ciclo atual, filtrada pela busca (nome, modalidade ou código, como nas modalidades).
+let equipeAtual = [];
+
+function renderEquipe() {
+  const track = document.getElementById('competidores-track');
+  const busca = normalizar(document.getElementById('competidores-busca').value.trim());
+  const filtrados = equipeAtual.filter((c) => !busca
+    || normalizar(c.nome).includes(busca)
+    || (c.modalidade && (normalizar(c.modalidade.nome).includes(busca) || c.modalidade.codigo.includes(busca.replace('#', '')))));
+
+  if (filtrados.length === 0) {
+    track.innerHTML = `<div class="empty-state"><div class="icon icone-branco">${iconeSvg('search')}</div>Nenhum competidor encontrado.</div>`;
+    loopInfinito(track, '.competidor-card');
+    return;
+  }
+
+  track.innerHTML = filtrados.map((c) => `
     <div class="card competidor-card" data-area="${atletaArea(c)}">
       ${atletaFotoHtml(c)}
       <div class="card-body">
@@ -316,11 +343,9 @@ api.get('/competidores').then((competidores) => {
     </div>
   `).join('');
   loopInfinito(track, '.competidor-card');
-}).catch(() => {
-  document.getElementById('competidores-track').innerHTML = '<div class="empty-state">Não foi possível carregar os competidores.</div>';
-});
-attachCarousel('competidores-track', 'competidores-prev', 'competidores-next', '.competidor-card', 3800);
-attachCarousel('competidores-destaque', 'destaque-prev', 'destaque-next', '.competidor-card', 5000);
+}
+
+document.getElementById('competidores-busca').addEventListener('input', renderEquipe);
 
 // ---------- Galeria ----------
 

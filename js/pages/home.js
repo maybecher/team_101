@@ -5,12 +5,12 @@ import {
   AREAS, areaDaModalidade,
 } from '../utils.js';
 import { iconeSvg } from '../icons.js';
-import { revelarAoRolar, animarAlcance, prepararCardsDeAtleta } from '../animacoes.js';
+import { revelarAoRolar, contarAoAparecer, prepararCardsDeAtleta } from '../animacoes.js';
 
 renderPublicHeader();
 renderPublicFooter();
 revelarAoRolar();
-animarAlcance(document.getElementById('alcance'));
+contarAoAparecer(document.querySelectorAll('#sobre .conta'));
 
 const BENEFICIOS = [
   ['graduationCap', 'Aprendizado além da sala de aula'],
@@ -75,29 +75,46 @@ faixaPaises.addEventListener('pointerdown', (e) => {
 
 function attachCarousel(trackId, prevId, nextId, cardSelector, autoMs) {
   const track = document.getElementById(trackId);
-  const gap = 20;
 
+  // Anda até o início do card seguinte (ou anterior), pela posição real de cada card.
+  // Um passo fixo (largura + espaçamento) desalinhava aos poucos quando o espaçamento
+  // muda com o tamanho da tela, e os cards apareciam cortados dos dois lados.
   const step = (direction) => {
-    const card = track.querySelector(cardSelector);
-    const amount = card ? card.getBoundingClientRect().width + gap : 300;
+    const cards = [...track.querySelectorAll(cardSelector)];
+    if (cards.length === 0) return;
+    const posicoes = cards.map((c) => c.offsetLeft - cards[0].offsetLeft);
     const maxScroll = track.scrollWidth - track.clientWidth;
-    let target = track.scrollLeft + direction * amount;
+    const atual = track.scrollLeft;
+    let target;
 
-    // Ao chegar perto do fim/início, o próximo clique volta ao outro extremo — mas só
+    // Ao chegar no fim/início, o próximo clique volta ao outro extremo — mas só
     // depois de realmente exibir o último item, em vez de pular direto pra ele.
     if (direction > 0) {
-      target = track.scrollLeft >= maxScroll - 4 ? 0 : Math.min(target, maxScroll);
+      const proxima = posicoes.find((p) => p > atual + 4);
+      target = atual >= maxScroll - 4 || proxima === undefined ? 0 : Math.min(proxima, maxScroll);
     } else {
-      target = track.scrollLeft <= 4 ? maxScroll : Math.max(target, 0);
+      const anterior = [...posicoes].reverse().find((p) => p < atual - 4);
+      target = atual <= 4 ? maxScroll : (anterior ?? 0);
     }
 
     track.scrollTo({ left: target, behavior: 'smooth' });
   };
 
-  document.getElementById(prevId).addEventListener('click', () => step(-1));
-  document.getElementById(nextId).addEventListener('click', () => step(1));
+  // A passagem automática recomeça a contagem sempre que a pessoa mexe no carrossel:
+  // sem isso ela podia disparar junto com um clique e as duas rolagens se atropelavam.
+  let timer = null;
+  const reiniciarAuto = () => {
+    if (!autoMs) return;
+    clearInterval(timer);
+    timer = setInterval(() => step(1), autoMs);
+  };
 
-  if (autoMs) setInterval(() => step(1), autoMs);
+  document.getElementById(prevId).addEventListener('click', () => { step(-1); reiniciarAuto(); });
+  document.getElementById(nextId).addEventListener('click', () => { step(1); reiniciarAuto(); });
+  track.addEventListener('pointerdown', reiniciarAuto);
+  track.addEventListener('wheel', reiniciarAuto, { passive: true });
+
+  reiniciarAuto();
 }
 
 // ---------- Modalidades disponíveis na escola (carrossel automático) ----------
@@ -153,7 +170,8 @@ attachCarousel('modalidades-track', 'modalidades-prev', 'modalidades-next', '.mo
 
 const atletaArea = (c) => (c.modalidade && areaDaModalidade(c.modalidade.codigo)) || '';
 
-// Foto do card de atleta: código da modalidade no canto e, nos destaques, a medalha.
+// Foto dos cards de competidor: código da modalidade no canto e, nos destaques
+// (figurinhas do Inspire-se), a medalha.
 function atletaFotoHtml(c, destaque = false) {
   return `
       <div class="atleta-foto">
@@ -203,7 +221,7 @@ api.get('/competidores').then((competidores) => {
     return;
   }
   track.innerHTML = resto.map((c) => `
-    <div class="card competidor-card atleta-card" data-area="${atletaArea(c)}">
+    <div class="card competidor-card" data-area="${atletaArea(c)}">
       ${atletaFotoHtml(c)}
       <div class="card-body">
         <h3 style="font-size:1.05rem">${escapeHtml(c.nome)}</h3>
@@ -214,7 +232,6 @@ api.get('/competidores').then((competidores) => {
       </div>
     </div>
   `).join('');
-  prepararCardsDeAtleta(track);
 }).catch(() => {
   document.getElementById('competidores-track').innerHTML = '<div class="empty-state">Não foi possível carregar os competidores.</div>';
 });

@@ -1896,10 +1896,6 @@ body {
 :root {
   --suave: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Etapas da seção Sobre (anéis) */
-  --cor-estadual: #60a5fa;
-  --cor-nacional: #34d399;
-  --cor-mundial: #a78bfa;
 }
 
 /* ---------- Cores por área das modalidades (AREAS em js/utils.js) ---------- */
@@ -1980,241 +1976,210 @@ body {
 .revelar-grupo > :nth-child(7) { --atraso: 420ms; }
 .revelar-grupo > :nth-child(n + 8) { --atraso: 490ms; }
 
-/* ---------- Alcance: você no centro, anéis de São Paulo, Brasil e Mundo ---------- */
+/* ---------- Sobre: texto, números e etapas ---------- */
 
-[data-nivel='sp'] { --cor: var(--cor-estadual); --inset: 25%; }
-[data-nivel='brasil'] { --cor: var(--cor-nacional); --inset: 12.5%; }
-[data-nivel='mundo'] { --cor: var(--cor-mundial); --inset: 0%; }
-
-.alcance {
+.sobre-intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 56px;
-  align-items: start;
-}
-
-/* O desenho fica parado enquanto os textos passam ao lado. */
-.alcance-visual {
-  position: sticky;
-  top: 110px;
-}
-
-.alcance-orbita {
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-  aspect-ratio: 1;
-  margin: 0 auto;
-}
-
-.alcance-anel {
-  position: absolute;
-  inset: var(--inset);
-  border-radius: 50%;
-  border: 2px dashed var(--borda-forte);
-  opacity: 0.4;
-  scale: 0.88;
-  transition: scale 1s var(--suave), opacity 1s var(--suave), border-color 0.6s ease, box-shadow 1s var(--suave), background 1s var(--suave);
-}
-
-.alcance-anel.ativo {
-  opacity: 1;
-  scale: 1;
-  border-style: solid;
-  border-color: var(--cor);
-  background: radial-gradient(circle, transparent 58%, color-mix(in srgb, var(--cor) 12%, transparent) 100%);
-  box-shadow: 0 0 40px color-mix(in srgb, var(--cor) 22%, transparent), inset 0 0 30px color-mix(in srgb, var(--cor) 12%, transparent);
-}
-
-/* Uma onda sai do anel quando ele acende. */
-.alcance-anel.ativo::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 50%;
-  border: 2px solid var(--cor);
-  pointer-events: none;
-  animation: onda 1.3s var(--suave) forwards;
-}
-
-@keyframes onda {
-  from { opacity: 0.8; scale: 1; }
-  to { opacity: 0; scale: 1.14; }
-}
-
-.alcance-rotulo {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  translate: -50% -50%;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: var(--texto-secundario);
-  background: var(--tema-base, var(--azul-escuro));
-  border: 1px solid var(--borda-forte);
-  transition: color 0.6s ease, border-color 0.6s ease;
-}
-
-.alcance-anel.ativo .alcance-rotulo {
-  color: var(--cor);
-  border-color: var(--cor);
-}
-
-.alcance-centro {
-  position: absolute;
-  inset: 37.5%;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 48px;
   align-items: center;
-  justify-content: center;
-  gap: 2px;
-  text-align: center;
-  color: var(--azul-escuro);
-  background: var(--gradiente-dourado);
-  box-shadow: 0 0 0 6px rgba(243, 201, 77, 0.18), 0 0 50px rgba(243, 201, 77, 0.35);
-  animation: respirar 4s ease-in-out infinite;
 }
 
-.alcance-centro .icone-svg {
-  font-size: 1.3rem;
+.sobre-intro .section-heading {
+  margin-bottom: 0;
 }
 
-.alcance-centro strong {
-  font-size: 1.15rem;
+.sobre-numeros {
+  margin: 0;
+  display: grid;
+  gap: 18px;
+  padding-left: 32px;
+  border-left: 1px solid var(--borda-forte);
+}
+
+.sobre-numeros dt {
+  font-size: 2.2rem;
   font-weight: 800;
   line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--dourado-claro);
 }
 
-.alcance-centro span {
-  font-size: 0.68rem;
-  font-weight: 700;
+.sobre-numeros dd {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
 }
 
-@keyframes respirar {
-  50% { box-shadow: 0 0 0 10px rgba(243, 201, 77, 0.12), 0 0 70px rgba(243, 201, 77, 0.45); }
+/* Três etapas lado a lado, ligadas por um traço dourado que se desenha uma vez
+   quando a fileira aparece (classe .visivel, posta por revelarAoRolar). */
+.etapas {
+  --marco: 52px;
+  --vao: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--vao);
+  margin-top: 48px;
 }
 
-.alcance-etapas {
-  display: flex;
-  flex-direction: column;
-  gap: 120px;
-  padding: 40px 0 24px;
+.etapa {
+  position: relative;
+  text-align: center;
+  padding: 0 8px;
 }
 
-.alcance-etapa {
-  display: flex;
-  gap: 16px;
-  padding: 22px;
-  border-radius: var(--raio);
-  background: var(--superficie-2);
-  border: 1px solid var(--borda);
-  border-left: 3px solid var(--borda-forte);
-  opacity: 0.45;
-  translate: 0 14px;
-  transition: opacity 0.7s var(--suave), translate 0.7s var(--suave), border-color 0.6s ease, box-shadow 0.7s var(--suave);
+.etapa:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--marco) / 2 - 1px);
+  left: calc(50% + var(--marco) / 2 + 8px);
+  width: calc(100% + var(--vao) - var(--marco) - 16px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--dourado), var(--dourado-claro));
+  transform-origin: left center;
+  transform: scaleX(1);
 }
 
-.alcance-etapa.ativa {
-  opacity: 1;
-  translate: 0 0;
-  border-left-color: var(--cor);
-  box-shadow: 0 16px 40px color-mix(in srgb, var(--cor) 14%, transparent);
+.js-anim .etapas:not(.visivel) .etapa::after {
+  transform: scaleX(0);
 }
 
-.alcance-etapa-icone {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+.js-anim .etapas.visivel .etapa::after {
+  animation: desenhar 0.9s var(--suave) both;
+}
+
+.js-anim .etapas.visivel .etapa:nth-child(1)::after { animation-delay: 0.35s; }
+.js-anim .etapas.visivel .etapa:nth-child(2)::after { animation-delay: 0.75s; }
+
+@keyframes desenhar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.etapa-marco {
+  width: var(--marco);
+  height: var(--marco);
+  margin: 0 auto 14px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.3rem;
-  color: var(--cor);
-  background: color-mix(in srgb, var(--cor) 14%, transparent);
+  color: var(--dourado-claro);
+  background: var(--dourado-suave);
+  border: 1px solid rgba(243, 201, 77, 0.45);
 }
 
-.alcance-etapa-nivel {
+.etapa-nivel {
   display: block;
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--cor);
+  color: var(--dourado-claro);
 }
 
-.alcance-etapa h3 {
-  font-size: 1.15rem;
+.etapa h3 {
+  font-size: 1.1rem;
   margin-top: 4px;
 }
 
-.alcance-etapa p {
-  margin: 6px 0 0;
+.etapa p {
+  margin: 6px auto 0;
+  max-width: 260px;
 }
 
-.alcance-cta {
-  padding: 24px;
-  border-radius: var(--raio);
-  background: linear-gradient(160deg, rgba(243, 201, 77, 0.14), var(--superficie-2));
-  border: 1px solid rgba(243, 201, 77, 0.4);
+.sobre-paises {
+  margin-top: 48px;
 }
 
-.alcance-cta p {
-  margin: 0 0 16px;
-  color: var(--texto-primario);
+.sobre-paises-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
-.alcance-cta .btn {
-  white-space: normal;
+.sobre-paises-rotulo {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--texto-secundario);
 }
 
-/* Celular e tablet: o desenho fica numa faixa fixa no topo e os textos passam por baixo. */
-@media (max-width: 900px) {
-  /* Bloco (e não grade): o sticky só fica preso dentro da própria célula da grade, e
-     aqui o desenho precisa ficar preso por toda a seção. */
-  .alcance {
-    display: block;
+@media (max-width: 760px) {
+  .sobre-intro {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
   }
 
-  .alcance-visual {
-    top: 69px;
-    z-index: 2;
-    padding: 18px 0 22px;
-    background: linear-gradient(var(--tema-base, var(--azul-escuro)) 82%, transparent);
+  /* No celular os números viram uma fileira de três. */
+  .sobre-numeros {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    padding: 18px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--borda-forte);
   }
 
-  .alcance-orbita {
-    width: 210px;
+  .sobre-numeros dt {
+    font-size: 1.5rem;
   }
 
-  .alcance-rotulo {
-    font-size: 0.6rem;
-    padding: 2px 8px;
+  .sobre-numeros dd {
+    font-size: 0.78rem;
   }
 
-  .alcance-centro span,
-  .alcance-centro .icone-svg {
-    display: none;
+  /* Etapas empilhadas, com o traço descendo pela esquerda. */
+  .etapas {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    margin-top: 36px;
   }
 
-  .alcance-centro strong {
-    font-size: 0.9rem;
+  .etapa {
+    display: grid;
+    grid-template-columns: var(--marco) minmax(0, 1fr);
+    column-gap: 16px;
+    text-align: left;
+    padding: 0;
   }
 
-  .alcance-etapas {
-    gap: 48px;
-    padding: 16px 0 0;
+  .etapa-marco {
+    grid-row: 1 / span 3;
+    margin: 0;
   }
 
-  .alcance-etapa {
-    padding: 18px;
+  .etapa p {
+    margin: 4px 0 0;
+    max-width: none;
   }
+
+  .etapa:not(:last-child)::after {
+    top: calc(var(--marco) + 6px);
+    left: calc(var(--marco) / 2 - 1px);
+    width: 2px;
+    height: calc(100% - var(--marco) + 28px - 12px);
+    background: linear-gradient(180deg, var(--dourado), var(--dourado-claro));
+    transform-origin: center top;
+  }
+
+  .js-anim .etapas:not(.visivel) .etapa::after {
+    transform: scaleY(0);
+  }
+
+  .js-anim .etapas.visivel .etapa::after {
+    animation-name: desenhar-vertical;
+  }
+
+  .sobre-paises-topo .btn {
+    width: 100%;
+  }
+}
+
+@keyframes desenhar-vertical {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
 }
 
 /* ---------- Cards de atleta (competidores) ---------- */
@@ -2352,8 +2317,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .js-anim .revelar,
   .js-anim .revelar-grupo > *,
-  .alcance-anel.ativo::after,
-  .alcance-centro,
+  .js-anim .etapas.visivel .etapa::after,
   .timeline-node .timeline-dot.ativo,
   .badge-ouro,
   .atleta-card.brilhar::before {
@@ -2536,4 +2500,30 @@ section[id] {
 
 @media (prefers-reduced-motion: reduce) {
   .cta-final::after { animation: none; }
+}
+
+/* No celular os carrosséis vão de ponta a ponta da tela: o próximo card aparece
+   saindo pela borda da tela, e não cortado na margem interna da página. O
+   scroll-padding mantém cada card alinhado à margem quando o carrossel para. */
+@media (max-width: 640px) {
+  .modalidades-grid,
+  .galeria-track,
+  .competidores-track,
+  .noticias-track {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    scroll-padding-inline: 16px;
+  }
+
+  /* Espaço no fim para o último card também parar alinhado à margem (cards de 85%):
+     sem isso ele encostava na borda direita e o anterior aparecia cortado. */
+  .modalidades-grid::after,
+  .galeria-track::after,
+  .competidores-track:not(.destaque-track)::after,
+  .noticias-track::after {
+    content: '';
+    flex: 0 0 calc(15% - 16px);
+  }
 }

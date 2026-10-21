@@ -1,5 +1,5 @@
 // Animações compartilhadas entre as páginas públicas: revelação ao rolar, números que
-// contam, linhas que se preenchem com a rolagem, os anéis da seção Sobre e os cards de atleta.
+// contam, linhas que se preenchem com a rolagem e os cards de atleta.
 // Tudo respeita "reduzir movimento" do sistema: nesse caso o conteúdo aparece pronto.
 
 export const reduzMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -9,8 +9,8 @@ export const reduzMovimento = window.matchMedia('(prefers-reduced-motion: reduce
 // Seletores padrão: elementos que entram sozinhos (.revelar) e grupos cujos filhos
 // entram em sequência (.revelar-grupo). Grupos preenchidos depois (via fetch) também
 // animam, porque a animação roda quando o filho é inserido num grupo já visível.
-const REVELAR = '.section .section-heading, .marquee, .alcance-cta';
-const REVELAR_GRUPO = '#beneficios-grid, .modalidades-grid, .competidores-track, .noticias-track, #galeria-grid, #faq-list, .timeline, .stat-grid';
+const REVELAR = '.section .section-heading, .sobre-paises';
+const REVELAR_GRUPO = '.sobre-numeros, .etapas, #beneficios-grid, .modalidades-grid, .competidores-track, .noticias-track, #galeria-grid, #faq-list, .timeline, .stat-grid';
 
 export function revelarAoRolar(raiz = document) {
   const alvos = [
@@ -83,29 +83,6 @@ export function aoRolar(atualizar) {
   window.addEventListener('scroll', agendar, { passive: true });
   window.addEventListener('resize', agendar);
   agendar();
-}
-
-// ---------- Alcance (você no centro → São Paulo → Brasil → Mundo) ----------
-
-/**
- * Cada etapa acende quando o texto dela passa de 65% da altura da tela, e acende junto
- * o anel correspondente. Os anéis vão se somando: quem chegou no Mundial passou pelos outros.
- */
-export function animarAlcance(alcance) {
-  if (!alcance) return;
-  const etapas = [...alcance.querySelectorAll('.alcance-etapa')];
-  const aneis = new Map([...alcance.querySelectorAll('.alcance-anel')].map((a) => [a.dataset.nivel, a]));
-
-  const atualizar = () => {
-    const linha = window.innerHeight * 0.65;
-    etapas.forEach((etapa) => {
-      const ativa = reduzMovimento || etapa.getBoundingClientRect().top < linha;
-      etapa.classList.toggle('ativa', ativa);
-      aneis.get(etapa.dataset.nivel)?.classList.toggle('ativo', ativa);
-    });
-  };
-
-  aoRolar(atualizar);
 }
 
 // ---------- Linhas da linha do tempo ----------

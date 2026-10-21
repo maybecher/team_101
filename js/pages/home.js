@@ -5,7 +5,7 @@ import {
   AREAS, areaDaModalidade,
 } from '../utils.js';
 import { iconeSvg } from '../icons.js';
-import { revelarAoRolar, prepararCardsDeAtleta } from '../animacoes.js';
+import { revelarAoRolar, prepararCardsDeAtleta, reduzMovimento } from '../animacoes.js';
 
 renderPublicHeader();
 renderPublicFooter();
@@ -52,8 +52,8 @@ document.querySelectorAll('.faq-item').forEach((item) => {
 
 // ---------- Países sede (faixa em movimento) ----------
 
-// A animação desliza a faixa até a metade; com a lista duplicada, o fim de uma cópia
-// emenda no começo da outra e o loop fica contínuo. A cópia é escondida de leitores de tela.
+// A lista vem duplicada: quando a rolagem passa da metade, volta uma metade inteira e,
+// como as duas metades são iguais, o loop fica contínuo. A cópia é escondida de leitores de tela.
 const paisesSede = document.getElementById('paises-sede');
 paisesSede.querySelectorAll('.chip').forEach((chip) => {
   const copia = chip.cloneNode(true);
@@ -61,14 +61,43 @@ paisesSede.querySelectorAll('.chip').forEach((chip) => {
   paisesSede.appendChild(copia);
 });
 
-// No toque, pausa só enquanto o dedo está na faixa (o :hover do celular não solta).
+// A faixa anda rolando a própria caixa (scrollLeft), e não com transform numa tira de
+// 5.000+ px: no Safari do iPhone essa tira animada era desenhada só em pedaços e sumia.
 const faixaPaises = paisesSede.parentElement;
-faixaPaises.addEventListener('pointerdown', (e) => {
-  if (e.pointerType !== 'mouse') faixaPaises.classList.add('tocando');
-});
-['pointerup', 'pointercancel', 'pointerleave'].forEach((evento) => {
-  faixaPaises.addEventListener(evento, () => faixaPaises.classList.remove('tocando'));
-});
+if (!reduzMovimento) {
+  const PX_POR_SEGUNDO = 40;
+  let posicao = 0;
+  let anterior = null;
+  let comMouse = false;
+  let comDedo = false;
+  let naTela = true;
+
+  const quadro = (agora) => {
+    if (anterior !== null && !comMouse && !comDedo && naTela) {
+      posicao += (PX_POR_SEGUNDO * Math.min(agora - anterior, 100)) / 1000;
+      const metade = paisesSede.offsetWidth / 2;
+      if (posicao >= metade) posicao -= metade;
+      faixaPaises.scrollLeft = posicao;
+    }
+    anterior = agora;
+    requestAnimationFrame(quadro);
+  };
+  requestAnimationFrame(quadro);
+
+  // Pausa com o mouse em cima ou enquanto o dedo está encostado (o :hover do celular
+  // fica "preso" depois de um toque, por isso o toque é tratado à parte).
+  faixaPaises.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') comMouse = true; });
+  faixaPaises.addEventListener('pointerleave', () => { comMouse = false; comDedo = false; });
+  faixaPaises.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') comDedo = true; });
+  ['pointerup', 'pointercancel'].forEach((evento) => {
+    faixaPaises.addEventListener(evento, () => { comDedo = false; });
+  });
+
+  // Fora da tela não precisa andar (economiza bateria).
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entrada]) => { naTela = entrada.isIntersecting; }).observe(faixaPaises);
+  }
+}
 
 // ---------- Carrossel em loop ----------
 

@@ -1833,23 +1833,19 @@ body {
 
 /* ---------- Países sede (faixa em movimento) ---------- */
 
-/* "contain" isola a faixa: o celular não precisa redesenhá-la a cada rolagem da página.
-   Sem mask-image de propósito: a máscara (que esmaecia as pontas) sobre uma tira
-   animada de 5.000+ px fazia a faixa sumir em vários celulares conforme a página rolava. */
+/* A faixa anda por rolagem da própria caixa, feita em home.js (ver o comentário lá):
+   sem transform animado e sem mask-image, que no Safari do iPhone faziam a faixa ser
+   desenhada só em pedaços e sumir. */
 .marquee {
   overflow: hidden;
-  contain: paint;
   padding: 4px 0;
 }
 
-/* A lista vem duplicada (ver home.js): deslizar até -50% emenda uma cópia na outra.
-   Espaço entre os chips é margin e não gap, para as duas metades terem a mesma largura. */
+/* A lista vem duplicada (ver home.js) para o loop emendar. Espaço entre os chips é
+   margin e não gap, para as duas metades terem exatamente a mesma largura. */
 .marquee-track {
   display: flex;
   width: max-content;
-  will-change: transform;
-  backface-visibility: hidden;
-  animation: marquee-deslizar 60s linear infinite;
 }
 
 .marquee-track > .chip {
@@ -1857,31 +1853,10 @@ body {
   flex-shrink: 0;
 }
 
-/* No celular o :hover fica "preso" depois de um toque e a faixa parava de vez. Por
-   isso a pausa por hover vale só para mouse; no toque, pausa enquanto o dedo está
-   encostado (classe posta em home.js). */
-@media (hover: hover) {
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
-  }
-}
-
-.marquee.tocando .marquee-track {
-  animation-play-state: paused;
-}
-
-@keyframes marquee-deslizar {
-  to { transform: translateX(-50%); }
-}
-
 /* Quem desativou animações no sistema vê a lista parada, rolável com o dedo. */
 @media (prefers-reduced-motion: reduce) {
   .marquee {
     overflow-x: auto;
-  }
-
-  .marquee-track {
-    animation: none;
   }
 
   .marquee-track > [aria-hidden='true'] {
